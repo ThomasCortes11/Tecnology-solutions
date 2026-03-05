@@ -1,0 +1,310 @@
+<!-- GUÍA DE CONFIGURACIÓN - FORMSUBMIT PARA ENVÍO DE EMAILS
+================================================
+
+Si quieres que el formulario de contacto envíe emails reales a tu bandeja de entrada,
+sigue esta guía para configurar FormSubmit (la opción más fácil y sin costo).
+
+PASO 1: MODIFICAR EL FORMULARIO EN index.html
+================================================
+
+Localiza el formulario de contacto en index.html (busca: id="contactForm")
+y cámbialo de esto:
+
+    <form class="contacto-form" id="contactForm">
+
+A esto:
+
+    <form class="contacto-form" action="https://formsubmit.co/tecnologysolution7@gmail.com" method="POST">
+
+IMPORTANTE: La cuenta ya está configurada para: tecnologysolution7@gmail.com
+
+
+PASO 2: CONFIGURACIÓN OPCIONAL EN EL FORMULARIO
+================================================
+
+Si deseas, puedes añadir estas características adicionales:
+
+a) Mensaje de confirmación automático al usuario:
+   Añade antes del cierre </form>:
+
+   <input type="hidden" name="_subject" value="Nueva solicitud de Tecnology Solutions">
+   <input type="hidden" name="_captcha" value="false">
+   <input type="hidden" name="_next" value="https://tudominio.com/gracias.html">
+
+b) Email de confirmación al cliente:
+   <input type="hidden" name="_autoresponse" value="Gracias por tu mensaje. Nos pondremos en contacto pronto.">
+
+c) Cambiar el botón de envío:
+   Localiza: <button type="submit" class="btn btn-primary btn-block">Enviar Solicitud</button>
+   
+   Y modifica el nombre si deseas:
+   <button type="submit" class="btn btn-primary btn-block">Solicitar Cotización</button>
+
+
+PASO 3: PRIMERAS PRUEBAS
+================================================
+
+1. Guarda el archivo index.html
+2. Abre la página en tu navegador
+3. Llena el formulario con datos de prueba
+4. Haz clic en "Enviar Solicitud"
+5. Te pedirá confirmar tu email (es un proceso de seguridad de FormSubmit)
+6. Ve a tu email y confirma
+7. ¡Listo! Ya recibirás los emails del formulario
+
+
+PASO 4: PERSONALIZAR CAMPOS DEL EMAIL
+================================================
+
+Los datos que llegará a tu email incluirán:
+- Nombre
+- Teléfono
+- Email
+- Tipo de Servicio
+- Mensaje
+
+Si quieres añadir campos adicionales, edita el formulario en index.html:
+
+Ejemplo - Agregar campo de empresa:
+<div class="form-group">
+    <label for="empresa">Empresa</label>
+    <input type="text" id="empresa" name="empresa">
+</div>
+
+
+ALTERNATIVA: USAR EMAILJS (SIN BACKEND)
+================================================
+
+Si prefieres no usar FormSubmit, emailjs.com es una alternativa similar:
+
+1. Ve a https://emailjs.com y crea una cuenta
+2. Consigue tu PUBLIC_KEY
+3. En index.html, añade antes de </body>:
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
+<script type="text/javascript">
+    emailjs.init('TU_PUBLIC_KEY_AQUI');
+</script>
+
+4. En js/script.js, reemplaza la sección de formulario con:
+
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const serviceID = 'service_xxxxx'; // Obtén de emailjs.com
+        const templateID = 'template_xxxxx'; // Obtén de emailjs.com
+        
+        emailjs.sendForm(serviceID, templateID, contactForm)
+            .then((response) => {
+                showNotification('¡Formulario enviado correctamente!', 'success');
+                contactForm.reset();
+            })
+            .catch((error) => {
+                showNotification('Error al enviar el formulario', 'error');
+                console.error(error);
+            });
+    });
+}
+
+5. En EmailJS, crea un template personalizado para recibir los datos
+
+
+ALTERNATIVA: USAR TU PROPIO BACKEND
+================================================
+
+Si tienes un servidor backend (PHP, Node.js, Python, etc.):
+
+1. En index.html, cambia el formulario a:
+<form class="contacto-form" id="contactForm">
+(sin action, usaremos JavaScript)
+
+2. En js/script.js, reemplaza la sección de envío:
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(contactForm);
+        
+        try {
+            const response = await fetch('/api/send-email', {
+                method: 'POST',
+                body: formData
+            });
+            
+            if (response.ok) {
+                showNotification('¡Formulario enviado correctamente!', 'success');
+                contactForm.reset();
+            } else {
+                showNotification('Error al enviar', 'error');
+            }
+        } catch (error) {
+            showNotification('Error de conexión', 'error');
+        }
+    });
+}
+
+3. Implementa el endpoint /api/send-email en tu backend que envíe el email
+
+
+SOLUCIÓN MÁS SIMPLE: FORMSUBMIT
+================================================
+
+Recomendación personal: Usa FormSubmit porque:
+✓ No requiere backend
+✓ No requiere configuración complicada
+✓ Los emails te llegan directamente
+✓ Totalmente gratuito
+✓ Solo necesitas cambiar 1 línea (tu email)
+✓ Funciona inmediatamente
+
+
+PASOS RÁPIDOS PARA FORMSUBMIT:
+================================
+
+1. En index.html, busca: <form class="contacto-form" id="contactForm">
+
+2. Cámbialo a: <form class="contacto-form" action="https://formsubmit.co/tuemail@gmail.com" method="POST">
+
+3. Guarda
+
+4. Abre la página, llena el formulario, envía
+
+5. Confirma tu email (te llegará un email de verificación)
+
+6. ¡Listo! Ya empezarás a recibir solicitudes
+
+
+AGREGAR PROTECCIÓN ANTI-SPAM (OPCIONAL)
+================================================
+
+Si deseas proteger tu formulario de spam, añade en el formulario:
+
+<!-- reCAPTCHA (requiere cuenta Google) -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<div class="g-recaptcha" data-sitekey="TU_SITEKEY"></div>
+
+O más simple, con FormSubmit nativo:
+<input type="hidden" name="_captcha" value="true">
+
+
+DEBUGGING
+================================================
+
+Si algo no funciona:
+
+1. Abre la consola del navegador (F12)
+2. Revisa los mensajes de error
+3. Verifica que el email esté correcto
+4. Asegúrate de haber confirmado el email desde FormSubmit
+5. Revisa que el método sea POST y action tenga https://
+
+
+SOPORTE FORMSUBMIT
+================================================
+
+Página oficial: https://formsubmit.co
+Documentación: https://formsubmit.co/?docs
+Email de soporte: info@formsubmit.co
+
+
+¡Necesitas más ayuda? 
+Dame si tienes preguntas sobre esta configuración.
+
+-->
+
+
+<!-- CÓDIGO COMPLETO LISTO PARA COPIAR Y PEGAR
+================================================
+
+Si quieres simplemente copiar y pegar, aquí va el formulario
+completo ya configurado con FormSubmit:
+
+<section class="contacto" id="contacto">
+    <div class="section-header">
+        <h2>Contactanos</h2>
+        <p>Cuéntanos sobre tu proyecto</p>
+    </div>
+    
+    <div class="contacto-container">
+        <form class="contacto-form" action="https://formsubmit.co/tu-email@gmail.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre *</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono *</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="servicio">Tipo de Servicio *</label>
+                <select id="servicio" name="servicio" required>
+                    <option value="">Selecciona un servicio</option>
+                    <option value="camaras">Cámaras de Seguridad</option>
+                    <option value="acceso">Control de Acceso</option>
+                    <option value="alarmas">Alarmas Inteligentes</option>
+                    <option value="monitoreo">Monitoreo Remoto</option>
+                    <option value="mantenimiento">Mantenimiento</option>
+                    <option value="otro">Otra solución</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="mensaje">Mensaje *</label>
+                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">Enviar Solicitud</button>
+        </form>
+        
+        <!-- Información de contacto -->
+        <div class="contacto-info">
+            <div class="contacto-item">
+                <span class="contacto-icon">📞</span>
+                <div>
+                    <h4>Teléfono</h4>
+                    <p>+34 XXX XXX XXX</p>
+                </div>
+            </div>
+            
+            <div class="contacto-item">
+                <span class="contacto-icon">📧</span>
+                <div>
+                    <h4>Email</h4>
+                    <p>info@tecnologysolutions.com</p>
+                </div>
+            </div>
+            
+            <div class="contacto-item">
+                <span class="contacto-icon">📍</span>
+                <div>
+                    <h4>Ubicación</h4>
+                    <p>Ciudad, País</p>
+                </div>
+            </div>
+            
+            <div class="contacto-item">
+                <span class="contacto-icon">🕐</span>
+                <div>
+                    <h4>Horario</h4>
+                    <p>Lun - Vie: 9:00 - 18:00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+RECUERDA: Cambiar "tu-email@gmail.com" por tu email real
+
+-->
