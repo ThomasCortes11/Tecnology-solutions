@@ -135,171 +135,10 @@
                 </div>
             </div>
             
-            <!-- Right Side: Digital Earth Animation -->
+            <!-- Right Side: Globe 3D Three.js -->
             <div class="hero-visual">
-                <div class="earth-container">
-                    <!-- ========================================
-                         REALISTIC EARTH ILLUSTRATION
-                         Shows visible continents with network connections
-                         ======================================== -->
-                    <svg class="digital-earth" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <!-- Glow Filters -->
-                            <filter id="glow">
-                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-                            <filter id="glow-strong">
-                                <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-                            
-                            <!-- Radial Gradient -->
-                            <radialGradient id="earthGradient">
-                                <stop offset="0%" stop-color="#1E6BFF" stop-opacity="0.3"/>
-                                <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
-                            </radialGradient>
-
-                            <!-- Realistic Earth texture pattern -->
-                            <pattern id="earthTexture" x="0" y="0" width="1" height="1" patternUnits="objectBoundingBox">
-                                <image href="https://upload.wikimedia.org/wikipedia/commons/2/23/Blue_Marble_2002.png" x="140" y="140" width="120" height="120" preserveAspectRatio="xMidYMid slice"/>
-                            </pattern>
-
-                            <!-- Globe shading for depth -->
-                            <radialGradient id="earthShade" cx="35%" cy="30%">
-                                <stop offset="0%" stop-color="rgba(255,255,255,0.55)"/>
-                                <stop offset="55%" stop-color="rgba(255,255,255,0.08)"/>
-                                <stop offset="100%" stop-color="rgba(0,0,0,0.35)"/>
-                            </radialGradient>
-                        </defs>
-                        
-                        <!-- Outer Glow -->
-                        <circle cx="200" cy="200" r="140" fill="url(#earthGradient)" opacity="0.4"/>
-                        
-                        <!-- Main Planet Circle -->
-                        <circle cx="200" cy="200" r="100" fill="none" stroke="#1E6BFF" stroke-width="1.5" opacity="0.6" class="earth-orbit"/>
-                        
-                        <!-- Network Grid on Earth -->
-                        <g class="earth-network" filter="url(#glow)">
-                            <!-- Latitude Lines -->
-                            <ellipse cx="200" cy="200" rx="100" ry="30" fill="none" stroke="#1E6BFF" stroke-width="0.5" opacity="0.4"/>
-                            <ellipse cx="200" cy="200" rx="100" ry="60" fill="none" stroke="#1E6BFF" stroke-width="0.5" opacity="0.3"/>
-                            <ellipse cx="200" cy="200" rx="100" ry="90" fill="none" stroke="#1E6BFF" stroke-width="0.5" opacity="0.2"/>
-                            
-                            <!-- Longitude Lines -->
-                            <ellipse cx="200" cy="200" rx="30" ry="100" fill="none" stroke="#1E6BFF" stroke-width="0.5" opacity="0.4"/>
-                            <ellipse cx="200" cy="200" rx="60" ry="100" fill="none" stroke="#1E6BFF" stroke-width="0.5" opacity="0.3"/>
-                            <ellipse cx="200" cy="200" rx="90" ry="100" fill="none" stroke="#1E6BFF" stroke-width="0.5" opacity="0.2"/>
-                            
-                            <!-- Network Connection Lines -->
-                            <line x1="200" y1="100" x2="250" y2="150" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5" class="connection-line"/>
-                            <line x1="250" y1="150" x2="280" y2="200" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5" class="connection-line"/>
-                            <line x1="200" y1="100" x2="150" y2="150" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5" class="connection-line"/>
-                            <line x1="150" y1="150" x2="120" y2="200" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5" class="connection-line"/>
-                            <line x1="200" y1="300" x2="240" y2="250" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5" class="connection-line"/>
-                            <line x1="240" y1="250" x2="280" y2="200" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5" class="connection-line"/>
-                            <line x1="200" y1="300" x2="160" y2="250" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5" class="connection-line"/>
-                            <line x1="160" y1="250" x2="120" y2="200" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5" class="connection-line"/>
-                            <line x1="150" y1="180" x2="250" y2="180" stroke="#1E6BFF" stroke-width="0.8" opacity="0.4" class="connection-line"/>
-                            <line x1="150" y1="220" x2="250" y2="220" stroke="#1E6BFF" stroke-width="0.8" opacity="0.4" class="connection-line"/>
-                        </g>
-                        
-                        <!-- Connection Nodes -->
-                        <g class="earth-nodes" filter="url(#glow-strong)">
-                            <circle cx="200" cy="100" r="3" fill="#1E6BFF" class="node node-pulse"/>
-                            <circle cx="250" cy="150" r="3" fill="#1E6BFF" class="node node-pulse-delay-1"/>
-                            <circle cx="280" cy="200" r="3" fill="#1E6BFF" class="node node-pulse-delay-2"/>
-                            <circle cx="250" cy="250" r="3" fill="#1E6BFF" class="node node-pulse"/>
-                            <circle cx="200" cy="300" r="3" fill="#1E6BFF" class="node node-pulse-delay-1"/>
-                            <circle cx="150" cy="250" r="3" fill="#1E6BFF" class="node node-pulse-delay-2"/>
-                            <circle cx="120" cy="200" r="3" fill="#1E6BFF" class="node node-pulse"/>
-                            <circle cx="150" cy="150" r="3" fill="#1E6BFF" class="node node-pulse-delay-1"/>
-                            <circle cx="200" cy="200" r="4" fill="#1E6BFF" class="node node-center"/>
-                        </g>
-                        
-                        <!-- Defs for filters and gradients -->
-                        <defs>
-                            <radialGradient id="earthGrad" cx="35%" cy="35%">
-                                <stop offset="0%" style="stop-color:#4A8CFF;stop-opacity:0.8" />
-                                <stop offset="100%" style="stop-color:#1E6BFF;stop-opacity:0.5" />
-                            </radialGradient>
-                            <filter id="earthGlow">
-                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-                            <filter id="goldGlow">
-                                <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-                        </defs>
-                        
-                        <!-- Outer Ring Orbits -->
-                        <circle cx="200" cy="200" r="130" fill="none" stroke="#D4AF37" stroke-width="0.8" opacity="0.15" class="outer-orbit"/>
-                        <circle cx="200" cy="200" r="150" fill="none" stroke="#D4AF37" stroke-width="0.5" opacity="0.1" class="outer-orbit-2"/>
-                        
-                        <!-- Earth Globe Background (Ocean) -->
-                        <circle cx="200" cy="200" r="95" fill="#0A3A70" filter="url(#earthGlow)" class="earth"/>
-                        <circle cx="200" cy="200" r="95" fill="url(#earthShade)" opacity="0.4" class="earth-shade"/>
-
-                        <!-- Visible Continents - Americas -->
-                        <path d="M 150 160 L 158 155 L 162 165 L 160 180 L 152 185 L 148 175 Z" fill="#1A5D3A" opacity="0.85"/>
-                        <path d="M 148 185 L 152 185 L 155 200 L 150 210 L 145 205 Z" fill="#228B22" opacity="0.8"/>
-                        
-                        <!-- Visible Continents - Africa/Europe -->
-                        <path d="M 195 145 L 210 148 L 215 165 L 210 185 L 195 180 L 190 160 Z" fill="#1A5D3A" opacity="0.85"/>
-                        <path d="M 210 185 L 225 190 L 225 210 L 210 215 Z" fill="#228B22" opacity="0.8"/>
-                        
-                        <!-- Visible Continents - Asia -->
-                        <path d="M 220 150 L 240 155 L 242 170 L 235 180 L 220 175 Z" fill="#1A5D3A" opacity="0.8"/>
-                        
-                        <!-- Visible Continents - Additional landmass -->
-                        <path d="M 160 210 L 175 212 L 178 225 L 165 228 Z" fill="#228B22" opacity="0.75"/>
-
-                        <!-- Subtle cloud layer orbit -->
-                        <ellipse cx="200" cy="200" rx="100" ry="25" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.6" opacity="0.4" class="earth-clouds"/>
-                        
-                        <!-- Global Network Connections - CIAN -->
-                        <line x1="155" y1="170" x2="205" y2="155" stroke="#00D4FF" stroke-width="1" opacity="0.6" class="connection-line"/>
-                        <line x1="205" y1="155" x2="235" y2="165" stroke="#00D4FF" stroke-width="1" opacity="0.6" class="connection-line"/>
-                        <line x1="235" y1="165" x2="220" y2="205" stroke="#00D4FF" stroke-width="1" opacity="0.6" class="connection-line"/>
-                        <line x1="220" y1="205" x2="170" y2="218" stroke="#00D4FF" stroke-width="1" opacity="0.6" class="connection-line"/>
-                        <line x1="170" y1="218" x2="155" y2="170" stroke="#00D4FF" stroke-width="1" opacity="0.6" class="connection-line"/>
-                        <line x1="200" y1="200" x2="155" y2="170" stroke="#00D4FF" stroke-width="0.7" opacity="0.4" class="connection-line"/>
-                        <line x1="200" y1="200" x2="235" y2="165" stroke="#00D4FF" stroke-width="0.7" opacity="0.4" class="connection-line"/>
-                        
-                        <!-- Connection Nodes - CIAN with glow -->
-                        <circle cx="155" cy="170" r="3" fill="#00D4FF" filter="url(#goldGlow)" class="connection-node" opacity="0.95"/>
-                        <circle cx="205" cy="155" r="3" fill="#00D4FF" filter="url(#goldGlow)" class="connection-node" opacity="0.95"/>
-                        <circle cx="235" cy="165" r="3" fill="#00D4FF" filter="url(#goldGlow)" class="connection-node" opacity="0.95"/>
-                        <circle cx="220" cy="205" r="3" fill="#00D4FF" filter="url(#goldGlow)" class="connection-node" opacity="0.95"/>
-                        <circle cx="170" cy="218" r="3" fill="#00D4FF" filter="url(#goldGlow)" class="connection-node" opacity="0.95"/>
-                        <circle cx="200" cy="200" r="3.5" fill="#00E5FF" filter="url(#goldGlow)" class="connection-node-center" opacity="1"/>
-                        
-                        <!-- Floating Particles -->
-                        <g class="floating-particles" opacity="0.6">
-                            <circle cx="80" cy="100" r="1.5" fill="#00D4FF" class="particle" style="animation: float-particle 8s ease-in-out infinite;"/>
-                            <circle cx="320" cy="80" r="1" fill="#1E6BFF" class="particle" style="animation: float-particle 10s ease-in-out infinite; animation-delay: 1s;"/>
-                            <circle cx="60" cy="280" r="1.2" fill="#00E5FF" class="particle" style="animation: float-particle 9s ease-in-out infinite; animation-delay: 2s;"/>
-                            <circle cx="310" cy="320" r="1" fill="#1E6BFF" class="particle" style="animation: float-particle 11s ease-in-out infinite; animation-delay: 3s;"/>
-                            <circle cx="200" cy="350" r="1.5" fill="#00D4FF" class="particle" style="animation: float-particle 12s ease-in-out infinite; animation-delay: 1.5s;"/>
-                        </g>
-                    </svg>
-                    
-                    <!-- Rotating Ring Effect -->
-                    <div class="earth-ring"></div>
-                    <div class="earth-ring-2"></div>
+                <div class="earth-container" id="globe-canvas-container">
+                    <!-- Globe 3D renderizado por Three.js (globe.js) -->
                 </div>
             </div>
         </div>
@@ -1160,5 +999,9 @@
 
     <!-- External JavaScript -->
     <script src="js/script.js"></script>
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Globe 3D -->
+    <script src="js/globe.js"></script>
 </body>
 </html>

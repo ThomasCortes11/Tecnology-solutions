@@ -679,12 +679,19 @@ a {
 
 .earth-container {
     position: relative;
-    width: 350px;
-    height: 350px;
+    width: 420px;
+    height: 420px;
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: earthContainerFloat 7s ease-in-out infinite;
+    /* sin float animation: Three.js lo anima internamente */
+}
+
+/* Canvas de Three.js dentro del contenedor */
+#globe-canvas-container canvas {
+    display: block;
+    border-radius: 50%;
+    /* fondo transparente para integrarse al hero */
 }
 
 /* Digital Earth SVG */
@@ -2734,8 +2741,8 @@ section {
     }
 
     .earth-container {
-        width: 300px;
-        height: 300px;
+        width: 320px;
+        height: 320px;
     }
 
     .nosotros-content {
@@ -3070,12 +3077,9 @@ section {
     }
 
     .earth-container {
-        width: 240px;
-        height: 240px;
+        width: 280px;
+        height: 280px;
     }
-
-    .earth-ring  { width: 190px; height: 190px; }
-    .earth-ring-2 { width: 220px; height: 220px; }
 
     .hero-radial-glow {
         width: 350px;
@@ -3427,12 +3431,9 @@ section {
     }
 
     .earth-container {
-        width: 200px;
-        height: 200px;
+        width: 220px;
+        height: 220px;
     }
-
-    .earth-ring  { width: 160px; height: 160px; }
-    .earth-ring-2 { width: 185px; height: 185px; }
 
     /* --- SECCIONES --- */
     section {
