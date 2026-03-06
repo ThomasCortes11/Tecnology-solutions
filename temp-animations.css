@@ -1,0 +1,46 @@
+
+
+/* ===== SOBRE NOSOTROS - PLANET ANIMATIONS ===== */
+/* Smooth rotation for the main planet sphere */
+.tech-network .earth {
+    animation: earth-slow-rotate 45s linear infinite;
+    transform-origin: center;
+}
+
+@keyframes earth-slow-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Extra pulse effect for orbital rings in Sobre Nosotros section */
+.tech-network .earth-orbit {
+    animation: pulse-orbit-glow 3.5s ease-in-out infinite;
+}
+
+.tech-network .outer-orbit {
+    animation: rotate-outer-orbit 22s linear infinite, pulse-orbit-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-orbit-glow {
+    0%, 100% {
+        opacity: 0.35;
+        stroke-width: 1.5;
+    }
+    50% {
+        opacity: 0.65;
+        stroke-width: 2;
+    }
+}
+
+@keyframes rotate-outer-orbit {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

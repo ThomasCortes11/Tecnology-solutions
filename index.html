@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <!-- Metadatos básicos de la página -->
@@ -25,18 +25,69 @@
          ======================================== -->
     <nav class="navbar">
         <div class="navbar-container">
-            <!-- Company Logo - Digital Globe -->
+            <!-- Company Logo - Digital Globe with TS -->
             <div class="navbar-logo">
                 <svg class="logo-icon" width="28" height="28" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Globe body -->
-                    <circle cx="20" cy="20" r="16" fill="none" stroke="#1E6BFF" stroke-width="1.5"/>
-                    <!-- Globe grid lines -->
-                    <ellipse cx="20" cy="20" rx="16" ry="4" fill="none" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5"/>
-                    <line x1="20" y1="4" x2="20" y2="36" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5"/>
+                    <defs>
+                        <!-- Gradient for mini planet -->
+                        <radialGradient id="miniPlanetGradient" cx="40%" cy="35%">
+                            <stop offset="0%" stop-color="#60a5fa"/>
+                            <stop offset="50%" stop-color="#3b82f6"/>
+                            <stop offset="100%" stop-color="#1e3a8a"/>
+                        </radialGradient>
+                        <!-- Glow filter -->
+                        <filter id="miniGlow">
+                            <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                        <!-- Strong glow filter for sparkles -->
+                        <filter id="miniSparkle">
+                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Outer glow -->
+                    <circle cx="20" cy="20" r="18" fill="url(#miniPlanetGradient)" opacity="0.2" class="logo-glow"/>
+                    
+                    <!-- Orbital ring -->
+                    <circle cx="20" cy="20" r="15" fill="none" stroke="#00d4ff" stroke-width="0.8" opacity="0.4" class="logo-orbit"/>
+                    
+                    <!-- Main planet sphere -->
+                    <circle cx="20" cy="20" r="12" fill="url(#miniPlanetGradient)" filter="url(#miniGlow)" class="logo-sphere"/>
+                    
+                    <!-- Grid lines - Latitude -->
+                    <ellipse cx="20" cy="20" rx="12" ry="3.5" fill="none" stroke="#00d4ff" stroke-width="0.5" opacity="0.3"/>
+                    <ellipse cx="20" cy="20" rx="12" ry="7" fill="none" stroke="#00d4ff" stroke-width="0.5" opacity="0.3"/>
+                    
+                    <!-- Grid lines - Longitude -->
+                    <ellipse cx="20" cy="20" rx="3.5" ry="12" fill="none" stroke="#00d4ff" stroke-width="0.5" opacity="0.3"/>
+                    <ellipse cx="20" cy="20" rx="7" ry="12" fill="none" stroke="#00d4ff" stroke-width="0.5" opacity="0.3"/>
+                    
                     <!-- Network nodes -->
-                    <circle cx="24" cy="18" r="1.5" fill="#D4AF37"/>
-                    <circle cx="16" cy="22" r="1.5" fill="#D4AF37"/>
-                    <circle cx="20" cy="14" r="1.5" fill="#D4AF37"/>
+                    <circle cx="20" cy="8" r="1" fill="#00d4ff" opacity="0.8" class="logo-node" filter="url(#miniSparkle)"/>
+                    <circle cx="28" cy="16" r="1" fill="#00d4ff" opacity="0.8" class="logo-node" filter="url(#miniSparkle)"/>
+                    <circle cx="28" cy="24" r="1" fill="#00d4ff" opacity="0.8" class="logo-node" filter="url(#miniSparkle)"/>
+                    <circle cx="12" cy="16" r="1" fill="#00d4ff" opacity="0.8" class="logo-node" filter="url(#miniSparkle)"/>
+                    
+                    <!-- Sparkle particles (destellos) -->
+                    <circle cx="8" cy="12" r="0.8" fill="#ffffff" opacity="0.9" class="logo-sparkle sparkle-1" filter="url(#miniSparkle)"/>
+                    <circle cx="32" cy="10" r="0.6" fill="#00e5ff" opacity="0.8" class="logo-sparkle sparkle-2" filter="url(#miniSparkle)"/>
+                    <circle cx="35" cy="20" r="0.7" fill="#ffffff" opacity="0.9" class="logo-sparkle sparkle-3" filter="url(#miniSparkle)"/>
+                    <circle cx="6" cy="28" r="0.65" fill="#00d4ff" opacity="0.85" class="logo-sparkle sparkle-4" filter="url(#miniSparkle)"/>
+                    <circle cx="20" cy="35" r="0.75" fill="#ffffff" opacity="0.9" class="logo-sparkle sparkle-5" filter="url(#miniSparkle)"/>
+                    <circle cx="32" cy="30" r="0.5" fill="#00e5ff" opacity="0.8" class="logo-sparkle sparkle-6" filter="url(#miniSparkle)"/>
+                    <circle cx="10" cy="20" r="0.6" fill="#ffffff" opacity="0.85" class="logo-sparkle sparkle-7" filter="url(#miniSparkle)"/>
+                    <circle cx="30" cy="8" r="0.55" fill="#00d4ff" opacity="0.8" class="logo-sparkle sparkle-8" filter="url(#miniSparkle)"/>
+                    
+                    <!-- Mini TS text -->
+                    <text x="15.5" y="23" font-family="Arial Black, sans-serif" font-size="8" font-weight="900" fill="#ffffff" opacity="0.95" class="logo-ts" filter="url(#miniSparkle)">TS</text>
                 </svg>
                 <span class="logo-text">Tecnology Solution's</span>
             </div>
@@ -106,8 +157,8 @@
         <div class="hero-container">
             <!-- Left Side: Content -->
             <div class="hero-content">
-                <h1 class="hero-title">Seguridad Inteligente para Empresas Modernas</h1>
-                <p class="hero-subtitle">Instalamos y suministramos sistemas de videovigilancia, control de acceso y soluciones tecnológicas que protegen su negocio con eficiencia, innovación y monitoreo continuo.</p>
+                <h1 class="hero-title">Soluciones Inteligentes en Seguridad y Tecnología para su Empresa</h1>
+                <p class="hero-subtitle">Protegemos su empresa con soluciones inteligentes de videovigilancia, control de acceso y tecnología avanzada.</p>
                 <div class="hero-buttons">
                     <button class="btn btn-hero-primary" onclick="scrollToServicios()">
                         <span>NUESTROS SERVICIOS</span>
@@ -121,168 +172,29 @@
             <!-- Right Side: Digital Earth Animation -->
             <div class="hero-visual">
                 <div class="earth-container">
-                    <!-- ========================================
-                         REALISTIC EARTH ILLUSTRATION
-                         Shows visible continents with network connections
-                         ======================================== -->
-                    <svg class="digital-earth" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <!-- Glow Filters -->
-                            <filter id="glow">
-                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-                            <filter id="glow-strong">
-                                <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-                            
-                            <!-- Radial Gradient -->
-                            <radialGradient id="earthGradient">
-                                <stop offset="0%" stop-color="#1E6BFF" stop-opacity="0.3"/>
-                                <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
-                            </radialGradient>
-
-                            <!-- Realistic Earth texture pattern -->
-                            <pattern id="earthTexture" x="0" y="0" width="1" height="1" patternUnits="objectBoundingBox">
-                                <image href="https://upload.wikimedia.org/wikipedia/commons/2/23/Blue_Marble_2002.png" x="140" y="140" width="120" height="120" preserveAspectRatio="xMidYMid slice"/>
-                            </pattern>
-
-                            <!-- Globe shading for depth -->
-                            <radialGradient id="earthShade" cx="35%" cy="30%">
-                                <stop offset="0%" stop-color="rgba(255,255,255,0.55)"/>
-                                <stop offset="55%" stop-color="rgba(255,255,255,0.08)"/>
-                                <stop offset="100%" stop-color="rgba(0,0,0,0.35)"/>
-                            </radialGradient>
-                        </defs>
-                        
-                        <!-- Outer Glow -->
-                        <circle cx="200" cy="200" r="140" fill="url(#earthGradient)" opacity="0.4"/>
-                        
-                        <!-- Main Planet Circle -->
-                        <circle cx="200" cy="200" r="100" fill="none" stroke="#1E6BFF" stroke-width="1.5" opacity="0.6" class="earth-orbit"/>
-                        
-                        <!-- Network Grid on Earth -->
-                        <g class="earth-network" filter="url(#glow)">
-                            <!-- Latitude Lines -->
-                            <ellipse cx="200" cy="200" rx="100" ry="30" fill="none" stroke="#1E6BFF" stroke-width="0.5" opacity="0.4"/>
-                            <ellipse cx="200" cy="200" rx="100" ry="60" fill="none" stroke="#1E6BFF" stroke-width="0.5" opacity="0.3"/>
-                            <ellipse cx="200" cy="200" rx="100" ry="90" fill="none" stroke="#1E6BFF" stroke-width="0.5" opacity="0.2"/>
-                            
-                            <!-- Longitude Lines -->
-                            <ellipse cx="200" cy="200" rx="30" ry="100" fill="none" stroke="#1E6BFF" stroke-width="0.5" opacity="0.4"/>
-                            <ellipse cx="200" cy="200" rx="60" ry="100" fill="none" stroke="#1E6BFF" stroke-width="0.5" opacity="0.3"/>
-                            <ellipse cx="200" cy="200" rx="90" ry="100" fill="none" stroke="#1E6BFF" stroke-width="0.5" opacity="0.2"/>
-                            
-                            <!-- Network Connection Lines -->
-                            <line x1="200" y1="100" x2="250" y2="150" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5" class="connection-line"/>
-                            <line x1="250" y1="150" x2="280" y2="200" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5" class="connection-line"/>
-                            <line x1="200" y1="100" x2="150" y2="150" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5" class="connection-line"/>
-                            <line x1="150" y1="150" x2="120" y2="200" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5" class="connection-line"/>
-                            <line x1="200" y1="300" x2="240" y2="250" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5" class="connection-line"/>
-                            <line x1="240" y1="250" x2="280" y2="200" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5" class="connection-line"/>
-                            <line x1="200" y1="300" x2="160" y2="250" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5" class="connection-line"/>
-                            <line x1="160" y1="250" x2="120" y2="200" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5" class="connection-line"/>
-                            <line x1="150" y1="180" x2="250" y2="180" stroke="#1E6BFF" stroke-width="0.8" opacity="0.4" class="connection-line"/>
-                            <line x1="150" y1="220" x2="250" y2="220" stroke="#1E6BFF" stroke-width="0.8" opacity="0.4" class="connection-line"/>
-                        </g>
-                        
-                        <!-- Connection Nodes -->
-                        <g class="earth-nodes" filter="url(#glow-strong)">
-                            <circle cx="200" cy="100" r="3" fill="#1E6BFF" class="node node-pulse"/>
-                            <circle cx="250" cy="150" r="3" fill="#1E6BFF" class="node node-pulse-delay-1"/>
-                            <circle cx="280" cy="200" r="3" fill="#1E6BFF" class="node node-pulse-delay-2"/>
-                            <circle cx="250" cy="250" r="3" fill="#1E6BFF" class="node node-pulse"/>
-                            <circle cx="200" cy="300" r="3" fill="#1E6BFF" class="node node-pulse-delay-1"/>
-                            <circle cx="150" cy="250" r="3" fill="#1E6BFF" class="node node-pulse-delay-2"/>
-                            <circle cx="120" cy="200" r="3" fill="#1E6BFF" class="node node-pulse"/>
-                            <circle cx="150" cy="150" r="3" fill="#1E6BFF" class="node node-pulse-delay-1"/>
-                            <circle cx="200" cy="200" r="4" fill="#1E6BFF" class="node node-center"/>
-                        </g>
-                        
-                        <!-- Defs for filters and gradients -->
-                        <defs>
-                            <radialGradient id="earthGrad" cx="35%" cy="35%">
-                                <stop offset="0%" style="stop-color:#4A8CFF;stop-opacity:0.8" />
-                                <stop offset="100%" style="stop-color:#1E6BFF;stop-opacity:0.5" />
-                            </radialGradient>
-                            <filter id="earthGlow">
-                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-                            <filter id="goldGlow">
-                                <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-                        </defs>
-                        
-                        <!-- Outer Ring Orbits -->
-                        <circle cx="200" cy="200" r="130" fill="none" stroke="#D4AF37" stroke-width="0.8" opacity="0.15" class="outer-orbit"/>
-                        <circle cx="200" cy="200" r="150" fill="none" stroke="#D4AF37" stroke-width="0.5" opacity="0.1" class="outer-orbit-2"/>
-                        
-                        <!-- Earth Globe Background (Ocean) -->
-                        <circle cx="200" cy="200" r="95" fill="#0A3A70" filter="url(#earthGlow)" class="earth"/>
-                        <circle cx="200" cy="200" r="95" fill="url(#earthShade)" opacity="0.4" class="earth-shade"/>
-
-                        <!-- Visible Continents - Americas -->
-                        <path d="M 150 160 L 158 155 L 162 165 L 160 180 L 152 185 L 148 175 Z" fill="#1A5D3A" opacity="0.85"/>
-                        <path d="M 148 185 L 152 185 L 155 200 L 150 210 L 145 205 Z" fill="#228B22" opacity="0.8"/>
-                        
-                        <!-- Visible Continents - Africa/Europe -->
-                        <path d="M 195 145 L 210 148 L 215 165 L 210 185 L 195 180 L 190 160 Z" fill="#1A5D3A" opacity="0.85"/>
-                        <path d="M 210 185 L 225 190 L 225 210 L 210 215 Z" fill="#228B22" opacity="0.8"/>
-                        
-                        <!-- Visible Continents - Asia -->
-                        <path d="M 220 150 L 240 155 L 242 170 L 235 180 L 220 175 Z" fill="#1A5D3A" opacity="0.8"/>
-                        
-                        <!-- Visible Continents - Additional landmass -->
-                        <path d="M 160 210 L 175 212 L 178 225 L 165 228 Z" fill="#228B22" opacity="0.75"/>
-
-                        <!-- Subtle cloud layer orbit -->
-                        <ellipse cx="200" cy="200" rx="100" ry="25" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.6" opacity="0.4" class="earth-clouds"/>
-                        
-                        <!-- Global Network Connections - CIAN -->
-                        <line x1="155" y1="170" x2="205" y2="155" stroke="#00D4FF" stroke-width="1" opacity="0.6" class="connection-line"/>
-                        <line x1="205" y1="155" x2="235" y2="165" stroke="#00D4FF" stroke-width="1" opacity="0.6" class="connection-line"/>
-                        <line x1="235" y1="165" x2="220" y2="205" stroke="#00D4FF" stroke-width="1" opacity="0.6" class="connection-line"/>
-                        <line x1="220" y1="205" x2="170" y2="218" stroke="#00D4FF" stroke-width="1" opacity="0.6" class="connection-line"/>
-                        <line x1="170" y1="218" x2="155" y2="170" stroke="#00D4FF" stroke-width="1" opacity="0.6" class="connection-line"/>
-                        <line x1="200" y1="200" x2="155" y2="170" stroke="#00D4FF" stroke-width="0.7" opacity="0.4" class="connection-line"/>
-                        <line x1="200" y1="200" x2="235" y2="165" stroke="#00D4FF" stroke-width="0.7" opacity="0.4" class="connection-line"/>
-                        
-                        <!-- Connection Nodes - CIAN with glow -->
-                        <circle cx="155" cy="170" r="3" fill="#00D4FF" filter="url(#goldGlow)" class="connection-node" opacity="0.95"/>
-                        <circle cx="205" cy="155" r="3" fill="#00D4FF" filter="url(#goldGlow)" class="connection-node" opacity="0.95"/>
-                        <circle cx="235" cy="165" r="3" fill="#00D4FF" filter="url(#goldGlow)" class="connection-node" opacity="0.95"/>
-                        <circle cx="220" cy="205" r="3" fill="#00D4FF" filter="url(#goldGlow)" class="connection-node" opacity="0.95"/>
-                        <circle cx="170" cy="218" r="3" fill="#00D4FF" filter="url(#goldGlow)" class="connection-node" opacity="0.95"/>
-                        <circle cx="200" cy="200" r="3.5" fill="#00E5FF" filter="url(#goldGlow)" class="connection-node-center" opacity="1"/>
-                        
-                        <!-- Floating Particles -->
-                        <g class="floating-particles" opacity="0.6">
-                            <circle cx="80" cy="100" r="1.5" fill="#00D4FF" class="particle" style="animation: float-particle 8s ease-in-out infinite;"/>
-                            <circle cx="320" cy="80" r="1" fill="#1E6BFF" class="particle" style="animation: float-particle 10s ease-in-out infinite; animation-delay: 1s;"/>
-                            <circle cx="60" cy="280" r="1.2" fill="#00E5FF" class="particle" style="animation: float-particle 9s ease-in-out infinite; animation-delay: 2s;"/>
-                            <circle cx="310" cy="320" r="1" fill="#1E6BFF" class="particle" style="animation: float-particle 11s ease-in-out infinite; animation-delay: 3s;"/>
-                            <circle cx="200" cy="350" r="1.5" fill="#00D4FF" class="particle" style="animation: float-particle 12s ease-in-out infinite; animation-delay: 1.5s;"/>
-                        </g>
-                    </svg>
+                    <img src="Img/12288f62-64d5-4578-bd85-c105037a6367.jpeg" alt="Planeta Tierra" class="earth-image"/>
                     
-                    <!-- Rotating Ring Effect -->
-                    <div class="earth-ring"></div>
-                    <div class="earth-ring-2"></div>
+                    <!-- Floating ambient particles -->
+                    <div class="ambient-particles">
+                        <div class="particle particle-1"></div>
+                        <div class="particle particle-2"></div>
+                        <div class="particle particle-3"></div>
+                        <div class="particle particle-4"></div>
+                        <div class="particle particle-5"></div>
+                    </div>
+                    
+                    <!-- Sparkle Effects Around Planet -->
+                    <div class="sparkles-container">
+                        <div class="sparkle sparkle-1"></div>
+                        <div class="sparkle sparkle-2"></div>
+                        <div class="sparkle sparkle-3"></div>
+                        <div class="sparkle sparkle-4"></div>
+                        <div class="sparkle sparkle-5"></div>
+                        <div class="sparkle sparkle-6"></div>
+                        <div class="sparkle sparkle-7"></div>
+                        <div class="sparkle sparkle-8"></div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -630,7 +542,7 @@
                 <p class="intro-text">Nuestro enfoque combina tecnología avanzada, instalación profesional y soporte técnico permanente para garantizar la protección de nuestros clientes. Diseñamos soluciones integrales que se adaptan a las necesidades específicas de cada proyecto.</p>
                 <ul class="nosotros-features">
                     <li class="feature-item feature-item-1">
-                        <span class="feature-number">500+</span>
+                        <span class="feature-number">1000+</span>
                         <span class="feature-text">Clientes satisfechos</span>
                     </li>
                     <li class="feature-item feature-item-2">
@@ -649,51 +561,126 @@
             </div>
             <div class="nosotros-image">
                 <div class="tech-animation">
-                    <svg class="tech-network" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="tech-network" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
                         <defs>
-                            <filter id="tech-glow">
-                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                            <!-- Glow Filters -->
+                            <filter id="tech-glow-nosotros">
+                                <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
                                 <feMerge>
                                     <feMergeNode in="coloredBlur"/>
                                     <feMergeNode in="SourceGraphic"/>
                                 </feMerge>
                             </filter>
-                            <linearGradient id="tech-line" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#1E6BFF;stop-opacity:0.8" />
-                                <stop offset="100%" style="stop-color:#00D4FF;stop-opacity:1" />
-                            </linearGradient>
+                            <filter id="glow-strong-nosotros">
+                                <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                            
+                            <!-- Gradient Definitions -->
+                            <radialGradient id="sphereGradient" cx="40%" cy="35%">
+                                <stop offset="0%" stop-color="#60a5fa"/>
+                                <stop offset="50%" stop-color="#3b82f6"/>
+                                <stop offset="100%" stop-color="#1e3a8a"/>
+                            </radialGradient>
+                            
+                            <radialGradient id="glowGradient">
+                                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.6"/>
+                                <stop offset="60%" stop-color="#1e40af" stop-opacity="0.3"/>
+                                <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+                            </radialGradient>
                         </defs>
                         
-                        <!-- Animated Connection Lines -->
-                        <g class="tech-lines">
-                            <line x1="150" y1="150" x2="80" y2="80" class="line-animate"/>
-                            <line x1="150" y1="150" x2="220" y2="80" class="line-animate"/>
-                            <line x1="150" y1="150" x2="220" y2="220" class="line-animate"/>
-                            <line x1="150" y1="150" x2="80" y2="220" class="line-animate"/>
-                            <line x1="80" y1="80" x2="220" y2="80" class="line-animate"/>
-                            <line x1="220" y1="80" x2="220" y2="220" class="line-animate"/>
-                            <line x1="220" y1="220" x2="80" y2="220" class="line-animate"/>
-                            <line x1="80" y1="220" x2="80" y2="80" class="line-animate"/>
+                        <!-- Outer Glow -->
+                        <circle cx="200" cy="200" r="160" fill="url(#glowGradient)" opacity="0.7"/>
+                        
+                        <!-- Orbital Rings -->
+                        <circle cx="200" cy="200" r="135" fill="none" stroke="#00d4ff" stroke-width="1.5" opacity="0.35" class="earth-orbit"/>
+                        <circle cx="200" cy="200" r="150" fill="none" stroke="#1e6bff" stroke-width="1.2" opacity="0.25" class="outer-orbit"/>
+                        
+                        <!-- Main Sphere -->
+                        <circle cx="200" cy="200" r="120" fill="url(#sphereGradient)" filter="url(#tech-glow-nosotros)" class="earth"/>
+                        
+                        <!-- Grid Lines - Latitude -->
+                        <g opacity="0.3">
+                            <ellipse cx="200" cy="200" rx="120" ry="35" fill="none" stroke="#00d4ff" stroke-width="1"/>
+                            <ellipse cx="200" cy="200" rx="120" ry="70" fill="none" stroke="#00d4ff" stroke-width="1"/>
+                            <ellipse cx="200" cy="200" rx="120" ry="105" fill="none" stroke="#00d4ff" stroke-width="1"/>
                         </g>
                         
-                        <!-- Central Node -->
-                        <circle cx="150" cy="150" r="8" class="node-center" filter="url(#tech-glow)"/>
-                        <circle cx="150" cy="150" r="12" class="node-pulse"/>
+                        <!-- Grid Lines - Longitude -->
+                        <g opacity="0.3">
+                            <ellipse cx="200" cy="200" rx="35" ry="120" fill="none" stroke="#00d4ff" stroke-width="1"/>
+                            <ellipse cx="200" cy="200" rx="70" ry="120" fill="none" stroke="#00d4ff" stroke-width="1"/>
+                            <ellipse cx="200" cy="200" rx="105" ry="120" fill="none" stroke="#00d4ff" stroke-width="1"/>
+                        </g>
                         
-                        <!-- Corner Nodes -->
-                        <g class="nodes">
-                            <circle cx="80" cy="80" r="6" class="node-corner node-1"/>
-                            <circle cx="220" cy="80" r="6" class="node-corner node-2"/>
-                            <circle cx="220" cy="220" r="6" class="node-corner node-3"/>
-                            <circle cx="80" cy="220" r="6" class="node-corner node-4"/>
+                        <!-- Network Connection Lines -->
+                        <g class="network-lines" opacity="0.45">
+                            <line x1="200" y1="80" x2="270" y2="120" stroke="#00d4ff" stroke-width="1.5" class="line-animate"/>
+                            <line x1="270" y1="120" x2="310" y2="180" stroke="#00d4ff" stroke-width="1.5" class="line-animate"/>
+                            <line x1="310" y1="180" x2="300" y2="260" stroke="#00d4ff" stroke-width="1.5" class="line-animate"/>
+                            <line x1="300" y1="260" x2="240" y2="310" stroke="#00d4ff" stroke-width="1.5" class="line-animate"/>
+                            <line x1="200" y1="80" x2="130" y2="120" stroke="#00d4ff" stroke-width="1.5" class="line-animate"/>
+                            <line x1="130" y1="120" x2="90" y2="180" stroke="#00d4ff" stroke-width="1.5" class="line-animate"/>
+                            <line x1="90" y1="180" x2="100" y2="260" stroke="#00d4ff" stroke-width="1.5" class="line-animate"/>
+                            <line x1="100" y1="260" x2="160" y2="310" stroke="#00d4ff" stroke-width="1.5" class="line-animate"/>
+                        </g>
+                        
+                        <!-- Connection Nodes -->
+                        <g filter="url(#glow-strong-nosotros)">
+                            <circle cx="200" cy="80" r="5" fill="#00d4ff" class="node-corner node-1"/>
+                            <circle cx="270" cy="120" r="5" fill="#00d4ff" class="node-corner node-2"/>
+                            <circle cx="310" cy="180" r="5" fill="#00d4ff" class="node-corner node-3"/>
+                            <circle cx="300" cy="260" r="5" fill="#00d4ff" class="node-corner node-4"/>
+                            <circle cx="240" cy="310" r="5" fill="#00d4ff" class="node-corner node-1"/>
+                            <circle cx="160" cy="310" r="5" fill="#00d4ff" class="node-corner node-2"/>
+                            <circle cx="130" cy="120" r="5" fill="#00d4ff" class="node-corner node-3"/>
+                            <circle cx="90" cy="180" r="5" fill="#00d4ff" class="node-corner node-4"/>
+                            <circle cx="100" cy="260" r="5" fill="#00d4ff" class="node-corner node-1"/>
+                        </g>
+                        
+                        <!-- Continent Silhouettes -->
+                        <g opacity="0.35">
+                            <path d="M 165 185 L 172 176 L 178 186 L 176 206 L 165 212 L 159 198 Z" fill="#1e3a5f"/>
+                            <path d="M 210 170 L 227 166 L 234 188 L 227 214 L 210 206 Z" fill="#1e3a5f"/>
+                            <path d="M 238 188 L 254 193 L 251 216 L 239 223 Z" fill="#1e3a5f"/>
+                        </g>
+                        
+                        <!-- CENTERED TS LOGO -->
+                        <g filter="url(#glow-strong-nosotros)">
+                            <!-- T Letter -->
+                            <text x="160" y="230" 
+                                  font-family="'Arial Black', 'Helvetica', sans-serif" 
+                                  font-size="90" 
+                                  font-weight="900" 
+                                  fill="#ffffff" 
+                                  stroke="#00d4ff" 
+                                  stroke-width="2.5"
+                                  opacity="0.98"
+                                  style="text-shadow: 0 0 20px rgba(0,212,255,0.9), 0 0 35px rgba(0,212,255,0.6);">T</text>
+                            
+                            <!-- S Letter -->
+                            <text x="218" y="230" 
+                                  font-family="'Arial Black', 'Helvetica', sans-serif" 
+                                  font-size="90" 
+                                  font-weight="900" 
+                                  fill="#ffffff" 
+                                  stroke="#00d4ff" 
+                                  stroke-width="2.5"
+                                  opacity="0.98"
+                                  style="text-shadow: 0 0 20px rgba(0,212,255,0.9), 0 0 35px rgba(0,212,255,0.6);">S</text>
                         </g>
                         
                         <!-- Floating Particles -->
-                        <g class="particles">
-                            <circle cx="150" cy="80" r="2" class="particle particle-1"/>
-                            <circle cx="220" cy="150" r="2" class="particle particle-2"/>
-                            <circle cx="150" cy="220" r="2" class="particle particle-3"/>
-                            <circle cx="80" cy="150" r="2" class="particle particle-4"/>
+                        <g class="particles" opacity="0.5">
+                            <circle cx="80" cy="100" r="2.5" fill="#00d4ff" class="particle particle-1"/>
+                            <circle cx="330" cy="90" r="2" fill="#1e6bff" class="particle particle-2"/>
+                            <circle cx="60" cy="310" r="2.2" fill="#00e5ff" class="particle particle-3"/>
+                            <circle cx="350" cy="320" r="2" fill="#1e6bff" class="particle particle-4"/>
+                            <circle cx="200" cy="370" r="2.5" fill="#00d4ff" class="particle particle-1"/>
                         </g>
                     </svg>
                 </div>
@@ -712,118 +699,129 @@
         </div>
         
         <div class="clients-grid">
-            <!-- Client 1: Bancolombia -->
+            <!-- Client 1: International Trade Centre -->
             <div class="client-logo-item">
                 <div class="client-logo-card">
                     <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="banco-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#004B9D;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#002D5D;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect x="20" y="20" width="160" height="80" rx="8" fill="url(#banco-gradient)"/>
-                        <text x="100" y="70" font-size="28" font-weight="bold" fill="white" text-anchor="middle" font-family="Arial">BANCO</text>
+                        <rect x="36" y="22" width="24" height="24" transform="rotate(45 48 34)" fill="#3568A8"/>
+                        <rect x="62" y="48" width="24" height="24" transform="rotate(45 74 60)" fill="#3B78BF"/>
+                        <rect x="88" y="22" width="24" height="24" transform="rotate(45 100 34)" fill="#CC2A6A"/>
+                        <rect x="114" y="48" width="24" height="24" transform="rotate(45 126 60)" fill="#7A8EA5"/>
+                        <text x="100" y="105" font-size="10" fill="#4A4A4A" text-anchor="middle" font-family="Arial" font-weight="600">INTERNATIONAL TRADE</text>
                     </svg>
-                    <p class="client-name">Bancolombia</p>
+                    <p class="client-name">International Trade Centre</p>
                 </div>
             </div>
-            
-            <!-- Client 2: Grupo Éxito -->
+
+            <!-- Client 2: Candela -->
             <div class="client-logo-item">
                 <div class="client-logo-card">
                     <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="exito-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#FF6600;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#E55A00;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect x="20" y="20" width="160" height="80" rx="8" fill="url(#exito-gradient)"/>
-                        <text x="100" y="70" font-size="20" font-weight="bold" fill="white" text-anchor="middle" font-family="Arial">ÉXITO</text>
+                        <text x="100" y="66" font-size="38" fill="#1E4FAF" text-anchor="middle" font-family="Georgia" font-style="italic" font-weight="700">Candela</text>
+                        <path d="M138 28 C154 36, 160 52, 150 66 C170 60, 182 44, 170 28" fill="none" stroke="#F6A000" stroke-width="4" stroke-linecap="round"/>
                     </svg>
-                    <p class="client-name">Grupo Éxito</p>
+                    <p class="client-name">Candela</p>
                 </div>
             </div>
-            
-            <!-- Client 3: Tech Solutions -->
+
+            <!-- Client 4: Surtimax -->
             <div class="client-logo-item">
                 <div class="client-logo-card">
                     <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="tech-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#1E6BFF;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#00D4FF;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect x="20" y="20" width="160" height="80" rx="8" fill="url(#tech-gradient)"/>
-                        <circle cx="65" cy="60" r="15" fill="white" opacity="0.9"/>
-                        <circle cx="100" cy="60" r="15" fill="white" opacity="0.7"/>
-                        <circle cx="135" cy="60" r="15" fill="white" opacity="0.5"/>
-                        <text x="100" y="105" font-size="10" fill="#1E6BFF" text-anchor="middle" font-family="Arial" font-weight="bold">Andina Tech</text>
+                        <rect x="24" y="24" width="152" height="72" rx="10" fill="#FFFFFF" stroke="#00A65A" stroke-width="5"/>
+                        <rect x="30" y="30" width="140" height="48" rx="6" fill="#D92128"/>
+                        <text x="100" y="63" font-size="33" fill="#F5F233" text-anchor="middle" font-family="Arial" font-weight="900">SURTIMAX</text>
                     </svg>
-                    <p class="client-name">Andina de Tecnología</p>
+                    <p class="client-name">Surtimax</p>
                 </div>
             </div>
-            
-            <!-- Client 4: Empresarial -->
+
+            <!-- Client 5: SAI -->
             <div class="client-logo-item">
                 <div class="client-logo-card">
                     <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="emp-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#1A7A3A;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#0F4A24;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect x="20" y="20" width="160" height="80" rx="8" fill="url(#emp-gradient)"/>
-                        <rect x="45" y="45" width="25" height="45" fill="white" opacity="0.8"/>
-                        <rect x="80" y="35" width="25" height="55" fill="white" opacity="0.9"/>
-                        <rect x="115" y="50" width="25" height="40" fill="white" opacity="0.7"/>
-                        <text x="100" y="105" font-size="9" fill="#1A7A3A" text-anchor="middle" font-family="Arial" font-weight="bold">EMPRESARIAL</text>
+                        <text x="100" y="65" font-size="44" fill="#118A4F" text-anchor="middle" font-family="Arial" font-weight="900">SAI</text>
+                        <line x1="48" y1="74" x2="152" y2="74" stroke="#118A4F" stroke-width="3"/>
+                        <text x="100" y="90" font-size="8" fill="#118A4F" text-anchor="middle" font-family="Arial">SERVICIOS AEROPORTUARIOS</text>
                     </svg>
-                    <p class="client-name">Empresarial Colombia</p>
+                    <p class="client-name">Servicios Aeroportuarios Integrados</p>
                 </div>
             </div>
-            
-            <!-- Client 5: Infrastructure -->
+
+            <!-- Client 6: Totto -->
             <div class="client-logo-item">
                 <div class="client-logo-card">
                     <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="infra-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#7B3FF2;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#5A2D9F;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect x="20" y="20" width="160" height="80" rx="8" fill="url(#infra-gradient)"/>
-                        <circle cx="855" cy="45" r="4" fill="white" opacity="0.6"/>
-                        <line x1="60" y1="60" x2="100" y2="60" stroke="white" stroke-width="2" opacity="0.7"/>
-                        <line x1="100" y1="60" x2="140" y2="60" stroke="white" stroke-width="2" opacity="0.7"/>
-                        <circle cx="60" cy="60" r="5" fill="white" opacity="0.8"/>
-                        <circle cx="140" cy="60" r="5" fill="white" opacity="0.8"/>
-                        <text x="100" y="105" font-size="8" fill="#7B3FF2" text-anchor="middle" font-family="Arial" font-weight="bold">INFRAESTRUCTURA</text>
+                        <rect x="20" y="20" width="160" height="80" rx="6" fill="#000000"/>
+                        <text x="100" y="70" font-size="42" fill="#FFFFFF" text-anchor="middle" font-family="Arial" font-weight="400" letter-spacing="-1">totto</text>
+                        <circle cx="85" cy="42" r="5" fill="#E63946"/>
+                        <circle cx="115" cy="42" r="5" fill="#F9C74F"/>
                     </svg>
-                    <p class="client-name">Tech Infraestructura</p>
+                    <p class="client-name">Totto</p>
                 </div>
             </div>
-            
-            <!-- Client 6: Global Security -->
+
+            <!-- Client 7: Ricoh -->
+            <div class="client-logo-item">
+                <div class="client-logo-card">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <text x="100" y="68" font-size="52" fill="#E61D2A" text-anchor="middle" font-family="Arial" font-weight="900" letter-spacing="2">RICOH</text>
+                    </svg>
+                    <p class="client-name">Ricoh</p>
+                </div>
+            </div>
+
+            <!-- Client 8: Chevrolet -->
+            <div class="client-logo-item">
+                <div class="client-logo-card">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="72,36 128,36 128,48 148,48 148,72 128,72 128,84 72,84 72,72 52,72 52,48 72,48" fill="#D9B64B" stroke="#A5832F" stroke-width="3"/>
+                        <text x="100" y="106" font-size="14" fill="#111111" text-anchor="middle" font-family="Arial" font-weight="800" letter-spacing="2">CHEVROLET</text>
+                    </svg>
+                    <p class="client-name">Chevrolet</p>
+                </div>
+            </div>
+
+            <!-- Client 9: Toyota -->
             <div class="client-logo-item">
                 <div class="client-logo-card">
                     <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
                         <defs>
-                            <linearGradient id="security-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#B8860B;stop-opacity:1" />
+                            <linearGradient id="toyota-metal" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#F2F2F2"/>
+                                <stop offset="50%" stop-color="#B8BDC4"/>
+                                <stop offset="100%" stop-color="#7E848D"/>
                             </linearGradient>
                         </defs>
-                        <rect x="20" y="20" width="160" height="80" rx="8" fill="url(#security-gradient)"/>
-                        <path d="M 100 35 L 120 50 L 120 75 Q 100 85 80 75 L 80 50 Z" fill="white" opacity="0.9"/>
-                        <circle cx="100" cy="65" r="3" fill="#D4AF37"/>
-                        <text x="100" y="105" font-size="9" fill="#D4AF37" text-anchor="middle" font-family="Arial" font-weight="bold">SEGURIDAD</text>
+                        <ellipse cx="100" cy="45" rx="58" ry="32" fill="none" stroke="url(#toyota-metal)" stroke-width="7"/>
+                        <ellipse cx="100" cy="45" rx="17" ry="30" fill="none" stroke="url(#toyota-metal)" stroke-width="7"/>
+                        <ellipse cx="100" cy="45" rx="36" ry="14" fill="none" stroke="url(#toyota-metal)" stroke-width="7"/>
+                        <text x="100" y="103" font-size="30" fill="#EB1B3A" text-anchor="middle" font-family="Arial" font-weight="900" letter-spacing="1">TOYOTA</text>
                     </svg>
-                    <p class="client-name">Seguridad Global</p>
+                    <p class="client-name">Toyota</p>
+                </div>
+            </div>
+
+            <!-- Client 10: Adidas -->
+            <div class="client-logo-item">
+                <div class="client-logo-card">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Adidas Performance Logo - Three horizontal bars with text -->
+                        <rect x="0" y="0" width="200" height="120" fill="#000000"/>
+                        
+                        <!-- Three horizontal bars on the left -->
+                        <rect x="8" y="50" width="70" height="4" fill="#FFFFFF"/>
+                        <rect x="8" y="58" width="70" height="4" fill="#FFFFFF"/>
+                        <rect x="8" y="66" width="70" height="4" fill="#FFFFFF"/>
+                        
+                        <!-- Text "adidas" -->
+                        <text x="120" y="66" font-size="28" fill="#FFFFFF" text-anchor="middle" font-family="Arial" font-weight="700" letter-spacing="0">adidas</text>
+                        
+                        <!-- ® symbol -->
+                        <circle cx="185" cy="28" r="4.5" fill="none" stroke="#FFFFFF" stroke-width="0.8"/>
+                        <text x="185" y="30.5" font-size="5.5" fill="#FFFFFF" text-anchor="middle" font-family="Arial" font-weight="700">R</text>
+                    </svg>
+                    <p class="client-name">Adidas</p>
                 </div>
             </div>
         </div>
@@ -834,7 +832,7 @@
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                 <path d="M9 12l2 2 4-4" stroke="#1E6BFF" stroke-width="2"/>
             </svg>
-            <span>Más de 500 empresas confían en nosotros</span>
+            <span>Más de 1000 empresas confían en nosotros</span>
         </div>
     </section>
 
@@ -852,39 +850,52 @@
             <!-- Network Grid Background -->
             <div class="network-grid"></div>
             
-            <!-- Animated Network Nodes -->
-            <svg class="network-svg" viewBox="0 0 800 400">
-                <!-- Connection lines -->
-                <line x1="100" y1="100" x2="400" y2="100" stroke="#D4AF37" stroke-width="1" opacity="0.4" class="network-line"/>
-                <line x1="400" y1="100" x2="700" y2="100" stroke="#D4AF37" stroke-width="1" opacity="0.4" class="network-line"/>
-                <line x1="100" y1="300" x2="400" y2="300" stroke="#D4AF37" stroke-width="1" opacity="0.4" class="network-line"/>
-                <line x1="400" y1="300" x2="700" y2="300" stroke="#D4AF37" stroke-width="1" opacity="0.4" class="network-line"/>
-                <line x1="100" y1="100" x2="100" y2="300" stroke="#D4AF37" stroke-width="1" opacity="0.4" class="network-line"/>
-                <line x1="400" y1="100" x2="400" y2="300" stroke="#D4AF37" stroke-width="1" opacity="0.4" class="network-line"/>
-                <line x1="700" y1="100" x2="700" y2="300" stroke="#D4AF37" stroke-width="1" opacity="0.4" class="network-line"/>
-                <line x1="100" y1="100" x2="700" y2="300" stroke="#1E6BFF" stroke-width="0.8" opacity="0.3" class="network-line"/>
-                <line x1="700" y1="100" x2="100" y2="300" stroke="#1E6BFF" stroke-width="0.8" opacity="0.3" class="network-line"/>
+            <!-- Infrastructure Image with Animations -->
+            <div class="infrastructure-image-container">
+                <img src="img/Infra.img.png" alt="Infraestructura de red global" class="infrastructure-image"/>
                 
-                <!-- Network Nodes -->
-                <circle cx="100" cy="100" r="4" fill="#D4AF37" opacity="0.8" class="network-node"/>
-                <circle cx="400" cy="100" r="4" fill="#D4AF37" opacity="0.8" class="network-node"/>
-                <circle cx="700" cy="100" r="4" fill="#D4AF37" opacity="0.8" class="network-node"/>
-                <circle cx="100" cy="300" r="4" fill="#D4AF37" opacity="0.8" class="network-node"/>
-                <circle cx="400" cy="300" r="4" fill="#D4AF37" opacity="0.8" class="network-node"/>
-                <circle cx="700" cy="300" r="4" fill="#D4AF37" opacity="0.8" class="network-node"/>
-                <circle cx="400" cy="200" r="5" fill="#1E6BFF" opacity="0.9" class="network-node-center"/>
-                
-                <!-- Glow circles around nodes -->
-                <circle cx="100" cy="100" r="12" fill="none" stroke="#D4AF37" stroke-width="0.5" opacity="0.2" class="node-glow"/>
-                <circle cx="400" cy="100" r="12" fill="none" stroke="#D4AF37" stroke-width="0.5" opacity="0.2" class="node-glow"/>
-                <circle cx="700" cy="100" r="12" fill="none" stroke="#D4AF37" stroke-width="0.5" opacity="0.2" class="node-glow"/>
-            </svg>
+                <!-- Animated overlay lines -->
+                <div class="network-overlay">
+                    <svg class="overlay-svg" viewBox="0 0 1400 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="dataFlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.3"/>
+                                <stop offset="50%" stop-color="#ffd700" stop-opacity="0.8"/>
+                                <stop offset="100%" stop-color="#00d4ff" stop-opacity="0.3"/>
+                            </linearGradient>
+                            <filter id="glowEffect">
+                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        
+                        <!-- Data flow lines -->
+                        <g class="data-flow-lines" opacity="0.6">
+                            <path d="M 0 200 Q 350 180, 700 200 T 1400 200" stroke="url(#dataFlow)" stroke-width="2" fill="none" class="flow-line"/>
+                            <path d="M 0 300 Q 350 320, 700 300 T 1400 300" stroke="url(#dataFlow)" stroke-width="2" fill="none" class="flow-line" style="animation-delay: 1s;"/>
+                            <path d="M 0 400 Q 350 420, 700 400 T 1400 400" stroke="url(#dataFlow)" stroke-width="2" fill="none" class="flow-line" style="animation-delay: 0.5s;"/>
+                        </g>
+                        
+                        <!-- Floating nodes/particles -->
+                        <g class="floating-nodes" opacity="0.8">
+                            <circle cx="200" cy="150" r="4" fill="#00d4ff" filter="url(#glowEffect)" class="node-pulse"/>
+                            <circle cx="400" cy="250" r="3" fill="#ffd700" filter="url(#glowEffect)" class="node-pulse" style="animation-delay: 0.2s;"/>
+                            <circle cx="700" cy="200" r="4" fill="#00d4ff" filter="url(#glowEffect)" class="node-pulse" style="animation-delay: 0.4s;"/>
+                            <circle cx="900" cy="350" r="3" fill="#ffd700" filter="url(#glowEffect)" class="node-pulse" style="animation-delay: 0.6s;"/>
+                            <circle cx="1200" cy="250" r="4" fill="#00d4ff" filter="url(#glowEffect)" class="node-pulse" style="animation-delay: 0.8s;"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
         </div>
         
         <div class="tech-features">
             <div class="tech-feature">
                 <h4>Monitoreo Inteligente</h4>
-                <p>Supervisión en tiempo real de todos los sistemas de seguridad desde cualquier ubicación con notificaciones instantáneas.</p>
+                <p>Supervisión en tiempo real de sus sistemas de seguridad y red, con acceso remoto y notificaciones instantáneas.</p>
             </div>
             <div class="tech-feature">
                 <h4>Infraestructura Segura</h4>
@@ -962,11 +973,11 @@
                 <div class="form-group">
                     <label>Calificación *</label>
                     <div class="star-rating" id="starRating">
-                        <span class="star" data-rating="1">☆</span>
-                        <span class="star" data-rating="2">☆</span>
-                        <span class="star" data-rating="3">☆</span>
-                        <span class="star" data-rating="4">☆</span>
-                        <span class="star" data-rating="5">☆</span>
+                        <span class="star" data-rating="1">★</span>
+                        <span class="star" data-rating="2">★</span>
+                        <span class="star" data-rating="3">★</span>
+                        <span class="star" data-rating="4">★</span>
+                        <span class="star" data-rating="5">★</span>
                     </div>
                     <input type="hidden" id="ratingValue" name="rating" value="0" required>
                 </div>
@@ -1088,17 +1099,29 @@
          ======================================== -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-column">
+            <div class="footer-column footer-brand">
                 <h4>Tecnology Solution's</h4>
                 <p>Suministros, Instalación y Mantenimiento de sistemas de seguridad.</p>
-                <div class="social-links">
-                    <a href="#" class="social-icon">f</a>
-                    <a href="#" class="social-icon">𝕏</a>
-                    <a href="#" class="social-icon">in</a>
+                <div class="footer-miniworld" aria-hidden="true">
+                    <svg class="footer-miniworld-svg" viewBox="0 0 84 84" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="footerPlanetGradient" cx="35%" cy="30%">
+                                <stop offset="0%" stop-color="#7ddfff"/>
+                                <stop offset="55%" stop-color="#1e6bff"/>
+                                <stop offset="100%" stop-color="#0b2a7a"/>
+                            </radialGradient>
+                        </defs>
+                        <circle cx="42" cy="42" r="26" class="miniworld-core" fill="url(#footerPlanetGradient)"/>
+                        <circle cx="42" cy="42" r="34" class="miniworld-ring"/>
+                        <circle cx="42" cy="42" r="30" class="miniworld-ring ring-2"/>
+                        <circle cx="58" cy="28" r="2.1" class="miniworld-dot dot-1"/>
+                        <circle cx="22" cy="52" r="1.8" class="miniworld-dot dot-2"/>
+                        <text x="42" y="48" text-anchor="middle" class="miniworld-text">TS</text>
+                    </svg>
                 </div>
             </div>
             
-            <div class="footer-column">
+            <div class="footer-column footer-links">
                 <h4>Servicios</h4>
                 <ul>
                     <li><a href="#servicios">Cámaras de Seguridad</a></li>
@@ -1109,7 +1132,7 @@
                 </ul>
             </div>
             
-            <div class="footer-column">
+            <div class="footer-column footer-links">
                 <h4>Soluciones</h4>
                 <ul>
                     <li><a href="#soluciones">Para Hogares</a></li>
@@ -1119,11 +1142,11 @@
                 </ul>
             </div>
             
-            <div class="footer-column">
+            <div class="footer-column footer-contact">
                 <h4>Contacto</h4>
-                <p>📞 315 228 4097</p>
-                <p>📧 tecnologysolution7@gmail.com</p>
-                <p>📍 Bogotá, D.C., Colombia</p>
+                <p class="contact-item"><span class="contact-icon">📞</span><span>315 228 4097</span></p>
+                <p class="contact-item"><span class="contact-icon">✉</span><span>tecnologysolution7@gmail.com</span></p>
+                <p class="contact-item"><span class="contact-icon">📍</span><span>Bogotá, D.C., Colombia</span></p>
             </div>
         </div>
         
@@ -1145,3 +1168,4 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+
