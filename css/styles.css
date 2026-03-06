@@ -902,38 +902,28 @@ a {
 }
 
 /* Right Side - Digital Earth Visual */
-.hero-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: fadeInRight 1s ease-out 0.4s both;
-}
 
 .earth-container {
     position: relative;
-    width: auto;
-    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: earth-float 5s ease-in-out infinite;
 }
 
-/* Blue Halo Background */
+/* Glow circular detrás del globo */
 .earth-container::before {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
+    inset: -30px;
     border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%,
-            rgba(96, 165, 250, 0.3) 0%,
-            rgba(30, 107, 255, 0.15) 40%,
-            rgba(59, 130, 246, 0.05) 70%,
-            transparent 100%);
-    filter: blur(30px);
+    background: radial-gradient(circle,
+            rgba(30, 107, 255, 0.22) 0%,
+            rgba(30, 107, 255, 0.06) 50%,
+            transparent 70%);
+    filter: blur(35px);
     animation: halo-pulse 4s ease-in-out infinite;
-    z-index: 5;
+    pointer-events: none;
+    z-index: 0;
 }
 
 @keyframes halo-pulse {
@@ -1109,23 +1099,53 @@ a {
     }
 }
 
-/* Digital Earth Image - Clean and Simple */
+/* Digital Earth Image - V3 Holographic Tech Backdrop */
 .earth-image {
-    width: 350px;
-    height: 350px;
-    object-fit: contain;
-    filter: brightness(1.08) contrast(1.12);
-    animation: earth-float 5s ease-in-out infinite;
-    transition: filter 0.3s ease;
+    width: 800px;
+    height: 800px;
+    object-fit: cover;
+    mix-blend-mode: screen;
+    opacity: 0.65;
+    filter: brightness(1.1) contrast(1.2) saturate(1.4) drop-shadow(0 0 20px rgba(30, 107, 255, 0.4));
+    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 0) 65%);
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 0) 65%);
+    animation: earth-float 10s ease-in-out infinite;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    z-index: 10;
-    box-shadow: 0 0 40px rgba(96, 165, 250, 0.6),
-        0 0 60px rgba(30, 107, 255, 0.4),
-        0 0 80px rgba(59, 130, 246, 0.2);
+    z-index: 1;
+    display: block;
 }
 
 .earth-image:hover {
-    filter: brightness(1.15) contrast(1.2);
+    filter: brightness(1.2) contrast(1.2) saturate(1.3);
+}
+
+/* Earth Container - Absolute Background Positioning */
+.earth-container {
+    position: absolute;
+    top: 50%;
+    right: -150px;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.earth-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 850px;
+    height: 850px;
+    background: radial-gradient(circle, rgba(30, 107, 255, 0.4) 0%, rgba(30, 107, 255, 0.1) 45%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+    animation: earth-glow-pulse 6s ease-in-out infinite;
 }
 
 /* Earth Planet Elements */
@@ -3478,14 +3498,21 @@ section {
 
 .client-logo-card {
     width: 100%;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.95);
-    border: 2px solid rgba(30, 107, 255, 0.2);
-    border-radius: 16px;
-    transition: all 0.4s ease;
+    padding: 2rem;
+    background: transparent !important;
+    /* Force transparency */
+    border: none !important;
+    /* Remove borders */
+    border-radius: 20px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(30, 107, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none !important;
+    /* Remove shadow */
 }
 
 .client-logo-card::before {
@@ -3501,8 +3528,12 @@ section {
     z-index: 0;
 }
 
-.client-logo-item:hover .client-logo-card::before {
-    opacity: 1;
+.client-logo-item:hover .client-logo-card {
+    background: rgba(30, 107, 255, 0.04);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-color: rgba(30, 107, 255, 0.15);
+    box-shadow: 0 15px 35px rgba(30, 107, 255, 0.08);
 }
 
 .client-logo-card {
@@ -3512,13 +3543,13 @@ section {
 .client-logo-svg {
     width: 100%;
     height: 100px;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
-    transition: all 0.4s ease;
+    filter: grayscale(100%) opacity(0.7) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client-logo-item:hover .client-logo-svg {
-    filter: drop-shadow(0 8px 20px rgba(30, 107, 255, 0.4));
-    transform: scale(1.08);
+    filter: grayscale(0%) opacity(1) drop-shadow(0 8px 25px rgba(30, 107, 255, 0.3));
+    transform: scale(1.1);
 }
 
 .client-name {
@@ -4912,5 +4943,38 @@ section {
 
     to {
         transform: rotate(360deg);
+    }
+}
+
+/* ========================================
+   GLOBE 3D — canvas integrado al hero
+   ======================================== */
+
+/* Animaciones para la integración de la Tierra */
+@keyframes earth-glow-pulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+        filter: blur(20px) brightness(1);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: translate(-50%, -50%) scale(1.05);
+        filter: blur(25px) brightness(1.2);
+    }
+}
+
+@keyframes earth-float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(2deg);
     }
 }
