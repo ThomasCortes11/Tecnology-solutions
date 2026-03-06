@@ -28,6 +28,18 @@ if (hamburger && navbarMenu) {
     hamburger.addEventListener('click', () => {
         navbarMenu.classList.toggle('active');
         hamburger.classList.toggle('active');
+        // Bloquear scroll del body cuando el menú está abierto
+        document.body.style.overflow = navbarMenu.classList.contains('active') ? 'hidden' : '';
+    });
+}
+
+// Botón X del panel móvil
+const menuCloseBtn = document.getElementById('menuCloseBtn');
+if (menuCloseBtn && navbarMenu && hamburger) {
+    menuCloseBtn.addEventListener('click', () => {
+        navbarMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+        document.body.style.overflow = '';
     });
 }
 
@@ -41,13 +53,13 @@ dropdownItems.forEach((item) => {
         if (window.innerWidth > 768) return;
         e.preventDefault();
 
+        // Cerrar otros dropdowns abiertos
         dropdownItems.forEach((otherItem) => {
-            if (otherItem === item) return;
-            const otherMenu = otherItem.querySelector('.dropdown-menu');
-            if (otherMenu) otherMenu.style.display = 'none';
+            if (otherItem !== item) otherItem.classList.remove('open');
         });
 
-        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        // Toggle clase 'open' en el item actual
+        item.classList.toggle('open');
     });
 });
 
@@ -56,6 +68,7 @@ navLinks.forEach((link) => {
         if (!navbarMenu || !hamburger) return;
         navbarMenu.classList.remove('active');
         hamburger.classList.remove('active');
+        document.body.style.overflow = '';
     });
 });
 
