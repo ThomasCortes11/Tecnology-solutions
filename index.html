@@ -1,23 +1,28 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- Metadatos básicos de la página -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Technology Solution's - Soluciones inteligentes de seguridad empresarial con tecnología de punta">
+    <meta name="description"
+        content="Technology Solution's - Soluciones inteligentes de seguridad empresarial con tecnología de punta">
     <meta name="theme-color" content="#0A0A0A">
-    
+
     <!-- Título de la página -->
     <title>Technology Solution's | Soluciones Inteligentes de Seguridad</title>
-    
+
     <!-- Estilos CSS -->
     <link rel="stylesheet" href="css/styles.css">
-    
+
     <!-- Google Fonts - Tipografía moderna y profesional -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Fjalla+One&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Fjalla+One&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <!-- ========================================
          NAVIGATION BAR - Professional Menu
@@ -25,34 +30,105 @@
          ======================================== -->
     <nav class="navbar">
         <div class="navbar-container">
-            <!-- Company Logo - Digital Globe -->
+            <!-- Company Logo - Digital Globe with TS -->
             <div class="navbar-logo">
                 <svg class="logo-icon" width="28" height="28" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Globe body -->
-                    <circle cx="20" cy="20" r="16" fill="none" stroke="#1E6BFF" stroke-width="1.5"/>
-                    <!-- Globe grid lines -->
-                    <ellipse cx="20" cy="20" rx="16" ry="4" fill="none" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5"/>
-                    <line x1="20" y1="4" x2="20" y2="36" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5"/>
+                    <defs>
+                        <!-- Gradient for mini planet -->
+                        <radialGradient id="miniPlanetGradient" cx="40%" cy="35%">
+                            <stop offset="0%" stop-color="#60a5fa" />
+                            <stop offset="50%" stop-color="#3b82f6" />
+                            <stop offset="100%" stop-color="#1e3a8a" />
+                        </radialGradient>
+                        <!-- Glow filter -->
+                        <filter id="miniGlow">
+                            <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
+                            <feMerge>
+                                <feMergeNode in="coloredBlur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                        <!-- Strong glow filter for sparkles -->
+                        <filter id="miniSparkle">
+                            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+                            <feMerge>
+                                <feMergeNode in="coloredBlur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+
+                    <!-- Outer glow -->
+                    <circle cx="20" cy="20" r="18" fill="url(#miniPlanetGradient)" opacity="0.2" class="logo-glow" />
+
+                    <!-- Orbital ring -->
+                    <circle cx="20" cy="20" r="15" fill="none" stroke="#00d4ff" stroke-width="0.8" opacity="0.4"
+                        class="logo-orbit" />
+
+                    <!-- Main planet sphere -->
+                    <circle cx="20" cy="20" r="12" fill="url(#miniPlanetGradient)" filter="url(#miniGlow)"
+                        class="logo-sphere" />
+
+                    <!-- Grid lines - Latitude -->
+                    <ellipse cx="20" cy="20" rx="12" ry="3.5" fill="none" stroke="#00d4ff" stroke-width="0.5"
+                        opacity="0.3" />
+                    <ellipse cx="20" cy="20" rx="12" ry="7" fill="none" stroke="#00d4ff" stroke-width="0.5"
+                        opacity="0.3" />
+
+                    <!-- Grid lines - Longitude -->
+                    <ellipse cx="20" cy="20" rx="3.5" ry="12" fill="none" stroke="#00d4ff" stroke-width="0.5"
+                        opacity="0.3" />
+                    <ellipse cx="20" cy="20" rx="7" ry="12" fill="none" stroke="#00d4ff" stroke-width="0.5"
+                        opacity="0.3" />
+
                     <!-- Network nodes -->
-                    <circle cx="24" cy="18" r="1.5" fill="#D4AF37"/>
-                    <circle cx="16" cy="22" r="1.5" fill="#D4AF37"/>
-                    <circle cx="20" cy="14" r="1.5" fill="#D4AF37"/>
+                    <circle cx="20" cy="8" r="1" fill="#00d4ff" opacity="0.8" class="logo-node"
+                        filter="url(#miniSparkle)" />
+                    <circle cx="28" cy="16" r="1" fill="#00d4ff" opacity="0.8" class="logo-node"
+                        filter="url(#miniSparkle)" />
+                    <circle cx="28" cy="24" r="1" fill="#00d4ff" opacity="0.8" class="logo-node"
+                        filter="url(#miniSparkle)" />
+                    <circle cx="12" cy="16" r="1" fill="#00d4ff" opacity="0.8" class="logo-node"
+                        filter="url(#miniSparkle)" />
+
+                    <!-- Sparkle particles (destellos) -->
+                    <circle cx="8" cy="12" r="0.8" fill="#ffffff" opacity="0.9" class="logo-sparkle sparkle-1"
+                        filter="url(#miniSparkle)" />
+                    <circle cx="32" cy="10" r="0.6" fill="#00e5ff" opacity="0.8" class="logo-sparkle sparkle-2"
+                        filter="url(#miniSparkle)" />
+                    <circle cx="35" cy="20" r="0.7" fill="#ffffff" opacity="0.9" class="logo-sparkle sparkle-3"
+                        filter="url(#miniSparkle)" />
+                    <circle cx="6" cy="28" r="0.65" fill="#00d4ff" opacity="0.85" class="logo-sparkle sparkle-4"
+                        filter="url(#miniSparkle)" />
+                    <circle cx="20" cy="35" r="0.75" fill="#ffffff" opacity="0.9" class="logo-sparkle sparkle-5"
+                        filter="url(#miniSparkle)" />
+                    <circle cx="32" cy="30" r="0.5" fill="#00e5ff" opacity="0.8" class="logo-sparkle sparkle-6"
+                        filter="url(#miniSparkle)" />
+                    <circle cx="10" cy="20" r="0.6" fill="#ffffff" opacity="0.85" class="logo-sparkle sparkle-7"
+                        filter="url(#miniSparkle)" />
+                    <circle cx="30" cy="8" r="0.55" fill="#00d4ff" opacity="0.8" class="logo-sparkle sparkle-8"
+                        filter="url(#miniSparkle)" />
+
+                    <!-- Mini TS text -->
+                    <text x="15.5" y="23" font-family="Arial Black, sans-serif" font-size="8" font-weight="900"
+                        fill="#ffffff" opacity="0.95" class="logo-ts" filter="url(#miniSparkle)">TS</text>
                 </svg>
                 <span class="logo-text">Tecnology Solution's</span>
             </div>
-            
+
             <!-- Navigation Menu with Dropdown -->
             <div class="navbar-menu" id="navbarMenu">
                 <!-- Cabecera del panel móvil -->
                 <div class="menu-header">
                     <div class="menu-header-logo">
                         <svg width="22" height="22" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="20" cy="20" r="16" fill="none" stroke="#1E6BFF" stroke-width="1.5"/>
-                            <ellipse cx="20" cy="20" rx="16" ry="4" fill="none" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5"/>
-                            <line x1="20" y1="4" x2="20" y2="36" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5"/>
-                            <circle cx="24" cy="18" r="1.5" fill="#D4AF37"/>
-                            <circle cx="16" cy="22" r="1.5" fill="#D4AF37"/>
-                            <circle cx="20" cy="14" r="1.5" fill="#D4AF37"/>
+                            <circle cx="20" cy="20" r="16" fill="none" stroke="#1E6BFF" stroke-width="1.5" />
+                            <ellipse cx="20" cy="20" rx="16" ry="4" fill="none" stroke="#1E6BFF" stroke-width="0.8"
+                                opacity="0.5" />
+                            <line x1="20" y1="4" x2="20" y2="36" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5" />
+                            <circle cx="24" cy="18" r="1.5" fill="#D4AF37" />
+                            <circle cx="16" cy="22" r="1.5" fill="#D4AF37" />
+                            <circle cx="20" cy="14" r="1.5" fill="#D4AF37" />
                         </svg>
                         <span>Menú</span>
                     </div>
@@ -60,12 +136,12 @@
                 </div>
                 <ul class="nav-list">
                     <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                    
+
                     <!-- Dropdown Menu for Services -->
                     <li class="nav-item-dropdown">
                         <a href="#servicios" class="nav-link">Servicios
                             <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-                                <path d="M6 9L1 4h10L6 9z"/>
+                                <path d="M6 9L1 4h10L6 9z" />
                             </svg>
                         </a>
                         <div class="dropdown-menu">
@@ -80,18 +156,20 @@
                             <a href="#servicios" class="dropdown-item">Computadores</a>
                         </div>
                     </li>
-                    
+
                     <li><a href="#soluciones" class="nav-link">Soluciones</a></li>
                     <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
                     <li><a href="#clientes" class="nav-link">Clientes</a></li>
                     <li><a href="#contacto" class="nav-link">Contacto</a></li>
                 </ul>
                 <!-- Botón CTA al fondo del panel -->
-                <button class="menu-cta" onclick="scrollToContacto(); document.getElementById('navbarMenu').classList.remove('active'); document.getElementById('hamburger').classList.remove('active');">Solicitar cotización</button>
+                <button class="menu-cta"
+                    onclick="scrollToContacto(); document.getElementById('navbarMenu').classList.remove('active'); document.getElementById('hamburger').classList.remove('active');">Solicitar
+                    cotización</button>
             </div>
 
             <button class="cta-button" onclick="scrollToContacto()">Solicitar cotización</button>
-            
+
             <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -104,10 +182,10 @@
     <section class="hero" id="inicio">
         <!-- Tech Grid Background -->
         <div class="hero-tech-grid"></div>
-        
+
         <!-- Radial Glow Effect -->
         <div class="hero-radial-glow"></div>
-        
+
         <!-- Floating Particles -->
         <div class="floating-particles">
             <span class="particle"></span>
@@ -119,12 +197,13 @@
             <span class="particle"></span>
             <span class="particle"></span>
         </div>
-        
+
         <div class="hero-container">
             <!-- Left Side: Content -->
             <div class="hero-content">
-                <h1 class="hero-title">Seguridad Inteligente para Empresas Modernas</h1>
-                <p class="hero-subtitle">Instalamos y suministramos sistemas de videovigilancia, control de acceso y soluciones tecnológicas que protegen su negocio con eficiencia, innovación y monitoreo continuo.</p>
+                <h1 class="hero-title">Soluciones Inteligentes en Seguridad y Tecnología para su Empresa</h1>
+                <p class="hero-subtitle">Protegemos su empresa con soluciones inteligentes de videovigilancia, control
+                    de acceso y tecnología avanzada.</p>
                 <div class="hero-buttons">
                     <button class="btn btn-hero-primary" onclick="scrollToServicios()">
                         <span>NUESTROS SERVICIOS</span>
@@ -134,13 +213,14 @@
                     </button>
                 </div>
             </div>
-            
+
             <!-- Right Side: Globe 3D Three.js -->
             <div class="hero-visual">
                 <div class="earth-container" id="globe-canvas-container">
                     <!-- Globe 3D renderizado por Three.js (globe.js) -->
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -158,7 +238,8 @@
             <!-- Service: Equipment Supply -->
             <div class="service-card">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80" alt="Equipos de seguridad electrónica" loading="lazy"/>
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80"
+                        alt="Equipos de seguridad electrónica" loading="lazy" />
                 </div>
                 <div class="service-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
@@ -171,11 +252,12 @@
                 <h3>Suministro de equipos de seguridad</h3>
                 <p>Equipos de las mejores marcas: cámaras, alarmas, DVRs, monitores y más.</p>
             </div>
-            
+
             <!-- Service: Professional Installation -->
             <div class="service-card">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80" alt="Instalación profesional de sistemas" loading="lazy"/>
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80"
+                        alt="Instalación profesional de sistemas" loading="lazy" />
                 </div>
                 <div class="service-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
@@ -188,11 +270,12 @@
                 <h3>Instalación profesional</h3>
                 <p>Instalación realizada por técnicos certificados con experiencia comprobada.</p>
             </div>
-            
+
             <!-- Service: Preventive Maintenance -->
             <div class="service-card">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=1200&q=80" alt="Mantenimiento de infraestructura tecnológica" loading="lazy"/>
+                    <img src="https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=1200&q=80"
+                        alt="Mantenimiento de infraestructura tecnológica" loading="lazy" />
                 </div>
                 <div class="service-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
@@ -204,11 +287,12 @@
                 <h3>Mantenimiento preventivo y correctivo</h3>
                 <p>Mantenimiento regular para garantizar funcionamiento óptimo de sistemas.</p>
             </div>
-            
+
             <!-- Service: Technical Consulting -->
             <div class="service-card">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80" alt="Consultoría y asesoría de seguridad" loading="lazy"/>
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
+                        alt="Consultoría y asesoría de seguridad" loading="lazy" />
                 </div>
                 <div class="service-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
@@ -220,11 +304,12 @@
                 <h3>Asesoría técnica especializada</h3>
                 <p>Consultoría en seguridad para diseñar soluciones a medida de su empresa.</p>
             </div>
-            
+
             <!-- Service: 24/7 Support -->
             <div class="service-card">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80" alt="Soporte técnico y monitoreo 24/7" loading="lazy"/>
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
+                        alt="Soporte técnico y monitoreo 24/7" loading="lazy" />
                 </div>
                 <div class="service-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
@@ -236,11 +321,12 @@
                 <h3>Soporte técnico 24/7</h3>
                 <p>Equipo técnico disponible 24/7 para resolver cualquier inconveniente.</p>
             </div>
-            
+
             <!-- Service: Remote Configuration -->
             <div class="service-card">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" alt="Configuración remota de sistemas" loading="lazy"/>
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
+                        alt="Configuración remota de sistemas" loading="lazy" />
                 </div>
                 <div class="service-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
@@ -263,14 +349,16 @@
     <section class="por-que-elegir">
         <div class="section-header">
             <h2>¿Por qué elegirnos?</h2>
-            <p class="experience-statement">Más de 20 años de experiencia brindando soluciones tecnológicas y sistemas de seguridad para empresas.</p>
+            <p class="experience-statement">Más de 20 años de experiencia brindando soluciones tecnológicas y sistemas
+                de seguridad para empresas.</p>
         </div>
-        
+
         <div class="caracteristicas-grid">
             <!-- Feature: Proven Experience -->
             <div class="caracteristicas-item">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80" alt="Experiencia en proyectos de seguridad" loading="lazy"/>
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80"
+                        alt="Experiencia en proyectos de seguridad" loading="lazy" />
                 </div>
                 <div class="caracteristicas-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
@@ -280,11 +368,12 @@
                 <h3>Experiencia Comprobada</h3>
                 <p>Más de 20 años brindando soluciones de seguridad a empresas y hogares.</p>
             </div>
-            
+
             <!-- Feature: Latest Technology -->
             <div class="caracteristicas-item">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Tecnología de última generación" loading="lazy"/>
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+                        alt="Tecnología de última generación" loading="lazy" />
                 </div>
                 <div class="caracteristicas-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
@@ -294,26 +383,30 @@
                 <h3>Tecnología de Última Generación</h3>
                 <p>Utilizamos equipos de las mejores marcas del mercado con tecnología de punta.</p>
             </div>
-            
+
             <!-- Feature: Specialized Support -->
             <div class="caracteristicas-item">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="Soporte técnico especializado" loading="lazy"/>
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80"
+                        alt="Soporte técnico especializado" loading="lazy" />
                 </div>
                 <div class="caracteristicas-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
                         <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-                        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                        <path
+                            d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z">
+                        </path>
                     </svg>
                 </div>
                 <h3>Soporte Técnico Especializado</h3>
                 <p>Equipo de soporte técnico altamente capacitado disponible para ti.</p>
             </div>
-            
+
             <!-- Feature: Fast and Reliable -->
             <div class="caracteristicas-item">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80" alt="Atención rápida y confiable" loading="lazy"/>
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"
+                        alt="Atención rápida y confiable" loading="lazy" />
                 </div>
                 <div class="caracteristicas-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
@@ -324,11 +417,12 @@
                 <h3>Atención Rápida y Confiable</h3>
                 <p>Respuesta rápida a tus solicitudes con servicio confiable y profesional.</p>
             </div>
-            
+
             <!-- Feature: Custom Solutions -->
             <div class="caracteristicas-item">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80" alt="Diseño de soluciones personalizadas" loading="lazy"/>
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80"
+                        alt="Diseño de soluciones personalizadas" loading="lazy" />
                 </div>
                 <div class="caracteristicas-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
@@ -339,11 +433,12 @@
                 <h3>Soluciones Personalizadas</h3>
                 <p>Diseñamos soluciones adaptadas a las necesidades específicas de cada cliente.</p>
             </div>
-            
+
             <!-- Feature: Complete Warranty -->
             <div class="caracteristicas-item">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=1200&q=80" alt="Garantía y respaldo en proyectos" loading="lazy"/>
+                    <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=1200&q=80"
+                        alt="Garantía y respaldo en proyectos" loading="lazy" />
                 </div>
                 <div class="caracteristicas-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
@@ -363,11 +458,12 @@
             <h2>Soluciones Personalizadas</h2>
             <p>Adaptamos nuestros servicios a tus necesidades específicas</p>
         </div>
-        
+
         <div class="soluciones-container">
             <div class="solucion-item">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=1200&q=80" alt="Seguridad para hogares" loading="lazy"/>
+                    <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=1200&q=80"
+                        alt="Seguridad para hogares" loading="lazy" />
                 </div>
                 <div class="solucion-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
@@ -378,10 +474,11 @@
                 <h3>Para Hogares</h3>
                 <p>Protección completa de tu casa con sistemas inteligentes y control desde tu móvil.</p>
             </div>
-            
+
             <div class="solucion-item">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80" alt="Seguridad para empresas" loading="lazy"/>
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80"
+                        alt="Seguridad para empresas" loading="lazy" />
                 </div>
                 <div class="solucion-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
@@ -392,10 +489,11 @@
                 <h3>Para Empresas</h3>
                 <p>Seguridad integral para tus instalaciones con múltiples puntos de vigilancia.</p>
             </div>
-            
+
             <div class="solucion-item">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80" alt="Seguridad para comercios" loading="lazy"/>
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80"
+                        alt="Seguridad para comercios" loading="lazy" />
                 </div>
                 <div class="solucion-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
@@ -407,10 +505,11 @@
                 <h3>Para Comercios</h3>
                 <p>Prevención de robos y control de personal con sistemas antiladrones.</p>
             </div>
-            
+
             <div class="solucion-item">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1200&q=80" alt="Seguridad para oficinas" loading="lazy"/>
+                    <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1200&q=80"
+                        alt="Seguridad para oficinas" loading="lazy" />
                 </div>
                 <div class="solucion-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
@@ -422,10 +521,11 @@
                 <h3>Para Oficinas</h3>
                 <p>Control de acceso y seguridad perimetral para centros de trabajo.</p>
             </div>
-            
+
             <div class="solucion-item">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=1200&q=80" alt="Seguridad para edificios" loading="lazy"/>
+                    <img src="https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=1200&q=80"
+                        alt="Seguridad para edificios" loading="lazy" />
                 </div>
                 <div class="solucion-icon">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
@@ -444,26 +544,26 @@
             <h2>Nuestro Proceso de Trabajo</h2>
             <p>Garantizamos calidad en cada etapa</p>
         </div>
-        
+
         <div class="proceso-timeline">
             <div class="proceso-step">
                 <div class="proceso-number">1</div>
                 <h3>Análisis de Seguridad</h3>
                 <p>Evaluamos tus necesidades y realizamos un diagnóstico completo de seguridad.</p>
             </div>
-            
+
             <div class="proceso-step">
                 <div class="proceso-number">2</div>
                 <h3>Diseño de Solución</h3>
                 <p>Creamos un plan personalizado con la mejor relación costo-beneficio.</p>
             </div>
-            
+
             <div class="proceso-step">
                 <div class="proceso-number">3</div>
                 <h3>Instalación Profesional</h3>
                 <p>Instalación rápida y limpia sin interrumpir tu actividad diaria.</p>
             </div>
-            
+
             <div class="proceso-step">
                 <div class="proceso-number">4</div>
                 <h3>Monitoreo y Soporte</h3>
@@ -478,15 +578,19 @@
             <h2>Sobre Nosotros</h2>
             <p>Líderes en soluciones de seguridad inteligente</p>
         </div>
-        
+
         <div class="nosotros-content">
             <div class="nosotros-text">
                 <h3>Tecnology Solution's</h3>
-                <p class="intro-text">Somos una empresa especializada en soluciones tecnológicas de seguridad con más de 20 años de experiencia en el sector. Ofrecemos suministro, instalación y mantenimiento de sistemas de seguridad electrónica para empresas, comercios y hogares.</p>
-                <p class="intro-text">Nuestro enfoque combina tecnología avanzada, instalación profesional y soporte técnico permanente para garantizar la protección de nuestros clientes. Diseñamos soluciones integrales que se adaptan a las necesidades específicas de cada proyecto.</p>
+                <p class="intro-text">Somos una empresa especializada en soluciones tecnológicas de seguridad con más de
+                    20 años de experiencia en el sector. Ofrecemos suministro, instalación y mantenimiento de sistemas
+                    de seguridad electrónica para empresas, comercios y hogares.</p>
+                <p class="intro-text">Nuestro enfoque combina tecnología avanzada, instalación profesional y soporte
+                    técnico permanente para garantizar la protección de nuestros clientes. Diseñamos soluciones
+                    integrales que se adaptan a las necesidades específicas de cada proyecto.</p>
                 <ul class="nosotros-features">
                     <li class="feature-item feature-item-1">
-                        <span class="feature-number">500+</span>
+                        <span class="feature-number">1000+</span>
                         <span class="feature-text">Clientes satisfechos</span>
                     </li>
                     <li class="feature-item feature-item-2">
@@ -505,51 +609,127 @@
             </div>
             <div class="nosotros-image">
                 <div class="tech-animation">
-                    <svg class="tech-network" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="tech-network" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
                         <defs>
-                            <filter id="tech-glow">
-                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                            <!-- Glow Filters -->
+                            <filter id="tech-glow-nosotros">
+                                <feGaussianBlur stdDeviation="5" result="coloredBlur" />
                                 <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
+                                    <feMergeNode in="coloredBlur" />
+                                    <feMergeNode in="SourceGraphic" />
                                 </feMerge>
                             </filter>
-                            <linearGradient id="tech-line" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#1E6BFF;stop-opacity:0.8" />
-                                <stop offset="100%" style="stop-color:#00D4FF;stop-opacity:1" />
-                            </linearGradient>
+                            <filter id="glow-strong-nosotros">
+                                <feGaussianBlur stdDeviation="10" result="coloredBlur" />
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+
+                            <!-- Gradient Definitions -->
+                            <radialGradient id="sphereGradient" cx="40%" cy="35%">
+                                <stop offset="0%" stop-color="#60a5fa" />
+                                <stop offset="50%" stop-color="#3b82f6" />
+                                <stop offset="100%" stop-color="#1e3a8a" />
+                            </radialGradient>
+
+                            <radialGradient id="glowGradient">
+                                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.6" />
+                                <stop offset="60%" stop-color="#1e40af" stop-opacity="0.3" />
+                                <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0" />
+                            </radialGradient>
                         </defs>
-                        
-                        <!-- Animated Connection Lines -->
-                        <g class="tech-lines">
-                            <line x1="150" y1="150" x2="80" y2="80" class="line-animate"/>
-                            <line x1="150" y1="150" x2="220" y2="80" class="line-animate"/>
-                            <line x1="150" y1="150" x2="220" y2="220" class="line-animate"/>
-                            <line x1="150" y1="150" x2="80" y2="220" class="line-animate"/>
-                            <line x1="80" y1="80" x2="220" y2="80" class="line-animate"/>
-                            <line x1="220" y1="80" x2="220" y2="220" class="line-animate"/>
-                            <line x1="220" y1="220" x2="80" y2="220" class="line-animate"/>
-                            <line x1="80" y1="220" x2="80" y2="80" class="line-animate"/>
+
+                        <!-- Outer Glow -->
+                        <circle cx="200" cy="200" r="160" fill="url(#glowGradient)" opacity="0.7" />
+
+                        <!-- Orbital Rings -->
+                        <circle cx="200" cy="200" r="135" fill="none" stroke="#00d4ff" stroke-width="1.5" opacity="0.35"
+                            class="earth-orbit" />
+                        <circle cx="200" cy="200" r="150" fill="none" stroke="#1e6bff" stroke-width="1.2" opacity="0.25"
+                            class="outer-orbit" />
+
+                        <!-- Main Sphere -->
+                        <circle cx="200" cy="200" r="120" fill="url(#sphereGradient)" filter="url(#tech-glow-nosotros)"
+                            class="earth" />
+
+                        <!-- Grid Lines - Latitude -->
+                        <g opacity="0.3">
+                            <ellipse cx="200" cy="200" rx="120" ry="35" fill="none" stroke="#00d4ff" stroke-width="1" />
+                            <ellipse cx="200" cy="200" rx="120" ry="70" fill="none" stroke="#00d4ff" stroke-width="1" />
+                            <ellipse cx="200" cy="200" rx="120" ry="105" fill="none" stroke="#00d4ff"
+                                stroke-width="1" />
                         </g>
-                        
-                        <!-- Central Node -->
-                        <circle cx="150" cy="150" r="8" class="node-center" filter="url(#tech-glow)"/>
-                        <circle cx="150" cy="150" r="12" class="node-pulse"/>
-                        
-                        <!-- Corner Nodes -->
-                        <g class="nodes">
-                            <circle cx="80" cy="80" r="6" class="node-corner node-1"/>
-                            <circle cx="220" cy="80" r="6" class="node-corner node-2"/>
-                            <circle cx="220" cy="220" r="6" class="node-corner node-3"/>
-                            <circle cx="80" cy="220" r="6" class="node-corner node-4"/>
+
+                        <!-- Grid Lines - Longitude -->
+                        <g opacity="0.3">
+                            <ellipse cx="200" cy="200" rx="35" ry="120" fill="none" stroke="#00d4ff" stroke-width="1" />
+                            <ellipse cx="200" cy="200" rx="70" ry="120" fill="none" stroke="#00d4ff" stroke-width="1" />
+                            <ellipse cx="200" cy="200" rx="105" ry="120" fill="none" stroke="#00d4ff"
+                                stroke-width="1" />
                         </g>
-                        
+
+                        <!-- Network Connection Lines -->
+                        <g class="network-lines" opacity="0.45">
+                            <line x1="200" y1="80" x2="270" y2="120" stroke="#00d4ff" stroke-width="1.5"
+                                class="line-animate" />
+                            <line x1="270" y1="120" x2="310" y2="180" stroke="#00d4ff" stroke-width="1.5"
+                                class="line-animate" />
+                            <line x1="310" y1="180" x2="300" y2="260" stroke="#00d4ff" stroke-width="1.5"
+                                class="line-animate" />
+                            <line x1="300" y1="260" x2="240" y2="310" stroke="#00d4ff" stroke-width="1.5"
+                                class="line-animate" />
+                            <line x1="200" y1="80" x2="130" y2="120" stroke="#00d4ff" stroke-width="1.5"
+                                class="line-animate" />
+                            <line x1="130" y1="120" x2="90" y2="180" stroke="#00d4ff" stroke-width="1.5"
+                                class="line-animate" />
+                            <line x1="90" y1="180" x2="100" y2="260" stroke="#00d4ff" stroke-width="1.5"
+                                class="line-animate" />
+                            <line x1="100" y1="260" x2="160" y2="310" stroke="#00d4ff" stroke-width="1.5"
+                                class="line-animate" />
+                        </g>
+
+                        <!-- Connection Nodes -->
+                        <g filter="url(#glow-strong-nosotros)">
+                            <circle cx="200" cy="80" r="5" fill="#00d4ff" class="node-corner node-1" />
+                            <circle cx="270" cy="120" r="5" fill="#00d4ff" class="node-corner node-2" />
+                            <circle cx="310" cy="180" r="5" fill="#00d4ff" class="node-corner node-3" />
+                            <circle cx="300" cy="260" r="5" fill="#00d4ff" class="node-corner node-4" />
+                            <circle cx="240" cy="310" r="5" fill="#00d4ff" class="node-corner node-1" />
+                            <circle cx="160" cy="310" r="5" fill="#00d4ff" class="node-corner node-2" />
+                            <circle cx="130" cy="120" r="5" fill="#00d4ff" class="node-corner node-3" />
+                            <circle cx="90" cy="180" r="5" fill="#00d4ff" class="node-corner node-4" />
+                            <circle cx="100" cy="260" r="5" fill="#00d4ff" class="node-corner node-1" />
+                        </g>
+
+                        <!-- Continent Silhouettes -->
+                        <g opacity="0.35">
+                            <path d="M 165 185 L 172 176 L 178 186 L 176 206 L 165 212 L 159 198 Z" fill="#1e3a5f" />
+                            <path d="M 210 170 L 227 166 L 234 188 L 227 214 L 210 206 Z" fill="#1e3a5f" />
+                            <path d="M 238 188 L 254 193 L 251 216 L 239 223 Z" fill="#1e3a5f" />
+                        </g>
+
+                        <!-- CENTERED TS LOGO -->
+                        <g filter="url(#glow-strong-nosotros)">
+                            <!-- T Letter -->
+                            <text x="160" y="230" font-family="'Arial Black', 'Helvetica', sans-serif" font-size="90"
+                                font-weight="900" fill="#ffffff" stroke="#00d4ff" stroke-width="2.5" opacity="0.98"
+                                style="text-shadow: 0 0 20px rgba(0,212,255,0.9), 0 0 35px rgba(0,212,255,0.6);">T</text>
+
+                            <!-- S Letter -->
+                            <text x="218" y="230" font-family="'Arial Black', 'Helvetica', sans-serif" font-size="90"
+                                font-weight="900" fill="#ffffff" stroke="#00d4ff" stroke-width="2.5" opacity="0.98"
+                                style="text-shadow: 0 0 20px rgba(0,212,255,0.9), 0 0 35px rgba(0,212,255,0.6);">S</text>
+                        </g>
+
                         <!-- Floating Particles -->
-                        <g class="particles">
-                            <circle cx="150" cy="80" r="2" class="particle particle-1"/>
-                            <circle cx="220" cy="150" r="2" class="particle particle-2"/>
-                            <circle cx="150" cy="220" r="2" class="particle particle-3"/>
-                            <circle cx="80" cy="150" r="2" class="particle particle-4"/>
+                        <g class="particles" opacity="0.5">
+                            <circle cx="80" cy="100" r="2.5" fill="#00d4ff" class="particle particle-1" />
+                            <circle cx="330" cy="90" r="2" fill="#1e6bff" class="particle particle-2" />
+                            <circle cx="60" cy="310" r="2.2" fill="#00e5ff" class="particle particle-3" />
+                            <circle cx="350" cy="320" r="2" fill="#1e6bff" class="particle particle-4" />
+                            <circle cx="200" cy="370" r="2.5" fill="#00d4ff" class="particle particle-1" />
                         </g>
                     </svg>
                 </div>
@@ -566,131 +746,159 @@
             <h2>Nuestros Clientes</h2>
             <p>Empresas que confían en nuestros servicios</p>
         </div>
-        
+
         <div class="clients-grid">
-            <!-- Client 1: Bancolombia -->
+            <!-- Client 1: International Trade Centre -->
             <div class="client-logo-item">
                 <div class="client-logo-card">
                     <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="banco-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#004B9D;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#002D5D;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect x="20" y="20" width="160" height="80" rx="8" fill="url(#banco-gradient)"/>
-                        <text x="100" y="70" font-size="28" font-weight="bold" fill="white" text-anchor="middle" font-family="Arial">BANCO</text>
+                        <rect x="36" y="22" width="24" height="24" transform="rotate(45 48 34)" fill="#3568A8" />
+                        <rect x="62" y="48" width="24" height="24" transform="rotate(45 74 60)" fill="#3B78BF" />
+                        <rect x="88" y="22" width="24" height="24" transform="rotate(45 100 34)" fill="#CC2A6A" />
+                        <rect x="114" y="48" width="24" height="24" transform="rotate(45 126 60)" fill="#7A8EA5" />
+                        <text x="100" y="105" font-size="10" fill="#4A4A4A" text-anchor="middle" font-family="Arial"
+                            font-weight="600">INTERNATIONAL TRADE</text>
                     </svg>
-                    <p class="client-name">Bancolombia</p>
+                    <p class="client-name">International Trade Centre</p>
                 </div>
             </div>
-            
-            <!-- Client 2: Grupo Éxito -->
+
+            <!-- Client 2: Candela -->
             <div class="client-logo-item">
                 <div class="client-logo-card">
                     <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="exito-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#FF6600;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#E55A00;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect x="20" y="20" width="160" height="80" rx="8" fill="url(#exito-gradient)"/>
-                        <text x="100" y="70" font-size="20" font-weight="bold" fill="white" text-anchor="middle" font-family="Arial">ÉXITO</text>
+                        <text x="100" y="66" font-size="38" fill="#1E4FAF" text-anchor="middle" font-family="Georgia"
+                            font-style="italic" font-weight="700">Candela</text>
+                        <path d="M138 28 C154 36, 160 52, 150 66 C170 60, 182 44, 170 28" fill="none" stroke="#F6A000"
+                            stroke-width="4" stroke-linecap="round" />
                     </svg>
-                    <p class="client-name">Grupo Éxito</p>
+                    <p class="client-name">Candela</p>
                 </div>
             </div>
-            
-            <!-- Client 3: Tech Solutions -->
+
+            <!-- Client 4: Surtimax -->
             <div class="client-logo-item">
                 <div class="client-logo-card">
                     <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="tech-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#1E6BFF;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#00D4FF;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect x="20" y="20" width="160" height="80" rx="8" fill="url(#tech-gradient)"/>
-                        <circle cx="65" cy="60" r="15" fill="white" opacity="0.9"/>
-                        <circle cx="100" cy="60" r="15" fill="white" opacity="0.7"/>
-                        <circle cx="135" cy="60" r="15" fill="white" opacity="0.5"/>
-                        <text x="100" y="105" font-size="10" fill="#1E6BFF" text-anchor="middle" font-family="Arial" font-weight="bold">Andina Tech</text>
+                        <rect x="24" y="24" width="152" height="72" rx="10" fill="#FFFFFF" stroke="#00A65A"
+                            stroke-width="5" />
+                        <rect x="30" y="30" width="140" height="48" rx="6" fill="#D92128" />
+                        <text x="100" y="63" font-size="33" fill="#F5F233" text-anchor="middle" font-family="Arial"
+                            font-weight="900">SURTIMAX</text>
                     </svg>
-                    <p class="client-name">Andina de Tecnología</p>
+                    <p class="client-name">Surtimax</p>
                 </div>
             </div>
-            
-            <!-- Client 4: Empresarial -->
+
+            <!-- Client 5: SAI -->
             <div class="client-logo-item">
                 <div class="client-logo-card">
                     <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="emp-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#1A7A3A;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#0F4A24;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect x="20" y="20" width="160" height="80" rx="8" fill="url(#emp-gradient)"/>
-                        <rect x="45" y="45" width="25" height="45" fill="white" opacity="0.8"/>
-                        <rect x="80" y="35" width="25" height="55" fill="white" opacity="0.9"/>
-                        <rect x="115" y="50" width="25" height="40" fill="white" opacity="0.7"/>
-                        <text x="100" y="105" font-size="9" fill="#1A7A3A" text-anchor="middle" font-family="Arial" font-weight="bold">EMPRESARIAL</text>
+                        <text x="100" y="65" font-size="44" fill="#118A4F" text-anchor="middle" font-family="Arial"
+                            font-weight="900">SAI</text>
+                        <line x1="48" y1="74" x2="152" y2="74" stroke="#118A4F" stroke-width="3" />
+                        <text x="100" y="90" font-size="8" fill="#118A4F" text-anchor="middle"
+                            font-family="Arial">SERVICIOS AEROPORTUARIOS</text>
                     </svg>
-                    <p class="client-name">Empresarial Colombia</p>
+                    <p class="client-name">Servicios Aeroportuarios Integrados</p>
                 </div>
             </div>
-            
-            <!-- Client 5: Infrastructure -->
+
+            <!-- Client 6: Totto -->
             <div class="client-logo-item">
                 <div class="client-logo-card">
                     <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="infra-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#7B3FF2;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#5A2D9F;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect x="20" y="20" width="160" height="80" rx="8" fill="url(#infra-gradient)"/>
-                        <circle cx="855" cy="45" r="4" fill="white" opacity="0.6"/>
-                        <line x1="60" y1="60" x2="100" y2="60" stroke="white" stroke-width="2" opacity="0.7"/>
-                        <line x1="100" y1="60" x2="140" y2="60" stroke="white" stroke-width="2" opacity="0.7"/>
-                        <circle cx="60" cy="60" r="5" fill="white" opacity="0.8"/>
-                        <circle cx="140" cy="60" r="5" fill="white" opacity="0.8"/>
-                        <text x="100" y="105" font-size="8" fill="#7B3FF2" text-anchor="middle" font-family="Arial" font-weight="bold">INFRAESTRUCTURA</text>
+                        <rect x="20" y="20" width="160" height="80" rx="6" fill="#000000" />
+                        <text x="100" y="70" font-size="42" fill="#FFFFFF" text-anchor="middle" font-family="Arial"
+                            font-weight="400" letter-spacing="-1">totto</text>
+                        <circle cx="85" cy="42" r="5" fill="#E63946" />
+                        <circle cx="115" cy="42" r="5" fill="#F9C74F" />
                     </svg>
-                    <p class="client-name">Tech Infraestructura</p>
+                    <p class="client-name">Totto</p>
                 </div>
             </div>
-            
-            <!-- Client 6: Global Security -->
+
+            <!-- Client 7: Ricoh -->
+            <div class="client-logo-item">
+                <div class="client-logo-card">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <text x="100" y="68" font-size="52" fill="#E61D2A" text-anchor="middle" font-family="Arial"
+                            font-weight="900" letter-spacing="2">RICOH</text>
+                    </svg>
+                    <p class="client-name">Ricoh</p>
+                </div>
+            </div>
+
+            <!-- Client 8: Chevrolet -->
+            <div class="client-logo-item">
+                <div class="client-logo-card">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="72,36 128,36 128,48 148,48 148,72 128,72 128,84 72,84 72,72 52,72 52,48 72,48"
+                            fill="#D9B64B" stroke="#A5832F" stroke-width="3" />
+                        <text x="100" y="106" font-size="14" fill="#111111" text-anchor="middle" font-family="Arial"
+                            font-weight="800" letter-spacing="2">CHEVROLET</text>
+                    </svg>
+                    <p class="client-name">Chevrolet</p>
+                </div>
+            </div>
+
+            <!-- Client 9: Toyota -->
             <div class="client-logo-item">
                 <div class="client-logo-card">
                     <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
                         <defs>
-                            <linearGradient id="security-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#B8860B;stop-opacity:1" />
+                            <linearGradient id="toyota-metal" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#F2F2F2" />
+                                <stop offset="50%" stop-color="#B8BDC4" />
+                                <stop offset="100%" stop-color="#7E848D" />
                             </linearGradient>
                         </defs>
-                        <rect x="20" y="20" width="160" height="80" rx="8" fill="url(#security-gradient)"/>
-                        <path d="M 100 35 L 120 50 L 120 75 Q 100 85 80 75 L 80 50 Z" fill="white" opacity="0.9"/>
-                        <circle cx="100" cy="65" r="3" fill="#D4AF37"/>
-                        <text x="100" y="105" font-size="9" fill="#D4AF37" text-anchor="middle" font-family="Arial" font-weight="bold">SEGURIDAD</text>
+                        <ellipse cx="100" cy="45" rx="58" ry="32" fill="none" stroke="url(#toyota-metal)"
+                            stroke-width="7" />
+                        <ellipse cx="100" cy="45" rx="17" ry="30" fill="none" stroke="url(#toyota-metal)"
+                            stroke-width="7" />
+                        <ellipse cx="100" cy="45" rx="36" ry="14" fill="none" stroke="url(#toyota-metal)"
+                            stroke-width="7" />
+                        <text x="100" y="103" font-size="30" fill="#EB1B3A" text-anchor="middle" font-family="Arial"
+                            font-weight="900" letter-spacing="1">TOYOTA</text>
                     </svg>
-                    <p class="client-name">Seguridad Global</p>
+                    <p class="client-name">Toyota</p>
+                </div>
+            </div>
+
+            <!-- Client 10: Adidas -->
+            <div class="client-logo-item">
+                <div class="client-logo-card">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Adidas Performance Logo - Three horizontal bars with text -->
+                        <rect x="0" y="0" width="200" height="120" fill="#000000" />
+
+                        <!-- Three horizontal bars on the left -->
+                        <rect x="8" y="50" width="70" height="4" fill="#FFFFFF" />
+                        <rect x="8" y="58" width="70" height="4" fill="#FFFFFF" />
+                        <rect x="8" y="66" width="70" height="4" fill="#FFFFFF" />
+
+                        <!-- Text "adidas" -->
+                        <text x="120" y="66" font-size="28" fill="#FFFFFF" text-anchor="middle" font-family="Arial"
+                            font-weight="700" letter-spacing="0">adidas</text>
+
+                        <!-- ® symbol -->
+                        <circle cx="185" cy="28" r="4.5" fill="none" stroke="#FFFFFF" stroke-width="0.8" />
+                        <text x="185" y="30.5" font-size="5.5" fill="#FFFFFF" text-anchor="middle" font-family="Arial"
+                            font-weight="700">R</text>
+                    </svg>
+                    <p class="client-name">Adidas</p>
                 </div>
             </div>
         </div>
-        
+
         <!-- Trust Badge -->
         <div class="clients-badge">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                <path d="M9 12l2 2 4-4" stroke="#1E6BFF" stroke-width="2"/>
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <path d="M9 12l2 2 4-4" stroke="#1E6BFF" stroke-width="2" />
             </svg>
-            <span>Más de 500 empresas confían en nosotros</span>
+            <span>Más de 1000 empresas confían en nosotros</span>
         </div>
     </section>
 
@@ -703,48 +911,72 @@
             <h2>Tecnología Avanzada de Seguridad</h2>
             <p>Infraestructura de red global de monitoreo en tiempo real</p>
         </div>
-        
+
         <div class="network-visualization">
             <!-- Network Grid Background -->
             <div class="network-grid"></div>
-            
-            <!-- Animated Network Nodes -->
-            <svg class="network-svg" viewBox="0 0 800 400">
-                <!-- Connection lines -->
-                <line x1="100" y1="100" x2="400" y2="100" stroke="#D4AF37" stroke-width="1" opacity="0.4" class="network-line"/>
-                <line x1="400" y1="100" x2="700" y2="100" stroke="#D4AF37" stroke-width="1" opacity="0.4" class="network-line"/>
-                <line x1="100" y1="300" x2="400" y2="300" stroke="#D4AF37" stroke-width="1" opacity="0.4" class="network-line"/>
-                <line x1="400" y1="300" x2="700" y2="300" stroke="#D4AF37" stroke-width="1" opacity="0.4" class="network-line"/>
-                <line x1="100" y1="100" x2="100" y2="300" stroke="#D4AF37" stroke-width="1" opacity="0.4" class="network-line"/>
-                <line x1="400" y1="100" x2="400" y2="300" stroke="#D4AF37" stroke-width="1" opacity="0.4" class="network-line"/>
-                <line x1="700" y1="100" x2="700" y2="300" stroke="#D4AF37" stroke-width="1" opacity="0.4" class="network-line"/>
-                <line x1="100" y1="100" x2="700" y2="300" stroke="#1E6BFF" stroke-width="0.8" opacity="0.3" class="network-line"/>
-                <line x1="700" y1="100" x2="100" y2="300" stroke="#1E6BFF" stroke-width="0.8" opacity="0.3" class="network-line"/>
-                
-                <!-- Network Nodes -->
-                <circle cx="100" cy="100" r="4" fill="#D4AF37" opacity="0.8" class="network-node"/>
-                <circle cx="400" cy="100" r="4" fill="#D4AF37" opacity="0.8" class="network-node"/>
-                <circle cx="700" cy="100" r="4" fill="#D4AF37" opacity="0.8" class="network-node"/>
-                <circle cx="100" cy="300" r="4" fill="#D4AF37" opacity="0.8" class="network-node"/>
-                <circle cx="400" cy="300" r="4" fill="#D4AF37" opacity="0.8" class="network-node"/>
-                <circle cx="700" cy="300" r="4" fill="#D4AF37" opacity="0.8" class="network-node"/>
-                <circle cx="400" cy="200" r="5" fill="#1E6BFF" opacity="0.9" class="network-node-center"/>
-                
-                <!-- Glow circles around nodes -->
-                <circle cx="100" cy="100" r="12" fill="none" stroke="#D4AF37" stroke-width="0.5" opacity="0.2" class="node-glow"/>
-                <circle cx="400" cy="100" r="12" fill="none" stroke="#D4AF37" stroke-width="0.5" opacity="0.2" class="node-glow"/>
-                <circle cx="700" cy="100" r="12" fill="none" stroke="#D4AF37" stroke-width="0.5" opacity="0.2" class="node-glow"/>
-            </svg>
+
+            <!-- Infrastructure Image with Animations -->
+            <div class="infrastructure-image-container">
+                <img src="img/Infra.img.png" alt="Infraestructura de red global" class="infrastructure-image" />
+
+                <!-- Animated overlay lines -->
+                <div class="network-overlay">
+                    <svg class="overlay-svg" viewBox="0 0 1400 600" xmlns="http://www.w3.org/2000/svg"
+                        preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="dataFlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.3" />
+                                <stop offset="50%" stop-color="#ffd700" stop-opacity="0.8" />
+                                <stop offset="100%" stop-color="#00d4ff" stop-opacity="0.3" />
+                            </linearGradient>
+                            <filter id="glowEffect">
+                                <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
+
+                        <!-- Data flow lines -->
+                        <g class="data-flow-lines" opacity="0.6">
+                            <path d="M 0 200 Q 350 180, 700 200 T 1400 200" stroke="url(#dataFlow)" stroke-width="2"
+                                fill="none" class="flow-line" />
+                            <path d="M 0 300 Q 350 320, 700 300 T 1400 300" stroke="url(#dataFlow)" stroke-width="2"
+                                fill="none" class="flow-line" style="animation-delay: 1s;" />
+                            <path d="M 0 400 Q 350 420, 700 400 T 1400 400" stroke="url(#dataFlow)" stroke-width="2"
+                                fill="none" class="flow-line" style="animation-delay: 0.5s;" />
+                        </g>
+
+                        <!-- Floating nodes/particles -->
+                        <g class="floating-nodes" opacity="0.8">
+                            <circle cx="200" cy="150" r="4" fill="#00d4ff" filter="url(#glowEffect)"
+                                class="node-pulse" />
+                            <circle cx="400" cy="250" r="3" fill="#ffd700" filter="url(#glowEffect)" class="node-pulse"
+                                style="animation-delay: 0.2s;" />
+                            <circle cx="700" cy="200" r="4" fill="#00d4ff" filter="url(#glowEffect)" class="node-pulse"
+                                style="animation-delay: 0.4s;" />
+                            <circle cx="900" cy="350" r="3" fill="#ffd700" filter="url(#glowEffect)" class="node-pulse"
+                                style="animation-delay: 0.6s;" />
+                            <circle cx="1200" cy="250" r="4" fill="#00d4ff" filter="url(#glowEffect)" class="node-pulse"
+                                style="animation-delay: 0.8s;" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
         </div>
-        
+
         <div class="tech-features">
             <div class="tech-feature">
                 <h4>Monitoreo Inteligente</h4>
-                <p>Supervisión en tiempo real de todos los sistemas de seguridad desde cualquier ubicación con notificaciones instantáneas.</p>
+                <p>Supervisión en tiempo real de sus sistemas de seguridad y red, con acceso remoto y notificaciones
+                    instantáneas.</p>
             </div>
             <div class="tech-feature">
                 <h4>Infraestructura Segura</h4>
-                <p>Arquitectura tecnológica robusta con sistemas redundantes y protocolos de seguridad avanzados para máxima confiabilidad.</p>
+                <p>Arquitectura tecnológica robusta con sistemas redundantes y protocolos de seguridad avanzados para
+                    máxima confiabilidad.</p>
             </div>
             <div class="tech-feature">
                 <h4>Análisis Inteligente</h4>
@@ -762,40 +994,45 @@
             <h2>Opiniones de Clientes</h2>
             <p>Confianza de empresas líderes</p>
         </div>
-        
+
         <!-- Testimonials Grid with 5 Reviews -->
         <div class="testimonios-grid" id="testimoniosContainer">
             <div class="testimonios-card">
                 <div class="testimonios-stars" style="color: #D4AF37;">★★★★★</div>
-                <p>"Excelente servicio técnico. Los profesionales de Tecnology Solutions nos brindaron una solución integral de seguridad corporativa. Muy recomendado."</p>
+                <p>"Excelente servicio técnico. Los profesionales de Tecnology Solutions nos brindaron una solución
+                    integral de seguridad corporativa. Muy recomendado."</p>
                 <p class="testimonios-autor">- Carlos Mendoza, Director de Operaciones</p>
             </div>
-            
+
             <div class="testimonios-card">
                 <div class="testimonios-stars" style="color: #D4AF37;">★★★★★</div>
-                <p>"La mejor inversión en seguridad. Sistema robusto, equipo profesional y soporte impecable. Llevamos 3 años con ellos sin problemas."</p>
+                <p>"La mejor inversión en seguridad. Sistema robusto, equipo profesional y soporte impecable. Llevamos 3
+                    años con ellos sin problemas."</p>
                 <p class="testimonios-autor">- Silvia Rodríguez, Gerente Administrativa</p>
             </div>
-            
+
             <div class="testimonios-card">
                 <div class="testimonios-stars" style="color: #D4AF37;">★★★★★</div>
-                <p>"Instalación rápida y profesional. El monitoreo 24/7 nos da tranquilidad total. Altamente confiables y competentes."</p>
+                <p>"Instalación rápida y profesional. El monitoreo 24/7 nos da tranquilidad total. Altamente confiables
+                    y competentes."</p>
                 <p class="testimonios-autor">- Fernando Torres, Director Ejecutivo</p>
             </div>
-            
+
             <div class="testimonios-card">
                 <div class="testimonios-stars" style="color: #D4AF37;">★★★★★</div>
-                <p>"Tecnología de punta con servicio excepcional. Resolvieron todos nuestros requerimientos de seguridad de forma eficiente y profesional."</p>
+                <p>"Tecnología de punta con servicio excepcional. Resolvieron todos nuestros requerimientos de seguridad
+                    de forma eficiente y profesional."</p>
                 <p class="testimonios-autor">- Andrea López, Coordinadora IT</p>
             </div>
-            
+
             <div class="testimonios-card">
                 <div class="testimonios-stars" style="color: #D4AF37;">★★★★★</div>
-                <p>"Partner confiable para seguridad corporativa. Excelente asesoría, instalación limpia y soporte técnico de clase mundial."</p>
+                <p>"Partner confiable para seguridad corporativa. Excelente asesoría, instalación limpia y soporte
+                    técnico de clase mundial."</p>
                 <p class="testimonios-autor">- Roberto Guzmán, Presidente</p>
             </div>
         </div>
-        
+
         <!-- ========================================
              CLIENT REVIEW SUBMISSION
              Allow clients to submit new reviews
@@ -803,35 +1040,37 @@
         <div class="testimonios-form-section">
             <h3>Comparte tu experiencia</h3>
             <p>Tu opinión es importante para nosotros</p>
-            
+
             <form class="testimonios-form" id="testimoniosForm">
                 <div class="form-group">
                     <label for="nombreTestimonio">Tu Nombre *</label>
                     <input type="text" id="nombreTestimonio" name="nombreTestimonio" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="cargoTestimonio">Cargo / Empresa *</label>
-                    <input type="text" id="cargoTestimonio" name="cargoTestimonio" placeholder="Ej: Director, Empresa XYZ" required>
+                    <input type="text" id="cargoTestimonio" name="cargoTestimonio"
+                        placeholder="Ej: Director, Empresa XYZ" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label>Calificación *</label>
                     <div class="star-rating" id="starRating">
-                        <span class="star" data-rating="1">☆</span>
-                        <span class="star" data-rating="2">☆</span>
-                        <span class="star" data-rating="3">☆</span>
-                        <span class="star" data-rating="4">☆</span>
-                        <span class="star" data-rating="5">☆</span>
+                        <span class="star" data-rating="1">★</span>
+                        <span class="star" data-rating="2">★</span>
+                        <span class="star" data-rating="3">★</span>
+                        <span class="star" data-rating="4">★</span>
+                        <span class="star" data-rating="5">★</span>
                     </div>
                     <input type="hidden" id="ratingValue" name="rating" value="0" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="comentarioTestimonio">Tu comentario *</label>
-                    <textarea id="comentarioTestimonio" name="comentarioTestimonio" rows="4" placeholder="Cuéntanos tu experiencia..." required></textarea>
+                    <textarea id="comentarioTestimonio" name="comentarioTestimonio" rows="4"
+                        placeholder="Cuéntanos tu experiencia..." required></textarea>
                 </div>
-                
+
                 <button type="submit" class="btn btn-submit">Publicar Reseña</button>
             </form>
         </div>
@@ -843,7 +1082,7 @@
             <h2>Contactanos</h2>
             <p>Cuéntanos sobre tu proyecto</p>
         </div>
-        
+
         <div class="contacto-container">
             <form class="contacto-form" id="contactForm">
                 <div class="form-row">
@@ -856,12 +1095,12 @@
                         <input type="tel" id="telefono" name="telefono" required>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="email">Email *</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="servicio">Tipo de Servicio *</label>
                     <select id="servicio" name="servicio" required>
@@ -874,20 +1113,23 @@
                         <option value="otro">Otra solución</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="mensaje">Mensaje *</label>
                     <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
                 </div>
-                
+
                 <button type="submit" class="btn btn-primary btn-block">Enviar Solicitud</button>
             </form>
-            
+
             <div class="contacto-info">
                 <div class="contacto-item">
                     <div class="contacto-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
                         </svg>
                     </div>
                     <div>
@@ -895,10 +1137,11 @@
                         <p>315 228 4097</p>
                     </div>
                 </div>
-                
+
                 <div class="contacto-item">
                     <div class="contacto-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                         </svg>
@@ -908,10 +1151,11 @@
                         <p>tecnologysolution7@gmail.com</p>
                     </div>
                 </div>
-                
+
                 <div class="contacto-item">
                     <div class="contacto-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                             <circle cx="12" cy="10" r="3"></circle>
                         </svg>
@@ -921,10 +1165,11 @@
                         <p>Bogotá, D.C., Colombia</p>
                     </div>
                 </div>
-                
+
                 <div class="contacto-item">
                     <div class="contacto-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <circle cx="12" cy="12" r="10"></circle>
                             <polyline points="12 6 12 12 16 14"></polyline>
                         </svg>
@@ -944,17 +1189,29 @@
          ======================================== -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-column">
+            <div class="footer-column footer-brand">
                 <h4>Tecnology Solution's</h4>
                 <p>Suministros, Instalación y Mantenimiento de sistemas de seguridad.</p>
-                <div class="social-links">
-                    <a href="#" class="social-icon">f</a>
-                    <a href="#" class="social-icon">𝕏</a>
-                    <a href="#" class="social-icon">in</a>
+                <div class="footer-miniworld" aria-hidden="true">
+                    <svg class="footer-miniworld-svg" viewBox="0 0 84 84" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="footerPlanetGradient" cx="35%" cy="30%">
+                                <stop offset="0%" stop-color="#7ddfff" />
+                                <stop offset="55%" stop-color="#1e6bff" />
+                                <stop offset="100%" stop-color="#0b2a7a" />
+                            </radialGradient>
+                        </defs>
+                        <circle cx="42" cy="42" r="26" class="miniworld-core" fill="url(#footerPlanetGradient)" />
+                        <circle cx="42" cy="42" r="34" class="miniworld-ring" />
+                        <circle cx="42" cy="42" r="30" class="miniworld-ring ring-2" />
+                        <circle cx="58" cy="28" r="2.1" class="miniworld-dot dot-1" />
+                        <circle cx="22" cy="52" r="1.8" class="miniworld-dot dot-2" />
+                        <text x="42" y="48" text-anchor="middle" class="miniworld-text">TS</text>
+                    </svg>
                 </div>
             </div>
-            
-            <div class="footer-column">
+
+            <div class="footer-column footer-links">
                 <h4>Servicios</h4>
                 <ul>
                     <li><a href="#servicios">Cámaras de Seguridad</a></li>
@@ -964,8 +1221,8 @@
                     <li><a href="#servicios">Monitores</a></li>
                 </ul>
             </div>
-            
-            <div class="footer-column">
+
+            <div class="footer-column footer-links">
                 <h4>Soluciones</h4>
                 <ul>
                     <li><a href="#soluciones">Para Hogares</a></li>
@@ -974,26 +1231,23 @@
                     <li><a href="#soluciones">Para Edificios</a></li>
                 </ul>
             </div>
-            
-            <div class="footer-column">
+
+            <div class="footer-column footer-contact">
                 <h4>Contacto</h4>
-                <p>📞 315 228 4097</p>
-                <p>📧 tecnologysolution7@gmail.com</p>
-                <p>📍 Bogotá, D.C., Colombia</p>
+                <p class="contact-item"><span class="contact-icon">📞</span><span>315 228 4097</span></p>
+                <p class="contact-item"><span class="contact-icon">✉</span><span>tecnologysolution7@gmail.com</span></p>
+                <p class="contact-item"><span class="contact-icon">📍</span><span>Bogotá, D.C., Colombia</span></p>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <p>&copy; 2026 Tecnology Solution's. Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <!-- Botón de WhatsApp -->
-    <a href="https://wa.me/573152284097?text=Hola%2C%20me%20interesa%20información%20sobre%20sus%20sistemas%20de%20seguridad" 
-       class="whatsapp-button" 
-       target="_blank" 
-       title="Contactar por WhatsApp"
-       aria-label="Contactar por WhatsApp">
+    <a href="https://wa.me/573152284097?text=Hola%2C%20me%20interesa%20información%20sobre%20sus%20sistemas%20de%20seguridad"
+        class="whatsapp-button" target="_blank" title="Contactar por WhatsApp" aria-label="Contactar por WhatsApp">
         💬
     </a>
 
@@ -1004,4 +1258,5 @@
     <!-- Globe 3D -->
     <script src="js/globe.js"></script>
 </body>
+
 </html>
