@@ -901,30 +901,6 @@ a {
     transform: translateY(-1px) scale(0.98);
 }
 
-/* Right Side - Digital Earth Visual */
-
-.earth-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Glow circular detrás del globo */
-.earth-container::before {
-    content: '';
-    position: absolute;
-    inset: -30px;
-    border-radius: 50%;
-    background: radial-gradient(circle,
-            rgba(30, 107, 255, 0.22) 0%,
-            rgba(30, 107, 255, 0.06) 50%,
-            transparent 70%);
-    filter: blur(35px);
-    animation: halo-pulse 4s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 0;
-}
 
 @keyframes halo-pulse {
 
@@ -1099,38 +1075,56 @@ a {
     }
 }
 
-/* Digital Earth Image - V3 Holographic Tech Backdrop */
+/* Digital Earth Image - V5 Ultra-Seamless Integration */
 .earth-image {
-    width: 800px;
-    height: 800px;
+    width: 780px;
+    /* Reduced slightly to prevent edge clipping */
+    height: 780px;
     object-fit: cover;
     mix-blend-mode: screen;
-    opacity: 0.65;
-    filter: brightness(1.1) contrast(1.2) saturate(1.4) drop-shadow(0 0 20px rgba(30, 107, 255, 0.4));
-    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 0) 65%);
-    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 0) 65%);
-    animation: earth-float 10s ease-in-out infinite;
+    opacity: 0.85;
+    /* Soften brightness to keep blacks deep for better blending */
+    filter: brightness(1.2) contrast(1.1) saturate(1.4) drop-shadow(0 0 30px rgba(30, 107, 255, 0.3));
+    /* Extremely soft mask: starts fading from center (0%) to fully transparent at 75% */
+    -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 75%);
+    mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 75%);
+    animation: earth-float-subtle 15s ease-in-out infinite;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: block;
+}
+
+@keyframes earth-float-subtle {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-30px) rotate(1deg);
+    }
 }
 
 .earth-image:hover {
     filter: brightness(1.2) contrast(1.2) saturate(1.3);
 }
 
-/* Earth Container - Absolute Background Positioning */
+/* Earth Container - Correct Absolute Positioning */
 .earth-container {
     position: absolute;
     top: 50%;
-    right: -150px;
+    right: -80px;
     transform: translateY(-50%);
+    /* Centering must be preserved */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
     pointer-events: none;
+    width: auto;
+    height: auto;
 }
 
 .earth-container::before {
@@ -1346,9 +1340,6 @@ a {
     animation: earth-float 4s ease-in-out infinite, earth-glow-pulse 3s ease-in-out infinite;
 }
 
-.earth-container {
-    animation: earth-float 4s ease-in-out infinite;
-}
 
 .sparkle-twinkle {
     animation: sparkle-twinkle 2s ease-in-out infinite;
@@ -4096,10 +4087,6 @@ section {
         gap: 2.5rem;
     }
 
-    .earth-container {
-        width: 320px;
-        height: 320px;
-    }
 
     .nosotros-content {
         gap: 2.5rem;
@@ -4448,10 +4435,6 @@ section {
         font-size: 0.88rem;
     }
 
-    .earth-container {
-        width: 280px;
-        height: 280px;
-    }
 
     .hero-radial-glow {
         width: 350px;
@@ -4831,10 +4814,6 @@ section {
         font-size: 0.82rem;
     }
 
-    .earth-container {
-        width: 220px;
-        height: 220px;
-    }
 
     /* --- SECCIONES --- */
     section {
