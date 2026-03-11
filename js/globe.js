@@ -14,7 +14,7 @@
     };
 
     document.addEventListener('DOMContentLoaded', function () {
-        const wrapper = document.getElementById('globe-canvas-container');
+        const wrapper = document.getElementById('nosotros-globe-container');
         if (!wrapper) return;
 
         /* ─── El canvas ocupa TODO el wrapper (hero-visual) ─── */
@@ -25,15 +25,11 @@
         let W = wrapper.clientWidth  || 500;
         let H = wrapper.clientHeight || 500;
 
-        /* ─── Renderer con fondo negro del hero ─── */
-        // En vez de transparente, usamos exactamente el mismo color del hero
-        // para que se funda de forma perfecta
-        const HERO_BG = 0x0a0e1a; // coincide con el gradient del hero
-
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+        /* ─── Renderer con fondo transparente para la sección nosotros ─── */
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         renderer.setSize(W, H);
-        renderer.setClearColor(HERO_BG, 1);
+        renderer.setClearColor(0x000000, 0);
 
         /* Canvas ocupa todo el contenedor sin margen */
         const cv = renderer.domElement;
@@ -62,9 +58,6 @@
         const earthGroup = new THREE.Group();
         earthGroup.rotation.z = THREE.MathUtils.degToRad(23.5);
         scene.add(earthGroup);
-
-        /* ─── Estrellas de fondo ─── */
-        buildStars(scene);
 
         /* ─── Loader ─── */
         const loader = buildLoader(wrapper);
