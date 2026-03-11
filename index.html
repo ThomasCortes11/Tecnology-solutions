@@ -231,9 +231,28 @@
             <p>Soluciones tecnológicas completas de seguridad corporativa</p>
         </div>
 
-        <div class="servicios-grid">
+        <!-- GRID DE SERVICIOS -->
+        <div class="servicios-grid" id="serviciosGrid">
+            <!-- Service: Control de Acceso -->
+            <div class="service-card" onclick="openServiceDetail('control-acceso')">
+                <div class="card-media">
+                    <img src="Img/Control%20de%20acceso.png.png.png"
+                        alt="Control de Acceso" loading="lazy" />
+                </div>
+                <div class="service-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        <circle cx="12" cy="16" r="1"></circle>
+                    </svg>
+                </div>
+                <h3>Control de Acceso</h3>
+                <p>Terminales faciales y biométricas Hikvision para control de acceso inteligente.</p>
+                <span class="service-card-badge">Ver productos →</span>
+            </div>
+
             <!-- Service: Equipment Supply -->
-            <div class="service-card">
+            <div class="service-card" onclick="openServiceDetail('suministro')">
                 <div class="card-media">
                     <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80"
                         alt="Equipos de seguridad electrónica" loading="lazy" />
@@ -248,10 +267,11 @@
                 </div>
                 <h3>Suministro de equipos de seguridad</h3>
                 <p>Equipos de las mejores marcas: cámaras, alarmas, DVRs, monitores y más.</p>
+                <span class="service-card-badge">Ver detalles →</span>
             </div>
 
             <!-- Service: Professional Installation -->
-            <div class="service-card">
+            <div class="service-card" onclick="openServiceDetail('instalacion')">
                 <div class="card-media">
                     <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80"
                         alt="Instalación profesional de sistemas" loading="lazy" />
@@ -266,10 +286,11 @@
                 </div>
                 <h3>Instalación profesional</h3>
                 <p>Instalación realizada por técnicos certificados con experiencia comprobada.</p>
+                <span class="service-card-badge">Ver detalles →</span>
             </div>
 
             <!-- Service: Preventive Maintenance -->
-            <div class="service-card">
+            <div class="service-card" onclick="openServiceDetail('mantenimiento')">
                 <div class="card-media">
                     <img src="https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=1200&q=80"
                         alt="Mantenimiento de infraestructura tecnológica" loading="lazy" />
@@ -283,10 +304,11 @@
                 </div>
                 <h3>Mantenimiento preventivo y correctivo</h3>
                 <p>Mantenimiento regular para garantizar funcionamiento óptimo de sistemas.</p>
+                <span class="service-card-badge">Ver detalles →</span>
             </div>
 
             <!-- Service: Technical Consulting -->
-            <div class="service-card">
+            <div class="service-card" onclick="openServiceDetail('asesoria')">
                 <div class="card-media">
                     <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
                         alt="Consultoría y asesoría de seguridad" loading="lazy" />
@@ -300,10 +322,11 @@
                 </div>
                 <h3>Asesoría técnica especializada</h3>
                 <p>Consultoría en seguridad para diseñar soluciones a medida de su empresa.</p>
+                <span class="service-card-badge">Ver detalles →</span>
             </div>
 
             <!-- Service: 24/7 Support -->
-            <div class="service-card">
+            <div class="service-card" onclick="openServiceDetail('soporte')">
                 <div class="card-media">
                     <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
                         alt="Soporte técnico y monitoreo 24/7" loading="lazy" />
@@ -317,10 +340,11 @@
                 </div>
                 <h3>Soporte técnico 24/7</h3>
                 <p>Equipo técnico disponible 24/7 para resolver cualquier inconveniente.</p>
+                <span class="service-card-badge">Ver detalles →</span>
             </div>
 
             <!-- Service: Remote Configuration -->
-            <div class="service-card">
+            <div class="service-card" onclick="openServiceDetail('configuracion')">
                 <div class="card-media">
                     <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
                         alt="Configuración remota de sistemas" loading="lazy" />
@@ -335,6 +359,316 @@
                 </div>
                 <h3>Configuración remota</h3>
                 <p>Configuración y ajustes de sistemas de forma remota para máxima comodidad.</p>
+                <span class="service-card-badge">Ver detalles →</span>
+            </div>
+        </div>
+
+        <!-- ======================================== -->
+        <!-- PANEL DE DETALLE DE SERVICIO            -->
+        <!-- ======================================== -->
+        <div class="service-detail-panel" id="serviceDetailPanel">
+            <button class="service-back-btn" onclick="closeServiceDetail()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M19 12H5M12 5l-7 7 7 7"/>
+                </svg>
+                Volver a servicios
+            </button>
+
+            <!-- ── CONTROL DE ACCESO ── -->
+            <div class="service-detail" id="detail-control-acceso">
+                <div class="product-catalog-header">
+                    <div class="pch-bg-layer"></div>
+                    <div class="pch-overlay"></div>
+                    <div class="pch-shimmer"></div>
+                    <div class="pch-content">
+                        <div class="pch-icon">
+                            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        </div>
+                        <h3>Control de Acceso</h3>
+                        <p>Terminales biométricas y faciales para gestión de acceso inteligente</p>
+                    </div>
+                </div>
+
+                <div class="product-catalog-grid">
+
+                    <!-- Producto 1 -->
+                    <div class="product-catalog-card">
+                        <div class="pcc-image">
+                            <img src="Img/Control%20de%20acceso.png.png.png" alt="Terminal Facial Hikvision DS-K1T344MBFWX-E1" />
+                            <div class="pcc-brand">HIKVISION</div>
+                        </div>
+                        <div class="pcc-body">
+                            <h4 class="pcc-name">Terminal Facial Min Moe<span>DS-K1T344MBFWX-E1</span></h4>
+                            <ul class="pcc-highlights">
+                                <li>Pantalla táctil 4.5"</li>
+                                <li>Cámara 2 MP</li>
+                                <li>3,000 rostros</li>
+                            </ul>
+                            <button class="pcc-toggle-btn" onclick="toggleSpecs(this)" aria-expanded="false">
+                                <span class="pcc-btn-text">Ver más</span>
+                                <svg class="pcc-toggle-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                            </button>
+                            <div class="pcc-specs" hidden>
+                                <div class="pcc-detail-section">
+                                    <h5>Físicas y eléctricas</h5>
+                                    <ul>
+                                        <li>Alimentación <strong>12 Vcd</strong> o <strong>PoE 802.3at</strong></li>
+                                        <li>TCP/IP cableado o WiFi</li>
+                                        <li>RS-485 · Wiegand · Relay · Sensor puerta · USB</li>
+                                        <li>Temperatura <strong>-10 °C a 55 °C</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="pcc-detail-section pcc-detail-star">
+                                    <h5>Destacadas</h5>
+                                    <ul>
+                                        <li>Administración <strong>remota o local</strong> vía software, web o pantalla</li>
+                                        <li><strong>SDK / API</strong> para integración con terceros</li>
+                                        <li><strong>150,000</strong> eventos · <strong>3,000</strong> tarjetas MiFare</li>
+                                    </ul>
+                                </div>
+                                <button class="product-cta-btn" onclick="scrollToContacto()">
+                                    Solicitar cotización
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto 2 -->
+                    <div class="product-catalog-card">
+                        <div class="pcc-image">
+                            <img src="Img/Control%20de%20acceso%202.png.png.png" alt="Terminal Min Moe WiFi Reconocimiento Facial" />
+                            <div class="pcc-brand">HIKVISION</div>
+                        </div>
+                        <div class="pcc-body">
+                            <h4 class="pcc-name">Terminal Min Moe WiFi<span>Reconocimiento Facial Ultra Rápido</span></h4>
+                            <ul class="pcc-highlights">
+                                <li>Pantalla táctil 4.3"</li>
+                                <li>1,500 rostros</li>
+                                <li>3,000 tarjetas</li>
+                            </ul>
+                            <button class="pcc-toggle-btn" onclick="toggleSpecs(this)" aria-expanded="false">
+                                <span class="pcc-btn-text">Ver más</span>
+                                <svg class="pcc-toggle-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                            </button>
+                            <div class="pcc-specs" hidden>
+                                <div class="pcc-detail-section">
+                                    <h5>Físicas y eléctricas</h5>
+                                    <ul>
+                                        <li>Alimentación <strong>12 Vcc / 1 A</strong> (incluido)</li>
+                                        <li>Temperatura <strong>-10 °C a 40 °C</strong> · Uso interior</li>
+                                        <li>Dimensiones <strong>118.4 × 118.4 × 21.8 mm</strong></li>
+                                        <li>RS-485 · Wiegand · USB · WiFi + cableado</li>
+                                    </ul>
+                                </div>
+                                <div class="pcc-detail-section pcc-detail-star">
+                                    <h5>Destacadas</h5>
+                                    <ul>
+                                        <li>Algoritmo <strong>Deep Learning</strong> para reconocimiento rápido</li>
+                                        <li>Exportación de eventos a <strong>Excel via USB</strong></li>
+                                        <li>Pases temporales para visitantes (<strong>QR o PIN</strong>)</li>
+                                    </ul>
+                                </div>
+                                <button class="product-cta-btn" onclick="scrollToContacto()">
+                                    Solicitar cotización
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto 3 -->
+                    <div class="product-catalog-card">
+                        <div class="pcc-image">
+                            <img src="Img/Control%20de%20acceso3.png.png.png" alt="Terminal de Reconocimiento Facial con lector MIFARE" />
+                            <div class="pcc-brand">HIKVISION</div>
+                        </div>
+                        <div class="pcc-body">
+                            <h4 class="pcc-name">Terminal Reconocimiento Facial<span>Lector MIFARE Multimétodo</span></h4>
+                            <ul class="pcc-highlights">
+                                <li>Pantalla táctil 3.97"</li>
+                                <li>500 rostros</li>
+                                <li>1,000 huellas</li>
+                            </ul>
+                            <button class="pcc-toggle-btn" onclick="toggleSpecs(this)" aria-expanded="false">
+                                <span class="pcc-btn-text">Ver más</span>
+                                <svg class="pcc-toggle-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                            </button>
+                            <div class="pcc-specs" hidden>
+                                <div class="pcc-detail-section">
+                                    <h5>Físicas y eléctricas</h5>
+                                    <ul>
+                                        <li>Alimentación <strong>12 Vcc</strong></li>
+                                        <li>Temperatura <strong>-10 °C a 50 °C</strong> · Interior/Exterior</li>
+                                        <li>RJ45 · RS-485 · Wiegand · USB</li>
+                                        <li>Lector MIFARE integrado <strong>13.56 MHz</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="pcc-detail-section pcc-detail-star">
+                                    <h5>Destacadas</h5>
+                                    <ul>
+                                        <li>Triple método: <strong>cara, huella y tarjeta</strong> en un solo equipo</li>
+                                        <li>Anti-spoofing con detección de <strong>rostros 3D</strong></li>
+                                        <li>Gestión centralizada vía <strong>iVMS-4200</strong></li>
+                                    </ul>
+                                </div>
+                                <button class="product-cta-btn" onclick="scrollToContacto()">
+                                    Solicitar cotización
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto 4 -->
+                    <div class="product-catalog-card">
+                        <div class="pcc-image">
+                            <img src="Img/Control%20de%20acceso4.png.png.png" alt="Hikvision DS-K1T804AMF Biométrico WiFi" />
+                            <div class="pcc-brand">HIKVISION</div>
+                        </div>
+                        <div class="pcc-body">
+                            <h4 class="pcc-name">DS-K1T804AMF Biométrico WiFi<span>Control de Acceso y Asistencia · Hik-Connect P2P</span></h4>
+                            <ul class="pcc-highlights">
+                                <li>3,000 huellas</li>
+                                <li>3,000 tarjetas MIFARE</li>
+                                <li>150,000 eventos</li>
+                            </ul>
+                            <button class="pcc-toggle-btn" onclick="toggleSpecs(this)" aria-expanded="false">
+                                <span class="pcc-btn-text">Ver más</span>
+                                <svg class="pcc-toggle-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                            </button>
+                            <div class="pcc-specs" hidden>
+                                <div class="pcc-detail-section">
+                                    <h5>Físicas y eléctricas</h5>
+                                    <ul>
+                                        <li>Alimentación <strong>12 Vcc / 2 A</strong> (no incluida) · Interior</li>
+                                        <li>Temperatura <strong>-10 °C a 45 °C</strong></li>
+                                        <li>Dimensiones <strong>205 × 76.5 × 37 mm</strong></li>
+                                        <li>TCP/IP · Wiegand 26/34 bits · RS-485</li>
+                                    </ul>
+                                </div>
+                                <div class="pcc-detail-section pcc-detail-star">
+                                    <h5>Destacadas</h5>
+                                    <ul>
+                                        <li>Sistema <strong>watchdog</strong> para autoreparación en caso de fallos</li>
+                                        <li>Teclado con <strong>iluminación</strong> · Comandos de voz</li>
+                                        <li>Reportes de asistencia vía <strong>iVMS-4200</strong></li>
+                                    </ul>
+                                </div>
+                                <button class="product-cta-btn" onclick="scrollToContacto()">
+                                    Solicitar cotización
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto 5 -->
+                    <div class="product-catalog-card">
+                        <div class="pcc-image">
+                            <img src="Img/Control%20de%20acceso5.png.png.png" alt="Hikvision DS-K1T8003EF Control de Acceso Biométrico" />
+                            <div class="pcc-brand">HIKVISION</div>
+                        </div>
+                        <div class="pcc-body">
+                            <h4 class="pcc-name">DS-K1T8003EF<span>Control de Acceso Biométrico · Pantalla LCD</span></h4>
+                            <ul class="pcc-highlights">
+                                <li>LCD 2.4"</li>
+                                <li>1,000 huellas</li>
+                                <li>1,000 tarjetas EM</li>
+                            </ul>
+                            <button class="pcc-toggle-btn" onclick="toggleSpecs(this)" aria-expanded="false">
+                                <span class="pcc-btn-text">Ver más</span>
+                                <svg class="pcc-toggle-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                            </button>
+                            <div class="pcc-specs" hidden>
+                                <div class="pcc-detail-section">
+                                    <h5>Físicas y eléctricas</h5>
+                                    <ul>
+                                        <li>Alimentación <strong>12 Vcd / 1 A</strong> (no incluida) · Interior</li>
+                                        <li>Temperatura <strong>-10 °C a 55 °C</strong></li>
+                                        <li>Dimensiones <strong>140 × 155 × 30 mm</strong></li>
+                                        <li>TCP/IP · Relay · Botón salida · USB 2.0</li>
+                                    </ul>
+                                </div>
+                                <div class="pcc-detail-section pcc-detail-star">
+                                    <h5>Destacadas</h5>
+                                    <ul>
+                                        <li>Reportes de asistencia vía <strong>iVMS-4200</strong> o <strong>Excel por USB</strong></li>
+                                        <li>Con <strong>Hik-Connect</strong>: control remoto y monitoreo de puerta</li>
+                                        <li>Versión recomendada iVMS-4200: <strong>3.1.1.13</strong></li>
+                                    </ul>
+                                </div>
+                                <button class="product-cta-btn" onclick="scrollToContacto()">
+                                    Solicitar cotización
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ── OTROS SERVICIOS (placeholder) ── -->
+            <div class="service-detail" id="detail-suministro">
+                <div class="service-detail-generic">
+                    <div class="sdg-icon">
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21v-4a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v4"/><circle cx="9" cy="9" r="2"/></svg>
+                    </div>
+                    <h2>Suministro de Equipos de Seguridad</h2>
+                    <p>Proveemos equipos de las mejores marcas del mercado: cámaras IP, alarmas, DVRs y NVRs, monitores, sensores y más. Trabajamos con Hikvision, Dahua, Bosch y otras marcas líderes.</p>
+                    <button class="product-cta-btn" onclick="scrollToContacto()">Solicitar cotización <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+                </div>
+            </div>
+            <div class="service-detail" id="detail-instalacion">
+                <div class="service-detail-generic">
+                    <div class="sdg-icon">
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="1.5"><path d="M6 4h12v7H6z"/><path d="M9 11v9h6v-9"/><rect x="3" y="20" width="18" height="2" rx="1"/></svg>
+                    </div>
+                    <h2>Instalación Profesional</h2>
+                    <p>Nuestro equipo de técnicos certificados realiza instalaciones de sistemas de seguridad garantizando calidad y durabilidad. Cubrimos proyectos residenciales, comerciales e industriales.</p>
+                    <button class="product-cta-btn" onclick="scrollToContacto()">Solicitar cotización <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+                </div>
+            </div>
+            <div class="service-detail" id="detail-mantenimiento">
+                <div class="service-detail-generic">
+                    <div class="sdg-icon">
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg>
+                    </div>
+                    <h2>Mantenimiento Preventivo y Correctivo</h2>
+                    <p>Ofrecemos planes de mantenimiento periódico para asegurar el funcionamiento óptimo de todos sus sistemas de seguridad. Detectamos y corregimos fallas antes de que afecten su operación.</p>
+                    <button class="product-cta-btn" onclick="scrollToContacto()">Solicitar cotización <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+                </div>
+            </div>
+            <div class="service-detail" id="detail-asesoria">
+                <div class="service-detail-generic">
+                    <div class="sdg-icon">
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M9 12h6"/></svg>
+                    </div>
+                    <h2>Asesoría Técnica Especializada</h2>
+                    <p>Analizamos las necesidades específicas de su empresa y diseñamos soluciones de seguridad personalizadas. Nuestros expertos le guiarán en la mejor elección de tecnología y configuración.</p>
+                    <button class="product-cta-btn" onclick="scrollToContacto()">Solicitar asesoría <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+                </div>
+            </div>
+            <div class="service-detail" id="detail-soporte">
+                <div class="service-detail-generic">
+                    <div class="sdg-icon">
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+                    </div>
+                    <h2>Soporte Técnico 24/7</h2>
+                    <p>Nuestro equipo está disponible las 24 horas, los 7 días de la semana para atender cualquier incidente o emergencia en sus sistemas de seguridad. Tiempo de respuesta garantizado.</p>
+                    <button class="product-cta-btn" onclick="scrollToContacto()">Contactar soporte <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+                </div>
+            </div>
+            <div class="service-detail" id="detail-configuracion">
+                <div class="service-detail-generic">
+                    <div class="sdg-icon">
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><circle cx="18" cy="9" r="2"/></svg>
+                    </div>
+                    <h2>Configuración Remota</h2>
+                    <p>Realizamos configuración, ajustes y actualizaciones de sus sistemas de manera remota, minimizando tiempos de inactividad y costos de desplazamiento. Acceso seguro y cifrado.</p>
+                    <button class="product-cta-btn" onclick="scrollToContacto()">Solicitar cotización <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+                </div>
             </div>
         </div>
     </section>
@@ -606,129 +940,195 @@
             </div>
             <div class="nosotros-image">
                 <div class="tech-animation">
-                    <svg class="tech-network" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <!-- Glow Filters -->
-                            <filter id="tech-glow-nosotros">
-                                <feGaussianBlur stdDeviation="5" result="coloredBlur" />
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur" />
-                                    <feMergeNode in="SourceGraphic" />
-                                </feMerge>
-                            </filter>
-                            <filter id="glow-strong-nosotros">
-                                <feGaussianBlur stdDeviation="10" result="coloredBlur" />
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur" />
-                                    <feMergeNode in="SourceGraphic" />
-                                </feMerge>
-                            </filter>
 
-                            <!-- Gradient Definitions -->
-                            <radialGradient id="sphereGradient" cx="40%" cy="35%">
-                                <stop offset="0%" stop-color="#60a5fa" />
-                                <stop offset="50%" stop-color="#3b82f6" />
-                                <stop offset="100%" stop-color="#1e3a8a" />
-                            </radialGradient>
+                <svg class="planet-network-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <!-- Gradientes planeta -->
+                    <radialGradient id="pn-sphere" cx="38%" cy="32%" r="65%">
+                      <stop offset="0%"  stop-color="#4fc3f7"/>
+                      <stop offset="25%" stop-color="#1e88e5"/>
+                      <stop offset="60%" stop-color="#0d47a1"/>
+                      <stop offset="100%" stop-color="#01113a"/>
+                    </radialGradient>
+                    <radialGradient id="pn-atmo" cx="50%" cy="50%" r="50%">
+                      <stop offset="70%" stop-color="transparent"/>
+                      <stop offset="100%" stop-color="rgba(56,145,255,0.55)"/>
+                    </radialGradient>
+                    <radialGradient id="pn-glow" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%"  stop-color="rgba(30,107,255,0.35)"/>
+                      <stop offset="60%" stop-color="rgba(30,107,255,0.08)"/>
+                      <stop offset="100%" stop-color="transparent"/>
+                    </radialGradient>
+                    <!-- Brillo solar -->
+                    <radialGradient id="pn-light" cx="35%" cy="28%" r="45%">
+                      <stop offset="0%"  stop-color="rgba(255,255,255,0.28)"/>
+                      <stop offset="100%" stop-color="transparent"/>
+                    </radialGradient>
+                    <!-- Sombra nocturna -->
+                    <radialGradient id="pn-shadow" cx="72%" cy="68%" r="55%">
+                      <stop offset="0%"  stop-color="rgba(0,0,12,0.75)"/>
+                      <stop offset="100%" stop-color="transparent"/>
+                    </radialGradient>
+                    <!-- Filtros glow -->
+                    <filter id="pn-glow-filter" x="-30%" y="-30%" width="160%" height="160%">
+                      <feGaussianBlur stdDeviation="6" result="blur"/>
+                      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                    <filter id="pn-glow-soft" x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur stdDeviation="3" result="blur"/>
+                      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                    <filter id="pn-glow-lg" x="-80%" y="-80%" width="260%" height="260%">
+                      <feGaussianBlur stdDeviation="14"/>
+                    </filter>
+                    <!-- Clip esfera -->
+                    <clipPath id="pn-clip">
+                      <circle cx="250" cy="250" r="155"/>
+                    </clipPath>
+                  </defs>
 
-                            <radialGradient id="glowGradient">
-                                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.6" />
-                                <stop offset="60%" stop-color="#1e40af" stop-opacity="0.3" />
-                                <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0" />
-                            </radialGradient>
-                        </defs>
+                  <!-- Glow exterior grande -->
+                  <circle cx="250" cy="250" r="195" fill="url(#pn-glow)"/>
 
-                        <!-- Outer Glow -->
-                        <circle cx="200" cy="200" r="160" fill="url(#glowGradient)" opacity="0.7" />
+                  <!-- Halo atmosférico -->
+                  <circle cx="250" cy="250" r="165" fill="none" stroke="rgba(56,145,255,0.5)" stroke-width="18" filter="url(#pn-glow-lg)" class="pn-atmo-ring"/>
 
-                        <!-- Orbital Rings -->
-                        <circle cx="200" cy="200" r="135" fill="none" stroke="#00d4ff" stroke-width="1.5" opacity="0.35"
-                            class="earth-orbit" />
-                        <circle cx="200" cy="200" r="150" fill="none" stroke="#1e6bff" stroke-width="1.2" opacity="0.25"
-                            class="outer-orbit" />
+                  <!-- PLANETA base -->
+                  <circle cx="250" cy="250" r="155" fill="url(#pn-sphere)"/>
 
-                        <!-- Main Sphere -->
-                        <circle cx="200" cy="200" r="120" fill="url(#sphereGradient)" filter="url(#tech-glow-nosotros)"
-                            class="earth" />
+                  <!-- Grilla lat/lon -->
+                  <g clip-path="url(#pn-clip)" opacity="0.22" stroke="#7ecfff" stroke-width="0.8" fill="none">
+                    <ellipse cx="250" cy="250" rx="155" ry="44"/>
+                    <ellipse cx="250" cy="250" rx="155" ry="88"/>
+                    <ellipse cx="250" cy="250" rx="155" ry="130"/>
+                    <ellipse cx="250" cy="250" rx="44"  ry="155"/>
+                    <ellipse cx="250" cy="250" rx="88"  ry="155"/>
+                    <ellipse cx="250" cy="250" rx="130" ry="155"/>
+                    <line x1="95"  y1="250" x2="405" y2="250"/>
+                    <line x1="250" y1="95"  x2="250" y2="405"/>
+                  </g>
 
-                        <!-- Grid Lines - Latitude -->
-                        <g opacity="0.3">
-                            <ellipse cx="200" cy="200" rx="120" ry="35" fill="none" stroke="#00d4ff" stroke-width="1" />
-                            <ellipse cx="200" cy="200" rx="120" ry="70" fill="none" stroke="#00d4ff" stroke-width="1" />
-                            <ellipse cx="200" cy="200" rx="120" ry="105" fill="none" stroke="#00d4ff"
-                                stroke-width="1" />
-                        </g>
+                  <!-- Sombra nocturna -->
+                  <circle cx="250" cy="250" r="155" fill="url(#pn-shadow)"/>
 
-                        <!-- Grid Lines - Longitude -->
-                        <g opacity="0.3">
-                            <ellipse cx="200" cy="200" rx="35" ry="120" fill="none" stroke="#00d4ff" stroke-width="1" />
-                            <ellipse cx="200" cy="200" rx="70" ry="120" fill="none" stroke="#00d4ff" stroke-width="1" />
-                            <ellipse cx="200" cy="200" rx="105" ry="120" fill="none" stroke="#00d4ff"
-                                stroke-width="1" />
-                        </g>
+                  <!-- Brillo solar -->
+                  <circle cx="250" cy="250" r="155" fill="url(#pn-light)"/>
 
-                        <!-- Network Connection Lines -->
-                        <g class="network-lines" opacity="0.45">
-                            <line x1="200" y1="80" x2="270" y2="120" stroke="#00d4ff" stroke-width="1.5"
-                                class="line-animate" />
-                            <line x1="270" y1="120" x2="310" y2="180" stroke="#00d4ff" stroke-width="1.5"
-                                class="line-animate" />
-                            <line x1="310" y1="180" x2="300" y2="260" stroke="#00d4ff" stroke-width="1.5"
-                                class="line-animate" />
-                            <line x1="300" y1="260" x2="240" y2="310" stroke="#00d4ff" stroke-width="1.5"
-                                class="line-animate" />
-                            <line x1="200" y1="80" x2="130" y2="120" stroke="#00d4ff" stroke-width="1.5"
-                                class="line-animate" />
-                            <line x1="130" y1="120" x2="90" y2="180" stroke="#00d4ff" stroke-width="1.5"
-                                class="line-animate" />
-                            <line x1="90" y1="180" x2="100" y2="260" stroke="#00d4ff" stroke-width="1.5"
-                                class="line-animate" />
-                            <line x1="100" y1="260" x2="160" y2="310" stroke="#00d4ff" stroke-width="1.5"
-                                class="line-animate" />
-                        </g>
+                  <!-- Atmósfera borde -->
+                  <circle cx="250" cy="250" r="155" fill="url(#pn-atmo)"/>
 
-                        <!-- Connection Nodes -->
-                        <g filter="url(#glow-strong-nosotros)">
-                            <circle cx="200" cy="80" r="5" fill="#00d4ff" class="node-corner node-1" />
-                            <circle cx="270" cy="120" r="5" fill="#00d4ff" class="node-corner node-2" />
-                            <circle cx="310" cy="180" r="5" fill="#00d4ff" class="node-corner node-3" />
-                            <circle cx="300" cy="260" r="5" fill="#00d4ff" class="node-corner node-4" />
-                            <circle cx="240" cy="310" r="5" fill="#00d4ff" class="node-corner node-1" />
-                            <circle cx="160" cy="310" r="5" fill="#00d4ff" class="node-corner node-2" />
-                            <circle cx="130" cy="120" r="5" fill="#00d4ff" class="node-corner node-3" />
-                            <circle cx="90" cy="180" r="5" fill="#00d4ff" class="node-corner node-4" />
-                            <circle cx="100" cy="260" r="5" fill="#00d4ff" class="node-corner node-1" />
-                        </g>
+                  <!-- ── CONTINENTES simplificados ── -->
+                  <g clip-path="url(#pn-clip)" fill="#2e7d32" opacity="0.6">
+                    <!-- América del Norte -->
+                    <path d="M148 175 C152 165 165 160 178 162 C185 163 192 170 195 180 C197 188 193 200 188 210 C183 220 172 228 162 225 C150 221 142 208 141 196 Z"/>
+                    <!-- América del Sur -->
+                    <path d="M168 232 C173 225 183 222 190 227 C198 232 200 245 198 258 C195 272 185 282 175 280 C163 276 158 262 158 250 Z"/>
+                    <!-- Europa/África -->
+                    <path d="M238 162 C245 155 258 153 266 158 C274 163 276 175 272 185 C268 195 255 200 246 196 C235 191 233 178 238 162 Z"/>
+                    <path d="M242 205 C248 200 260 200 267 207 C275 214 276 230 270 243 C264 255 250 260 240 254 C229 248 228 233 233 222 Z"/>
+                    <!-- Asia -->
+                    <path d="M285 155 C295 148 315 148 325 155 C335 162 337 178 330 190 C323 200 305 205 293 198 C280 190 276 170 285 155 Z"/>
+                    <!-- Australia -->
+                    <path d="M310 230 C318 224 332 225 338 233 C344 241 342 255 334 262 C325 268 311 266 305 257 C299 248 302 237 310 230 Z"/>
+                  </g>
 
-                        <!-- Continent Silhouettes -->
-                        <g opacity="0.35">
-                            <path d="M 165 185 L 172 176 L 178 186 L 176 206 L 165 212 L 159 198 Z" fill="#1e3a5f" />
-                            <path d="M 210 170 L 227 166 L 234 188 L 227 214 L 210 206 Z" fill="#1e3a5f" />
-                            <path d="M 238 188 L 254 193 L 251 216 L 239 223 Z" fill="#1e3a5f" />
-                        </g>
+                  <!-- ── LÍNEAS DE RED ── -->
+                  <!-- Arcos curvos entre nodos (se animan con stroke-dashoffset) -->
+                  <g fill="none" stroke-width="1.2">
+                    <path d="M 180 175 Q 215 130 270 160" stroke="#00e5ff" opacity="0.7" class="pn-arc pn-arc-1"/>
+                    <path d="M 270 160 Q 330 145 345 188" stroke="#00e5ff" opacity="0.7" class="pn-arc pn-arc-2"/>
+                    <path d="M 345 188 Q 360 230 330 265" stroke="#1e6bff" opacity="0.7" class="pn-arc pn-arc-3"/>
+                    <path d="M 330 265 Q 295 310 255 300" stroke="#1e6bff" opacity="0.7" class="pn-arc pn-arc-4"/>
+                    <path d="M 255 300 Q 210 318 185 285" stroke="#00e5ff" opacity="0.7" class="pn-arc pn-arc-5"/>
+                    <path d="M 185 285 Q 155 250 180 175" stroke="#00e5ff" opacity="0.7" class="pn-arc pn-arc-6"/>
+                    <!-- Líneas internas cruzadas -->
+                    <path d="M 180 175 Q 245 210 330 265" stroke="#4fc3f7" opacity="0.4" class="pn-arc pn-arc-7"/>
+                    <path d="M 270 160 Q 255 240 185 285" stroke="#4fc3f7" opacity="0.4" class="pn-arc pn-arc-8"/>
+                    <path d="M 345 188 Q 270 250 255 300" stroke="#7ecfff" opacity="0.35" class="pn-arc pn-arc-9"/>
+                  </g>
 
-                        <!-- CENTERED TS LOGO -->
-                        <g filter="url(#glow-strong-nosotros)">
-                            <!-- T Letter -->
-                            <text x="160" y="230" font-family="'Arial Black', 'Helvetica', sans-serif" font-size="90"
-                                font-weight="900" fill="#ffffff" stroke="#00d4ff" stroke-width="2.5" opacity="0.98"
-                                style="text-shadow: 0 0 20px rgba(0,212,255,0.9), 0 0 35px rgba(0,212,255,0.6);">T</text>
+                  <!-- ── NODOS ── -->
+                  <g filter="url(#pn-glow-filter)">
+                    <circle cx="180" cy="175" r="5.5" fill="#00e5ff" class="pn-node pn-nd-1"/>
+                    <circle cx="270" cy="160" r="5.5" fill="#00e5ff" class="pn-node pn-nd-2"/>
+                    <circle cx="345" cy="188" r="5.5" fill="#4fc3f7" class="pn-node pn-nd-3"/>
+                    <circle cx="330" cy="265" r="5.5" fill="#1e88e5" class="pn-node pn-nd-4"/>
+                    <circle cx="255" cy="300" r="5.5" fill="#00e5ff" class="pn-node pn-nd-5"/>
+                    <circle cx="185" cy="285" r="5.5" fill="#4fc3f7" class="pn-node pn-nd-6"/>
+                    <!-- Nodo central -->
+                    <circle cx="260" cy="225" r="7"   fill="#00e5ff" class="pn-node pn-nd-center"/>
+                    <circle cx="260" cy="225" r="12"  fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.5" class="pn-pulse-ring"/>
+                    <circle cx="260" cy="225" r="18"  fill="none" stroke="#00d4ff" stroke-width="0.8" opacity="0.3" class="pn-pulse-ring pn-pr-2"/>
+                    <!-- Sub-nodos -->
+                    <circle cx="220" cy="195" r="3.5" fill="#7ecfff" class="pn-node pn-nd-7"/>
+                    <circle cx="305" cy="215" r="3.5" fill="#7ecfff" class="pn-node pn-nd-8"/>
+                    <circle cx="240" cy="268" r="3.5" fill="#7ecfff" class="pn-node pn-nd-9"/>
+                    <!-- Líneas al nodo central -->
+                    <line x1="260" y1="225" x2="220" y2="195" stroke="#00e5ff" stroke-width="0.8" opacity="0.5"/>
+                    <line x1="260" y1="225" x2="305" y2="215" stroke="#00e5ff" stroke-width="0.8" opacity="0.5"/>
+                    <line x1="260" y1="225" x2="240" y2="268" stroke="#00e5ff" stroke-width="0.8" opacity="0.5"/>
+                  </g>
 
-                            <!-- S Letter -->
-                            <text x="218" y="230" font-family="'Arial Black', 'Helvetica', sans-serif" font-size="90"
-                                font-weight="900" fill="#ffffff" stroke="#00d4ff" stroke-width="2.5" opacity="0.98"
-                                style="text-shadow: 0 0 20px rgba(0,212,255,0.9), 0 0 35px rgba(0,212,255,0.6);">S</text>
-                        </g>
+                  <!-- ── PARTÍCULAS VIAJERAS (puntos que recorren los arcos) ── -->
+                  <circle r="3" fill="#ffffff" opacity="0.9" filter="url(#pn-glow-soft)">
+                    <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
+                      <mpath href="#pn-path-travel-1"/>
+                    </animateMotion>
+                  </circle>
+                  <circle r="2.5" fill="#00e5ff" opacity="0.9" filter="url(#pn-glow-soft)">
+                    <animateMotion dur="5.5s" repeatCount="indefinite" rotate="auto" begin="1s">
+                      <mpath href="#pn-path-travel-2"/>
+                    </animateMotion>
+                  </circle>
+                  <circle r="2" fill="#4fc3f7" opacity="0.8" filter="url(#pn-glow-soft)">
+                    <animateMotion dur="3.8s" repeatCount="indefinite" rotate="auto" begin="2s">
+                      <mpath href="#pn-path-travel-3"/>
+                    </animateMotion>
+                  </circle>
+                  <!-- Paths ocultos para animateMotion -->
+                  <defs>
+                    <path id="pn-path-travel-1" d="M 180 175 Q 215 130 270 160 Q 330 145 345 188"/>
+                    <path id="pn-path-travel-2" d="M 345 188 Q 360 230 330 265 Q 295 310 255 300 Q 210 318 185 285"/>
+                    <path id="pn-path-travel-3" d="M 185 285 Q 155 250 180 175 Q 215 130 270 160"/>
+                  </defs>
 
-                        <!-- Floating Particles -->
-                        <g class="particles" opacity="0.5">
-                            <circle cx="80" cy="100" r="2.5" fill="#00d4ff" class="particle particle-1" />
-                            <circle cx="330" cy="90" r="2" fill="#1e6bff" class="particle particle-2" />
-                            <circle cx="60" cy="310" r="2.2" fill="#00e5ff" class="particle particle-3" />
-                            <circle cx="350" cy="320" r="2" fill="#1e6bff" class="particle particle-4" />
-                            <circle cx="200" cy="370" r="2.5" fill="#00d4ff" class="particle particle-1" />
-                        </g>
-                    </svg>
+                  <!-- ── ANILLOS ORBITALES EXTERNOS ── -->
+                  <g fill="none">
+                    <!-- Anillo 1 con satélite -->
+                    <ellipse cx="250" cy="250" rx="192" ry="55" stroke="rgba(0,212,255,0.2)" stroke-width="1" transform="rotate(-20 250 250)"/>
+                    <circle r="5" fill="#00d4ff" filter="url(#pn-glow-filter)">
+                      <animateMotion dur="9s" repeatCount="indefinite">
+                        <mpath href="#pn-orbit-path-1"/>
+                      </animateMotion>
+                    </circle>
+                    <!-- Anillo 2 con satélite -->
+                    <ellipse cx="250" cy="250" rx="210" ry="65" stroke="rgba(30,107,255,0.18)" stroke-width="1" transform="rotate(15 250 250)"/>
+                    <circle r="4" fill="#1e6bff" filter="url(#pn-glow-filter)">
+                      <animateMotion dur="13s" repeatCount="indefinite" begin="-4s">
+                        <mpath href="#pn-orbit-path-2"/>
+                      </animateMotion>
+                    </circle>
+                    <!-- Anillo 3 fino -->
+                    <ellipse cx="250" cy="250" rx="178" ry="178" stroke="rgba(100,180,255,0.1)" stroke-width="1" stroke-dasharray="6 8"/>
+                    <!-- Paths de órbita -->
+                    <defs>
+                      <path id="pn-orbit-path-1" d="M 442 236 A 192 55 -20 1 1 441 234" transform="rotate(-20 250 250)"/>
+                      <path id="pn-orbit-path-2" d="M 460 257 A 210 65 15 1 1 459 255"  transform="rotate(15 250 250)"/>
+                    </defs>
+                  </g>
+
+                  <!-- Partículas flotantes externas -->
+                  <g filter="url(#pn-glow-soft)">
+                    <circle cx="82"  cy="142" r="2"   fill="#00e5ff" class="pn-ext-particle pn-ep-1"/>
+                    <circle cx="418" cy="118" r="1.5" fill="#4fc3f7" class="pn-ext-particle pn-ep-2"/>
+                    <circle cx="68"  cy="340" r="1.8" fill="#1e6bff" class="pn-ext-particle pn-ep-3"/>
+                    <circle cx="435" cy="360" r="2"   fill="#00e5ff" class="pn-ext-particle pn-ep-4"/>
+                    <circle cx="250" cy="58"  r="1.5" fill="#7ecfff" class="pn-ext-particle pn-ep-5"/>
+                    <circle cx="250" cy="442" r="1.8" fill="#00d4ff" class="pn-ext-particle pn-ep-6"/>
+                  </g>
+
+                </svg>
+
                 </div>
             </div>
         </div>
