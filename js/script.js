@@ -275,4 +275,56 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 window.scrollToServicios = scrollToServicios;
 window.scrollToContacto = scrollToContacto;
 
-console.log('Tecnology Solutions - script cargado sin errores');
+/* ===== PRODUCT SPECS ACCORDION ===== */
+function toggleSpecs(btn) {
+    const specs = btn.nextElementSibling;
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    const textEl = btn.querySelector('.pcc-btn-text');
+    if (expanded) {
+        btn.setAttribute('aria-expanded', 'false');
+        if (textEl) textEl.textContent = 'Ver más';
+        specs.hidden = true;
+    } else {
+        btn.setAttribute('aria-expanded', 'true');
+        if (textEl) textEl.textContent = 'Cerrar';
+        specs.hidden = false;
+    }
+}
+window.toggleSpecs = toggleSpecs;
+
+/* ===== SERVICE DETAIL PANEL ===== */
+function openServiceDetail(serviceId) {
+    const grid  = document.getElementById('serviciosGrid');
+    const panel = document.getElementById('serviceDetailPanel');
+    if (!grid || !panel) return;
+
+    // Ocultar grid, mostrar panel
+    grid.style.display  = 'none';
+    panel.classList.add('active');
+
+    // Ocultar todos los detalles y mostrar solo el seleccionado
+    document.querySelectorAll('.service-detail').forEach(d => d.classList.remove('active'));
+    const target = document.getElementById('detail-' + serviceId);
+    if (target) target.classList.add('active');
+
+    // Scroll suave a la sección
+    document.getElementById('servicios').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function closeServiceDetail() {
+    const grid  = document.getElementById('serviciosGrid');
+    const panel = document.getElementById('serviceDetailPanel');
+    if (!grid || !panel) return;
+
+    // Ocultar panel, mostrar grid
+    panel.classList.remove('active');
+    document.querySelectorAll('.service-detail').forEach(d => d.classList.remove('active'));
+    grid.style.display = '';
+
+    // Scroll suave de vuelta a la sección
+    document.getElementById('servicios').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+window.openServiceDetail  = openServiceDetail;
+window.closeServiceDetail = closeServiceDetail;
+
