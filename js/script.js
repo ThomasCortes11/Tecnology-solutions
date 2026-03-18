@@ -75,7 +75,11 @@ navLinks.forEach((link) => {
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (!navbar) return;
-    navbar.style.boxShadow = window.scrollY > 50 ? '0 4px 20px rgba(0, 0, 0, 0.1)' : 'none';
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
 });
 
 const observerOptions = {
@@ -291,6 +295,63 @@ function toggleSpecs(btn) {
     }
 }
 window.toggleSpecs = toggleSpecs;
+
+/* ===== METRICS COUNT-UP ANIMATION ===== */
+(function () {
+    const metricsCards = document.querySelectorAll('.metrics-card');
+    if (!metricsCards.length) return;
+
+    function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+    }
+
+    function animateCount(el) {
+        const raw = el.dataset.target;
+        const target = parseFloat(raw);
+        const isDecimal = raw.includes('.');
+        const duration = 1900;
+        const startTime = performance.now();
+
+        function step(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const current = easeOutCubic(progress) * target;
+
+            if (isDecimal) {
+                el.textContent = current.toFixed(1);
+            } else if (target >= 1000) {
+                el.textContent = Math.round(current).toLocaleString('es-CO');
+            } else {
+                el.textContent = Math.floor(current);
+            }
+
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                el.textContent = isDecimal
+                    ? target.toFixed(1)
+                    : target >= 1000 ? target.toLocaleString('es-CO') : String(target);
+            }
+        }
+        requestAnimationFrame(step);
+    }
+
+    const metricsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const card = entry.target;
+            const idx = Array.from(metricsCards).indexOf(card);
+            setTimeout(() => {
+                card.classList.add('metrics-visible');
+                const countEl = card.querySelector('.count-number');
+                if (countEl) animateCount(countEl);
+            }, idx * 130);
+            metricsObserver.unobserve(card);
+        });
+    }, { threshold: 0.15 });
+
+    metricsCards.forEach(card => metricsObserver.observe(card));
+}());
 
 /* ===== SERVICE DETAIL PANEL ===== */
 function openServiceDetail(serviceId) {
