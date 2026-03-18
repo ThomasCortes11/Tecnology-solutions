@@ -30,90 +30,66 @@
          ======================================== -->
     <nav class="navbar">
         <div class="navbar-container">
-            <!-- Company Logo - Digital Globe with TS -->
+            <!-- Company Logo -->
             <div class="navbar-logo">
-                <svg class="logo-icon" width="28" height="28" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                <svg class="logo-globe-icon" viewBox="0 0 48 48" width="46" height="46" xmlns="http://www.w3.org/2000/svg">
                     <defs>
-                        <!-- Gradient for mini planet -->
-                        <radialGradient id="miniPlanetGradient" cx="40%" cy="35%">
-                            <stop offset="0%" stop-color="#60a5fa" />
-                            <stop offset="50%" stop-color="#3b82f6" />
-                            <stop offset="100%" stop-color="#1e3a8a" />
+                        <radialGradient id="lgi-sf" cx="36%" cy="30%">
+                            <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.50"/>
+                            <stop offset="100%" stop-color="#0f172a" stop-opacity="0.80"/>
                         </radialGradient>
-                        <!-- Glow filter -->
-                        <filter id="miniGlow">
-                            <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
-                            <feMerge>
-                                <feMergeNode in="coloredBlur" />
-                                <feMergeNode in="SourceGraphic" />
-                            </feMerge>
+                        <radialGradient id="lgi-na" cx="32%" cy="28%">
+                            <stop offset="0%" stop-color="#7dd3fc"/>
+                            <stop offset="100%" stop-color="#1d4ed8"/>
+                        </radialGradient>
+                        <radialGradient id="lgi-nb" cx="32%" cy="28%">
+                            <stop offset="0%" stop-color="#93c5fd"/>
+                            <stop offset="100%" stop-color="#2563eb"/>
+                        </radialGradient>
+                        <filter id="lgi-glow" x="-40%" y="-40%" width="180%" height="180%">
+                            <feGaussianBlur stdDeviation="1.1" result="blur"/>
+                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
                         </filter>
-                        <!-- Strong glow filter for sparkles -->
-                        <filter id="miniSparkle">
-                            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-                            <feMerge>
-                                <feMergeNode in="coloredBlur" />
-                                <feMergeNode in="SourceGraphic" />
-                            </feMerge>
-                        </filter>
+                        <clipPath id="lgi-clip">
+                            <circle cx="24" cy="24" r="22"/>
+                        </clipPath>
                     </defs>
-
-                    <!-- Outer glow -->
-                    <circle cx="20" cy="20" r="18" fill="url(#miniPlanetGradient)" opacity="0.2" class="logo-glow" />
-
-                    <!-- Orbital ring -->
-                    <circle cx="20" cy="20" r="15" fill="none" stroke="#00d4ff" stroke-width="0.8" opacity="0.4"
-                        class="logo-orbit" />
-
-                    <!-- Main planet sphere -->
-                    <circle cx="20" cy="20" r="12" fill="url(#miniPlanetGradient)" filter="url(#miniGlow)"
-                        class="logo-sphere" />
-
-                    <!-- Grid lines - Latitude -->
-                    <ellipse cx="20" cy="20" rx="12" ry="3.5" fill="none" stroke="#00d4ff" stroke-width="0.5"
-                        opacity="0.3" />
-                    <ellipse cx="20" cy="20" rx="12" ry="7" fill="none" stroke="#00d4ff" stroke-width="0.5"
-                        opacity="0.3" />
-
-                    <!-- Grid lines - Longitude -->
-                    <ellipse cx="20" cy="20" rx="3.5" ry="12" fill="none" stroke="#00d4ff" stroke-width="0.5"
-                        opacity="0.3" />
-                    <ellipse cx="20" cy="20" rx="7" ry="12" fill="none" stroke="#00d4ff" stroke-width="0.5"
-                        opacity="0.3" />
-
-                    <!-- Network nodes -->
-                    <circle cx="20" cy="8" r="1" fill="#00d4ff" opacity="0.8" class="logo-node"
-                        filter="url(#miniSparkle)" />
-                    <circle cx="28" cy="16" r="1" fill="#00d4ff" opacity="0.8" class="logo-node"
-                        filter="url(#miniSparkle)" />
-                    <circle cx="28" cy="24" r="1" fill="#00d4ff" opacity="0.8" class="logo-node"
-                        filter="url(#miniSparkle)" />
-                    <circle cx="12" cy="16" r="1" fill="#00d4ff" opacity="0.8" class="logo-node"
-                        filter="url(#miniSparkle)" />
-
-                    <!-- Sparkle particles (destellos) -->
-                    <circle cx="8" cy="12" r="0.8" fill="#ffffff" opacity="0.9" class="logo-sparkle sparkle-1"
-                        filter="url(#miniSparkle)" />
-                    <circle cx="32" cy="10" r="0.6" fill="#00e5ff" opacity="0.8" class="logo-sparkle sparkle-2"
-                        filter="url(#miniSparkle)" />
-                    <circle cx="35" cy="20" r="0.7" fill="#ffffff" opacity="0.9" class="logo-sparkle sparkle-3"
-                        filter="url(#miniSparkle)" />
-                    <circle cx="6" cy="28" r="0.65" fill="#00d4ff" opacity="0.85" class="logo-sparkle sparkle-4"
-                        filter="url(#miniSparkle)" />
-                    <circle cx="20" cy="35" r="0.75" fill="#ffffff" opacity="0.9" class="logo-sparkle sparkle-5"
-                        filter="url(#miniSparkle)" />
-                    <circle cx="32" cy="30" r="0.5" fill="#00e5ff" opacity="0.8" class="logo-sparkle sparkle-6"
-                        filter="url(#miniSparkle)" />
-                    <circle cx="10" cy="20" r="0.6" fill="#ffffff" opacity="0.85" class="logo-sparkle sparkle-7"
-                        filter="url(#miniSparkle)" />
-                    <circle cx="30" cy="8" r="0.55" fill="#00d4ff" opacity="0.8" class="logo-sparkle sparkle-8"
-                        filter="url(#miniSparkle)" />
-
-                    <!-- Mini TS text -->
-                    <text x="15.5" y="23" font-family="Arial Black, sans-serif" font-size="8" font-weight="900"
-                        fill="#ffffff" opacity="0.95" class="logo-ts" filter="url(#miniSparkle)">TS</text>
+                    <!-- Sphere base fill -->
+                    <circle cx="24" cy="24" r="22" fill="url(#lgi-sf)"/>
+                    <!-- Outer border ring -->
+                    <circle cx="24" cy="24" r="22.5" fill="none" stroke="#3b82f6" stroke-width="1" opacity="0.6"/>
+                    <!-- Connection lines -->
+                    <g clip-path="url(#lgi-clip)" fill="none" stroke="#60a5fa" stroke-width="0.9" opacity="0.50">
+                        <polygon points="24,2 40,8 46,24 40,40 24,46 8,40 2,24 8,8"/>
+                        <line x1="24" y1="2"  x2="24" y2="24"/>
+                        <line x1="40" y1="8"  x2="24" y2="24"/>
+                        <line x1="46" y1="24" x2="24" y2="24"/>
+                        <line x1="40" y1="40" x2="24" y2="24"/>
+                        <line x1="24" y1="46" x2="24" y2="24"/>
+                        <line x1="8"  y1="40" x2="24" y2="24"/>
+                        <line x1="2"  y1="24" x2="24" y2="24"/>
+                        <line x1="8"  y1="8"  x2="24" y2="24"/>
+                        <!-- cross diagonals for extra mesh density -->
+                        <line x1="40" y1="8"  x2="8" y2="40"/>
+                        <line x1="8"  y1="8"  x2="40" y2="40"/>
+                    </g>
+                    <!-- Nodes -->
+                    <g clip-path="url(#lgi-clip)" filter="url(#lgi-glow)">
+                        <circle cx="24" cy="2"  r="4.2" fill="url(#lgi-na)"/>
+                        <circle cx="40" cy="8"  r="4.0" fill="url(#lgi-nb)"/>
+                        <circle cx="46" cy="24" r="3.8" fill="url(#lgi-na)"/>
+                        <circle cx="40" cy="40" r="4.0" fill="url(#lgi-nb)"/>
+                        <circle cx="24" cy="46" r="4.2" fill="url(#lgi-na)"/>
+                        <circle cx="8"  cy="40" r="3.8" fill="url(#lgi-nb)"/>
+                        <circle cx="2"  cy="24" r="3.8" fill="url(#lgi-na)"/>
+                        <circle cx="8"  cy="8"  r="4.0" fill="url(#lgi-nb)"/>
+                        <circle cx="24" cy="24" r="5.2" fill="url(#lgi-na)"/>
+                    </g>
                 </svg>
-                <span class="logo-text">Tecnology Solution's</span>
+                <span class="logo-wordmark">
+                    <span class="logo-main">Tecnology</span>
+                    <span class="logo-sub">Solution's</span>
+                </span>
             </div>
 
             <!-- Navigation Menu with Dropdown -->
@@ -1393,167 +1369,282 @@
     </section>
 
     <!-- ========================================
-         CLIENTS SECTION
-         Trusted by leading companies
+         CLIENTS SECTION — Redesigned
+         Animated marquee · stats strip · dark theme
          ======================================== -->
     <section class="clientes-section" id="clientes">
-        <div class="section-header">
-            <h2>Nuestros Clientes</h2>
-            <p>Empresas que confían en nuestros servicios</p>
+
+        <!-- Decorative ambient background -->
+        <div class="clientes-bg" aria-hidden="true">
+            <div class="clientes-bg-grid"></div>
+            <span class="clientes-orb clientes-orb--a"></span>
+            <span class="clientes-orb clientes-orb--b"></span>
         </div>
 
-        <div class="clients-grid">
-            <!-- Client 1: International Trade Centre -->
-            <div class="client-logo-item">
-                <div class="client-logo-card">
+        <!-- ── Section header ── -->
+        <div class="clientes-header">
+            <span class="clientes-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                Más de 1.000 Empresas
+            </span>
+            <h2 class="clientes-title">Nuestros <em>Clientes</em></h2>
+            <p class="clientes-subtitle">Empresas líderes que confían su seguridad a Technology Solution's</p>
+        </div>
+
+        <!-- ── Stats strip ── -->
+        <div class="clientes-stats">
+            <div class="clientes-stat">
+                <span class="stat-num">1.000+</span>
+                <span class="stat-label">Empresas protegidas</span>
+            </div>
+            <span class="stat-sep" aria-hidden="true"></span>
+            <div class="clientes-stat">
+                <span class="stat-num">20+</span>
+                <span class="stat-label">Años de experiencia</span>
+            </div>
+            <span class="stat-sep" aria-hidden="true"></span>
+            <div class="clientes-stat">
+                <span class="stat-num">99%</span>
+                <span class="stat-label">Satisfacción</span>
+            </div>
+            <span class="stat-sep" aria-hidden="true"></span>
+            <div class="clientes-stat">
+                <span class="stat-num">24/7</span>
+                <span class="stat-label">Soporte técnico</span>
+            </div>
+        </div>
+
+        <!-- ── Marquee Row 1 – scrolls left (ITC · Candela · Surtimax · SAI · Totto) ── -->
+        <div class="clientes-ticker" aria-label="Empresas cliente">
+            <div class="clientes-track">
+                <!-- ITC -->
+                <div class="cl-card">
                     <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="36" y="22" width="24" height="24" transform="rotate(45 48 34)" fill="#3568A8" />
-                        <rect x="62" y="48" width="24" height="24" transform="rotate(45 74 60)" fill="#3B78BF" />
-                        <rect x="88" y="22" width="24" height="24" transform="rotate(45 100 34)" fill="#CC2A6A" />
-                        <rect x="114" y="48" width="24" height="24" transform="rotate(45 126 60)" fill="#7A8EA5" />
-                        <text x="100" y="105" font-size="10" fill="#4A4A4A" text-anchor="middle" font-family="Arial"
-                            font-weight="600">INTERNATIONAL TRADE</text>
+                        <rect x="36" y="22" width="24" height="24" transform="rotate(45 48 34)" fill="#3568A8"/>
+                        <rect x="62" y="48" width="24" height="24" transform="rotate(45 74 60)" fill="#3B78BF"/>
+                        <rect x="88" y="22" width="24" height="24" transform="rotate(45 100 34)" fill="#CC2A6A"/>
+                        <rect x="114" y="48" width="24" height="24" transform="rotate(45 126 60)" fill="#7A8EA5"/>
+                        <text x="100" y="105" font-size="10" fill="#8aa0cc" text-anchor="middle" font-family="Arial" font-weight="600">INTERNATIONAL TRADE</text>
                     </svg>
-                    <p class="client-name">International Trade Centre</p>
+                    <span class="cl-name">International Trade Centre</span>
+                </div>
+                <!-- Candela -->
+                <div class="cl-card">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <text x="100" y="66" font-size="38" fill="#4d80e4" text-anchor="middle" font-family="Georgia" font-style="italic" font-weight="700">Candela</text>
+                        <path d="M138 28 C154 36, 160 52, 150 66 C170 60, 182 44, 170 28" fill="none" stroke="#F6A000" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                    <span class="cl-name">Candela</span>
+                </div>
+                <!-- Surtimax -->
+                <div class="cl-card">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="30" y="30" width="140" height="48" rx="6" fill="#D92128"/>
+                        <text x="100" y="63" font-size="33" fill="#F5F233" text-anchor="middle" font-family="Arial" font-weight="900">SURTIMAX</text>
+                    </svg>
+                    <span class="cl-name">Surtimax</span>
+                </div>
+                <!-- SAI -->
+                <div class="cl-card">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <text x="100" y="65" font-size="44" fill="#2ecf7e" text-anchor="middle" font-family="Arial" font-weight="900">SAI</text>
+                        <line x1="48" y1="74" x2="152" y2="74" stroke="#2ecf7e" stroke-width="3"/>
+                        <text x="100" y="90" font-size="8" fill="#2ecf7e" text-anchor="middle" font-family="Arial">SERVICIOS AEROPORTUARIOS</text>
+                    </svg>
+                    <span class="cl-name">Servicios Aeroportuarios</span>
+                </div>
+                <!-- Totto -->
+                <div class="cl-card">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <text x="100" y="70" font-size="42" fill="#e8eeff" text-anchor="middle" font-family="Arial" font-weight="400" letter-spacing="-1">totto</text>
+                        <circle cx="85" cy="42" r="5" fill="#E63946"/>
+                        <circle cx="115" cy="42" r="5" fill="#F9C74F"/>
+                    </svg>
+                    <span class="cl-name">Totto</span>
+                </div>
+                <!-- ── Duplicate set for seamless loop ── -->
+                <div class="cl-card" aria-hidden="true">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="36" y="22" width="24" height="24" transform="rotate(45 48 34)" fill="#3568A8"/>
+                        <rect x="62" y="48" width="24" height="24" transform="rotate(45 74 60)" fill="#3B78BF"/>
+                        <rect x="88" y="22" width="24" height="24" transform="rotate(45 100 34)" fill="#CC2A6A"/>
+                        <rect x="114" y="48" width="24" height="24" transform="rotate(45 126 60)" fill="#7A8EA5"/>
+                        <text x="100" y="105" font-size="10" fill="#8aa0cc" text-anchor="middle" font-family="Arial" font-weight="600">INTERNATIONAL TRADE</text>
+                    </svg>
+                    <span class="cl-name">International Trade Centre</span>
+                </div>
+                <div class="cl-card" aria-hidden="true">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <text x="100" y="66" font-size="38" fill="#4d80e4" text-anchor="middle" font-family="Georgia" font-style="italic" font-weight="700">Candela</text>
+                        <path d="M138 28 C154 36, 160 52, 150 66 C170 60, 182 44, 170 28" fill="none" stroke="#F6A000" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                    <span class="cl-name">Candela</span>
+                </div>
+                <div class="cl-card" aria-hidden="true">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="30" y="30" width="140" height="48" rx="6" fill="#D92128"/>
+                        <text x="100" y="63" font-size="33" fill="#F5F233" text-anchor="middle" font-family="Arial" font-weight="900">SURTIMAX</text>
+                    </svg>
+                    <span class="cl-name">Surtimax</span>
+                </div>
+                <div class="cl-card" aria-hidden="true">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <text x="100" y="65" font-size="44" fill="#2ecf7e" text-anchor="middle" font-family="Arial" font-weight="900">SAI</text>
+                        <line x1="48" y1="74" x2="152" y2="74" stroke="#2ecf7e" stroke-width="3"/>
+                        <text x="100" y="90" font-size="8" fill="#2ecf7e" text-anchor="middle" font-family="Arial">SERVICIOS AEROPORTUARIOS</text>
+                    </svg>
+                    <span class="cl-name">Servicios Aeroportuarios</span>
+                </div>
+                <div class="cl-card" aria-hidden="true">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <text x="100" y="70" font-size="42" fill="#e8eeff" text-anchor="middle" font-family="Arial" font-weight="400" letter-spacing="-1">totto</text>
+                        <circle cx="85" cy="42" r="5" fill="#E63946"/>
+                        <circle cx="115" cy="42" r="5" fill="#F9C74F"/>
+                    </svg>
+                    <span class="cl-name">Totto</span>
                 </div>
             </div>
+        </div>
 
-            <!-- Client 2: Candela -->
-            <div class="client-logo-item">
-                <div class="client-logo-card">
+        <!-- ── Marquee Row 2 – scrolls right (Ricoh · Chevrolet · Toyota · Adidas · Surtimax · SAI) ── -->
+        <div class="clientes-ticker clientes-ticker--rev" aria-label="Más empresas cliente">
+            <div class="clientes-track">
+                <!-- Ricoh -->
+                <div class="cl-card">
                     <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <text x="100" y="66" font-size="38" fill="#1E4FAF" text-anchor="middle" font-family="Georgia"
-                            font-style="italic" font-weight="700">Candela</text>
-                        <path d="M138 28 C154 36, 160 52, 150 66 C170 60, 182 44, 170 28" fill="none" stroke="#F6A000"
-                            stroke-width="4" stroke-linecap="round" />
+                        <text x="100" y="68" font-size="52" fill="#E61D2A" text-anchor="middle" font-family="Arial" font-weight="900" letter-spacing="2">RICOH</text>
                     </svg>
-                    <p class="client-name">Candela</p>
+                    <span class="cl-name">Ricoh</span>
                 </div>
-            </div>
-
-            <!-- Client 4: Surtimax -->
-            <div class="client-logo-item">
-                <div class="client-logo-card">
+                <!-- Chevrolet -->
+                <div class="cl-card">
                     <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Surtimax Logo - Transparent integration -->
-                        <rect x="30" y="30" width="140" height="48" rx="6" fill="#D92128" />
-                        <text x="100" y="63" font-size="33" fill="#F5F233" text-anchor="middle" font-family="Arial"
-                            font-weight="900">SURTIMAX</text>
+                        <polygon points="72,36 128,36 128,48 148,48 148,72 128,72 128,84 72,84 72,72 52,72 52,48 72,48" fill="#D9B64B" stroke="#A5832F" stroke-width="3"/>
+                        <text x="100" y="106" font-size="14" fill="#e0e8ff" text-anchor="middle" font-family="Arial" font-weight="800" letter-spacing="2">CHEVROLET</text>
                     </svg>
-                    <p class="client-name">Surtimax</p>
+                    <span class="cl-name">Chevrolet</span>
                 </div>
-            </div>
-
-            <!-- Client 5: SAI -->
-            <div class="client-logo-item">
-                <div class="client-logo-card">
-                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <text x="100" y="65" font-size="44" fill="#118A4F" text-anchor="middle" font-family="Arial"
-                            font-weight="900">SAI</text>
-                        <line x1="48" y1="74" x2="152" y2="74" stroke="#118A4F" stroke-width="3" />
-                        <text x="100" y="90" font-size="8" fill="#118A4F" text-anchor="middle"
-                            font-family="Arial">SERVICIOS AEROPORTUARIOS</text>
-                    </svg>
-                    <p class="client-name">Servicios Aeroportuarios Integrados</p>
-                </div>
-            </div>
-
-            <!-- Client 6: Totto -->
-            <div class="client-logo-item">
-                <div class="client-logo-card">
-                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Totto Logo - Transparent background, black text -->
-                        <text x="100" y="70" font-size="42" fill="#000000" text-anchor="middle" font-family="Arial"
-                            font-weight="400" letter-spacing="-1">totto</text>
-                        <circle cx="85" cy="42" r="5" fill="#E63946" />
-                        <circle cx="115" cy="42" r="5" fill="#F9C74F" />
-                    </svg>
-                    <p class="client-name">Totto</p>
-                </div>
-            </div>
-
-            <!-- Client 7: Ricoh -->
-            <div class="client-logo-item">
-                <div class="client-logo-card">
-                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <text x="100" y="68" font-size="52" fill="#E61D2A" text-anchor="middle" font-family="Arial"
-                            font-weight="900" letter-spacing="2">RICOH</text>
-                    </svg>
-                    <p class="client-name">Ricoh</p>
-                </div>
-            </div>
-
-            <!-- Client 8: Chevrolet -->
-            <div class="client-logo-item">
-                <div class="client-logo-card">
-                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <polygon points="72,36 128,36 128,48 148,48 148,72 128,72 128,84 72,84 72,72 52,72 52,48 72,48"
-                            fill="#D9B64B" stroke="#A5832F" stroke-width="3" />
-                        <text x="100" y="106" font-size="14" fill="#111111" text-anchor="middle" font-family="Arial"
-                            font-weight="800" letter-spacing="2">CHEVROLET</text>
-                    </svg>
-                    <p class="client-name">Chevrolet</p>
-                </div>
-            </div>
-
-            <!-- Client 9: Toyota -->
-            <div class="client-logo-item">
-                <div class="client-logo-card">
+                <!-- Toyota -->
+                <div class="cl-card">
                     <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
                         <defs>
-                            <linearGradient id="toyota-metal" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#F2F2F2" />
-                                <stop offset="50%" stop-color="#B8BDC4" />
-                                <stop offset="100%" stop-color="#7E848D" />
+                            <linearGradient id="tgm1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#d0d8e8"/>
+                                <stop offset="50%" stop-color="#98a0b0"/>
+                                <stop offset="100%" stop-color="#606878"/>
                             </linearGradient>
                         </defs>
-                        <ellipse cx="100" cy="45" rx="58" ry="32" fill="none" stroke="url(#toyota-metal)"
-                            stroke-width="7" />
-                        <ellipse cx="100" cy="45" rx="17" ry="30" fill="none" stroke="url(#toyota-metal)"
-                            stroke-width="7" />
-                        <ellipse cx="100" cy="45" rx="36" ry="14" fill="none" stroke="url(#toyota-metal)"
-                            stroke-width="7" />
-                        <text x="100" y="103" font-size="30" fill="#EB1B3A" text-anchor="middle" font-family="Arial"
-                            font-weight="900" letter-spacing="1">TOYOTA</text>
+                        <ellipse cx="100" cy="45" rx="58" ry="32" fill="none" stroke="url(#tgm1)" stroke-width="7"/>
+                        <ellipse cx="100" cy="45" rx="17" ry="30" fill="none" stroke="url(#tgm1)" stroke-width="7"/>
+                        <ellipse cx="100" cy="45" rx="36" ry="14" fill="none" stroke="url(#tgm1)" stroke-width="7"/>
+                        <text x="100" y="103" font-size="30" fill="#EB1B3A" text-anchor="middle" font-family="Arial" font-weight="900" letter-spacing="1">TOYOTA</text>
                     </svg>
-                    <p class="client-name">Toyota</p>
+                    <span class="cl-name">Toyota</span>
                 </div>
-            </div>
-
-            <!-- Client 10: Adidas -->
-            <div class="client-logo-item">
-                <div class="client-logo-card">
+                <!-- Adidas -->
+                <div class="cl-card">
                     <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Adidas Performance Logo - Three slanted stripes -->
                         <g transform="translate(10, 15)">
-                            <path d="M40 70 L65 70 L105 5 L80 5 Z" fill="#000000" />
-                            <path d="M75 70 L100 70 L140 25 L115 25 Z" fill="#000000" />
-                            <path d="M110 70 L135 70 L175 45 L150 45 Z" fill="#000000" />
+                            <path d="M40 70 L65 70 L105 5 L80 5 Z" fill="#e0e8ff"/>
+                            <path d="M75 70 L100 70 L140 25 L115 25 Z" fill="#e0e8ff"/>
+                            <path d="M110 70 L135 70 L175 45 L150 45 Z" fill="#e0e8ff"/>
                         </g>
-
-                        <!-- Text "adidas" -->
-                        <text x="100" y="105" font-size="26" fill="#000000" text-anchor="middle"
-                            font-family="'Segoe UI', Arial, sans-serif" font-weight="700"
-                            letter-spacing="-1">adidas</text>
-
-                        <!-- ® symbol -->
-                        <circle cx="155" cy="85" r="3.5" fill="none" stroke="#000000" stroke-width="0.6" />
-                        <text x="155" y="87" font-size="4.5" fill="#000000" text-anchor="middle" font-family="Arial"
-                            font-weight="700">R</text>
+                        <text x="100" y="105" font-size="26" fill="#e0e8ff" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="700" letter-spacing="-1">adidas</text>
+                        <circle cx="155" cy="85" r="3.5" fill="none" stroke="#e0e8ff" stroke-width="0.6"/>
+                        <text x="155" y="87" font-size="4.5" fill="#e0e8ff" text-anchor="middle" font-family="Arial" font-weight="700">R</text>
                     </svg>
-                    <p class="client-name">Adidas</p>
+                    <span class="cl-name">Adidas</span>
+                </div>
+                <!-- Surtimax (extra for visual balance) -->
+                <div class="cl-card">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="30" y="30" width="140" height="48" rx="6" fill="#D92128"/>
+                        <text x="100" y="63" font-size="33" fill="#F5F233" text-anchor="middle" font-family="Arial" font-weight="900">SURTIMAX</text>
+                    </svg>
+                    <span class="cl-name">Surtimax</span>
+                </div>
+                <!-- SAI (extra for visual balance) -->
+                <div class="cl-card">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <text x="100" y="65" font-size="44" fill="#2ecf7e" text-anchor="middle" font-family="Arial" font-weight="900">SAI</text>
+                        <line x1="48" y1="74" x2="152" y2="74" stroke="#2ecf7e" stroke-width="3"/>
+                        <text x="100" y="90" font-size="8" fill="#2ecf7e" text-anchor="middle" font-family="Arial">SERVICIOS AEROPORTUARIOS</text>
+                    </svg>
+                    <span class="cl-name">Servicios Aeroportuarios</span>
+                </div>
+                <!-- ── Duplicate set for seamless loop ── -->
+                <div class="cl-card" aria-hidden="true">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <text x="100" y="68" font-size="52" fill="#E61D2A" text-anchor="middle" font-family="Arial" font-weight="900" letter-spacing="2">RICOH</text>
+                    </svg>
+                    <span class="cl-name">Ricoh</span>
+                </div>
+                <div class="cl-card" aria-hidden="true">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="72,36 128,36 128,48 148,48 148,72 128,72 128,84 72,84 72,72 52,72 52,48 72,48" fill="#D9B64B" stroke="#A5832F" stroke-width="3"/>
+                        <text x="100" y="106" font-size="14" fill="#e0e8ff" text-anchor="middle" font-family="Arial" font-weight="800" letter-spacing="2">CHEVROLET</text>
+                    </svg>
+                    <span class="cl-name">Chevrolet</span>
+                </div>
+                <div class="cl-card" aria-hidden="true">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="tgm2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#d0d8e8"/>
+                                <stop offset="50%" stop-color="#98a0b0"/>
+                                <stop offset="100%" stop-color="#606878"/>
+                            </linearGradient>
+                        </defs>
+                        <ellipse cx="100" cy="45" rx="58" ry="32" fill="none" stroke="url(#tgm2)" stroke-width="7"/>
+                        <ellipse cx="100" cy="45" rx="17" ry="30" fill="none" stroke="url(#tgm2)" stroke-width="7"/>
+                        <ellipse cx="100" cy="45" rx="36" ry="14" fill="none" stroke="url(#tgm2)" stroke-width="7"/>
+                        <text x="100" y="103" font-size="30" fill="#EB1B3A" text-anchor="middle" font-family="Arial" font-weight="900" letter-spacing="1">TOYOTA</text>
+                    </svg>
+                    <span class="cl-name">Toyota</span>
+                </div>
+                <div class="cl-card" aria-hidden="true">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(10, 15)">
+                            <path d="M40 70 L65 70 L105 5 L80 5 Z" fill="#e0e8ff"/>
+                            <path d="M75 70 L100 70 L140 25 L115 25 Z" fill="#e0e8ff"/>
+                            <path d="M110 70 L135 70 L175 45 L150 45 Z" fill="#e0e8ff"/>
+                        </g>
+                        <text x="100" y="105" font-size="26" fill="#e0e8ff" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="700" letter-spacing="-1">adidas</text>
+                        <circle cx="155" cy="85" r="3.5" fill="none" stroke="#e0e8ff" stroke-width="0.6"/>
+                        <text x="155" y="87" font-size="4.5" fill="#e0e8ff" text-anchor="middle" font-family="Arial" font-weight="700">R</text>
+                    </svg>
+                    <span class="cl-name">Adidas</span>
+                </div>
+                <div class="cl-card" aria-hidden="true">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="30" y="30" width="140" height="48" rx="6" fill="#D92128"/>
+                        <text x="100" y="63" font-size="33" fill="#F5F233" text-anchor="middle" font-family="Arial" font-weight="900">SURTIMAX</text>
+                    </svg>
+                    <span class="cl-name">Surtimax</span>
+                </div>
+                <div class="cl-card" aria-hidden="true">
+                    <svg class="client-logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <text x="100" y="65" font-size="44" fill="#2ecf7e" text-anchor="middle" font-family="Arial" font-weight="900">SAI</text>
+                        <line x1="48" y1="74" x2="152" y2="74" stroke="#2ecf7e" stroke-width="3"/>
+                        <text x="100" y="90" font-size="8" fill="#2ecf7e" text-anchor="middle" font-family="Arial">SERVICIOS AEROPORTUARIOS</text>
+                    </svg>
+                    <span class="cl-name">Servicios Aeroportuarios</span>
                 </div>
             </div>
         </div>
 
-        <!-- Trust Badge -->
-        <div class="clients-badge">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E6BFF" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <path d="M9 12l2 2 4-4" stroke="#1E6BFF" stroke-width="2" />
-            </svg>
-            <span>Más de 1000 empresas confían en nosotros</span>
+        <!-- ── Bottom trust badge ── -->
+        <div class="clientes-trust">
+            <div class="clientes-trust-line"></div>
+            <div class="clientes-trust-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                <span>Más de 1.000 empresas confían en nosotros</span>
+            </div>
+            <div class="clientes-trust-line"></div>
         </div>
+        <!-- PLACEHOLDER — old logo items removed -->
+
+        <!-- PLACEHOLDER — old logo items removed -->
     </section>
 
     <!-- ========================================
@@ -1831,75 +1922,116 @@
     </section>
 
     <!-- ========================================
-         FOOTER
-         Professional company footer with information
+         FOOTER — Redesigned
+         4-column grid · dark blue gradient · SVG icons
          ======================================== -->
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-column footer-brand">
-                <h4>Tecnology Solution's</h4>
-                <p>Suministros, Instalación y Mantenimiento de sistemas de seguridad.</p>
-                <div class="footer-miniworld" aria-hidden="true">
-                    <svg class="footer-miniworld-svg" viewBox="0 0 84 84" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <radialGradient id="footerPlanetGradient" cx="35%" cy="30%">
-                                <stop offset="0%" stop-color="#7ddfff" />
-                                <stop offset="55%" stop-color="#1e6bff" />
-                                <stop offset="100%" stop-color="#0b2a7a" />
-                            </radialGradient>
-                        </defs>
-                        <circle cx="42" cy="42" r="26" class="miniworld-core" fill="url(#footerPlanetGradient)" />
-                        <circle cx="42" cy="42" r="34" class="miniworld-ring" />
-                        <circle cx="42" cy="42" r="30" class="miniworld-ring ring-2" />
-                        <circle cx="58" cy="28" r="2.1" class="miniworld-dot dot-1" />
-                        <circle cx="22" cy="52" r="1.8" class="miniworld-dot dot-2" />
-                        <text x="42" y="48" text-anchor="middle" class="miniworld-text">TS</text>
-                    </svg>
+
+        <!-- Glowing top separator line -->
+        <div class="footer-sep" aria-hidden="true"></div>
+
+        <!-- Ambient background orbs -->
+        <span class="footer-orb footer-orb--a" aria-hidden="true"></span>
+        <span class="footer-orb footer-orb--b" aria-hidden="true"></span>
+
+        <div class="footer-inner">
+
+            <!-- ── 4-column grid ── -->
+            <div class="footer-grid">
+
+                <!-- Col 1 · Brand & social -->
+                <div class="footer-col footer-col--brand">
+                    <div class="footer-brand-text">
+                        <span class="footer-brand-name">Technology</span>
+                        <span class="footer-brand-sub">Solution's</span>
+                    </div>
+                    <p class="footer-desc">Suministros, instalación y mantenimiento de sistemas de seguridad inteligente para hogares y empresas.</p>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-icon" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="#" class="footer-social-icon" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <a href="https://wa.me/573152284097" class="footer-social-icon" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/" class="footer-social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                    </div>
                 </div>
+
+                <!-- Col 2 · Services -->
+                <div class="footer-col">
+                    <h4 class="footer-heading">Servicios</h4>
+                    <ul class="footer-list">
+                        <li><a href="#servicios">Cámaras de Seguridad</a></li>
+                        <li><a href="#servicios">Sistemas de Alarmas</a></li>
+                        <li><a href="#servicios">Control de Acceso</a></li>
+                        <li><a href="#servicios">Instalación de Redes</a></li>
+                        <li><a href="#servicios">Cercas Eléctricas</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 · Contact -->
+                <div class="footer-col footer-col--contact">
+                    <h4 class="footer-heading">Contacto</h4>
+                    <ul class="footer-contact-list">
+                        <li class="footer-contact-item">
+                            <span class="footer-contact-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.12 6.12l.98-.98a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </span>
+                            <span>315 228 4097</span>
+                        </li>
+                        <li class="footer-contact-item">
+                            <span class="footer-contact-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </span>
+                            <span>tecnologysolution7@gmail.com</span>
+                        </li>
+                        <li class="footer-contact-item">
+                            <span class="footer-contact-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </span>
+                            <span>Bogotá, D.C., Colombia</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div><!-- /footer-grid -->
+
+            <!-- Hairline divider -->
+            <div class="footer-divider" aria-hidden="true"></div>
+
+            <!-- Bottom bar: copyright + tagline -->
+            <div class="footer-bottom">
+                <p class="footer-copy">&copy; 2026 Technology Solution's. Todos los derechos reservados.</p>
+                <p class="footer-tagline">Seguridad inteligente &middot; Tecnología de punta</p>
             </div>
 
-            <div class="footer-column footer-links">
-                <h4>Servicios</h4>
-                <ul>
-                    <li><a href="#servicios">Cámaras de Seguridad</a></li>
-                    <li><a href="#servicios">Sistemas de Alarmas</a></li>
-                    <li><a href="#servicios">DVRs y Grabación</a></li>
-                    <li><a href="#servicios">Instalación de Redes</a></li>
-                    <li><a href="#servicios">Monitores</a></li>
-                </ul>
-            </div>
+        </div><!-- /footer-inner -->
 
-            <div class="footer-column footer-links">
-                <h4>Soluciones</h4>
-                <ul>
-                    <li><a href="#soluciones">Para Hogares</a></li>
-                    <li><a href="#soluciones">Para Empresas</a></li>
-                    <li><a href="#soluciones">Para Edificios</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column footer-contact">
-                <h4>Contacto</h4>
-                <p class="contact-item"><span class="contact-icon">📞</span><span>315 228 4097</span></p>
-                <p class="contact-item"><span class="contact-icon">✉</span><span>tecnologysolution7@gmail.com</span></p>
-                <p class="contact-item"><span class="contact-icon">📍</span><span>Bogotá, D.C., Colombia</span></p>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2026 Tecnology Solution's. Todos los derechos reservados.</p>
-        </div>
     </footer>
 
     <!-- Botón de WhatsApp -->
     <a href="https://wa.me/573152284097?text=Hola%2C%20me%20interesa%20información%20sobre%20sus%20sistemas%20de%20seguridad"
         class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
         <span class="whatsapp-pulse"></span>
+        <span class="whatsapp-pulse whatsapp-pulse--2"></span>
         <span class="whatsapp-tooltip">¡Escríbenos!</span>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32">
-            <path fill="#ffffff" d="M4.9 43.3l2.7-9.9C5.9 30.8 5 27.5 5 24 5 13.5 13.5 5 24 5s19 8.5 19 19-8.5 19-19 19c-3.4 0-6.6-.9-9.4-2.5L4.9 43.3z"/>
-            <path fill="#25D366" d="M24 7c-9.4 0-17 7.6-17 17 0 3.1.8 6 2.3 8.5l.4.7-1.7 6.2 6.4-1.7.7.4C17.9 39.3 20.9 40 24 40c9.4 0 17-7.6 17-17S33.4 7 24 7z"/>
-            <path fill="#ffffff" d="M19.3 16h-1.6c-.5 0-1.4.2-2.1 1-.7.8-2.8 2.7-2.8 6.6s2.9 7.7 3.3 8.2c.4.5 5.6 8.9 13.9 12.1 1.9.8 3.4 1.2 4.6 1.6 1.9.6 3.7.5 5 .3 1.5-.2 4.7-1.9 5.4-3.8.6-1.9.6-3.5.4-3.8-.2-.3-.7-.5-1.4-.9-.7-.4-4.7-2.3-5.4-2.6-.7-.3-1.2-.4-1.7.4-.5.7-1.9 2.6-2.4 3.1-.4.5-.9.6-1.6.2-.7-.4-3.1-1.1-5.8-3.6-2.2-1.9-3.6-4.3-4-5-.4-.7 0-1.1.3-1.5.3-.4.7-.9 1-1.4.3-.4.4-.7.7-1.2.2-.5.1-.9-.1-1.4-.2-.4-1.7-4.1-2.3-5.6-.6-1.5-1.2-1.3-1.6-1.3h-.2z"/>
+        <!-- Official WhatsApp logo (rounded square) -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 175.216 175.552" width="34" height="34">
+            <defs>
+                <linearGradient id="wa-grad" x1="85.915%" x2="14.084%" y1="14.084%" y2="85.916%">
+                    <stop offset="0%" stop-color="#57d163"/>
+                    <stop offset="100%" stop-color="#23b33a"/>
+                </linearGradient>
+            </defs>
+            <rect width="175.216" height="175.552" rx="37.338" ry="37.338" fill="url(#wa-grad)"/>
+            <path fill="#fff" d="M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 8.578 32.083L25.3 150.26l32.576-8.536a61.047 61.047 0 0 0 29.257 7.455h.027c33.733 0 61.166-27.423 61.178-61.13.012-16.334-6.33-31.7-17.846-43.225A60.965 60.965 0 0 0 87.184 25.227"/>
+            <path fill="url(#wa-grad)" d="M87.184 30.652c-30.769 0-55.778 24.994-55.789 55.72a55.56 55.56 0 0 0 7.85 29.29L35.1 144.26l29.552-7.75a55.647 55.647 0 0 0 22.476 4.817h.025c30.769 0 55.778-24.994 55.79-55.72.01-14.926-5.765-28.964-16.244-39.439A55.555 55.555 0 0 0 87.184 30.652"/>
+            <path fill="#fff" d="M68.772 55.603c-1.378-3.061-2.828-3.123-4.137-3.176l-3.524-.043c-1.226 0-3.218.46-4.902 2.3s-6.435 6.287-6.435 15.332 6.588 17.785 7.506 19.013 12.718 20.381 31.405 27.75c15.529 6.124 18.689 4.906 22.061 4.6s10.877-4.447 12.408-8.74 1.532-7.971 1.073-8.74-1.685-1.226-3.525-2.146-10.877-5.367-12.562-5.981-2.91-.919-4.137.921-4.746 5.979-5.819 7.206-2.144 1.381-3.984.462-7.76-2.861-14.784-9.124c-5.465-4.873-9.154-10.891-10.228-12.73s-.114-2.835.808-3.751c.825-.824 1.838-2.147 2.759-3.22s1.224-1.84 1.836-3.065.307-2.301-.153-3.22-4.032-10.011-5.669-13.647"/>
         </svg>
     </a>
 
