@@ -49,17 +49,48 @@ dropdownItems.forEach((item) => {
 
     if (!dropdownLink || !dropdownMenu) return;
 
+    // Mobile: toggle on click
     dropdownLink.addEventListener('click', (e) => {
         if (window.innerWidth > 768) return;
         e.preventDefault();
-
-        // Cerrar otros dropdowns abiertos
         dropdownItems.forEach((otherItem) => {
             if (otherItem !== item) otherItem.classList.remove('open');
         });
-
-        // Toggle clase 'open' en el item actual
         item.classList.toggle('open');
+    });
+
+    // Desktop: hover with delay on close so mouse can travel to menu
+    if (window.innerWidth > 768) {
+        let closeTimer = null;
+
+        const openMenu = () => {
+            clearTimeout(closeTimer);
+            dropdownItems.forEach((otherItem) => {
+                if (otherItem !== item) otherItem.classList.remove('open');
+            });
+            item.classList.add('open');
+        };
+
+        const closeMenu = () => {
+            closeTimer = setTimeout(() => {
+                item.classList.remove('open');
+            }, 150);
+        };
+
+        item.addEventListener('mouseenter', openMenu);
+        item.addEventListener('mouseleave', closeMenu);
+        // Keep open when mouse is over the menu itself
+        dropdownMenu.addEventListener('mouseenter', () => clearTimeout(closeTimer));
+        dropdownMenu.addEventListener('mouseleave', closeMenu);
+    }
+});
+
+// Close dropdown when clicking outside (desktop)
+document.addEventListener('click', (e) => {
+    dropdownItems.forEach((item) => {
+        if (!item.contains(e.target)) {
+            item.classList.remove('open');
+        }
     });
 });
 
@@ -90,13 +121,14 @@ const observerOptions = {
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+        const delay = entry.target.dataset.animDelay || '0s';
+        entry.target.style.animation = `fadeInUp 0.6s ease-out ${delay} forwards`;
         observer.unobserve(entry.target);
     });
 }, observerOptions);
 
 document
-    .querySelectorAll('.service-card, .caracteristicas-item, .solucion-item, .proceso-step, .testimonios-card')
+    .querySelectorAll('.srv-card, .caracteristicas-item, .solucion-item, .proceso-step, .testimonios-card')
     .forEach((el) => {
         el.style.opacity = '0';
         observer.observe(el);

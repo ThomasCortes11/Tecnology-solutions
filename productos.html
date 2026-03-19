@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo de Equipos de Seguridad - Tecnology Solution's. Cámaras, controles de acceso, alarmas, DVR/NVR y más.">
+    <meta name="theme-color" content="#0A0A0A">
+    <title>Productos | Tecnology Solution's</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Fjalla+One&display=swap" rel="stylesheet">
+    <style>
+        /* ── Page hero ── */
+        .prod-hero {
+            background: linear-gradient(160deg, #05070f 0%, #080c1a 55%, #060810 100%);
+            padding: 130px 2rem 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .prod-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(30,107,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(30,107,255,0.05) 1px, transparent 1px);
+            background-size: 44px 44px;
+            pointer-events: none;
+        }
+        .prod-hero-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+        .prod-hero-pill {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 5px 14px; border: 1px solid rgba(30,107,255,0.4);
+            border-radius: 999px; background: rgba(30,107,255,0.1);
+            color: #60a5fa; font-size: .78rem; font-weight: 600;
+            letter-spacing: .08em; text-transform: uppercase; margin-bottom: 18px;
+        }
+        .prod-hero h1 {
+            font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 900;
+            color: #f0f4ff; line-height: 1.1; margin: 0 0 14px;
+        }
+        .prod-hero h1 em { font-style: normal; color: #1e6bff; }
+        .prod-hero p { color: #8b9bb4; font-size: 1.05rem; line-height: 1.7; }
+
+        /* ── Sticky category nav ── */
+        .prod-cat-nav {
+            position: sticky; top: 72px; z-index: 90;
+            background: rgba(255,255,255,0.96); backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0 2rem;
+        }
+        .prod-cat-nav-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; gap: 0; overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .prod-cat-nav-inner::-webkit-scrollbar { display: none; }
+        .prod-cat-btn {
+            display: flex; align-items: center; gap: 7px;
+            padding: 16px 20px;
+            background: none; border: none; border-bottom: 2px solid transparent;
+            color: #6b7280; font-size: .88rem; font-weight: 600;
+            cursor: pointer; white-space: nowrap;
+            transition: color .2s, border-color .2s;
+            text-decoration: none;
+        }
+        .prod-cat-btn:hover,
+        .prod-cat-btn.active { color: #1e6bff; border-bottom-color: #1e6bff; }
+        .prod-cat-btn svg { flex-shrink: 0; }
+
+        /* ── Page body ── */
+        .prod-page { background: #f8f9fb; }
+
+        /* ── Category section ── */
+        .prod-section {
+            padding: 5rem 2rem;
+            scroll-margin-top: 130px;
+        }
+        .prod-section:nth-child(even) { background: #fff; }
+        .prod-section-inner { max-width: 1200px; margin: 0 auto; }
+
+        .prod-section-header { margin-bottom: 2.5rem; }
+        .prod-section-overline {
+            font-size: .75rem; font-weight: 700; letter-spacing: .25em;
+            text-transform: uppercase; color: #1e6bff; margin-bottom: 4px;
+        }
+        .prod-section-header h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.3rem); font-weight: 800;
+            color: #111827; line-height: 1.2; margin: 0 0 10px;
+        }
+        .prod-section-header p { color: #6b7280; font-size: .95rem; max-width: 560px; line-height: 1.7; }
+
+        /* ── Product cards grid ── */
+        .prod-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* ── Single product card ── */
+        .prod-card {
+            background: #fff;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex; flex-direction: column;
+            transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease, border-color .3s ease;
+        }
+        .prod-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(30,107,255,.35);
+            box-shadow: 0 16px 40px rgba(30,107,255,.1), 0 2px 8px rgba(0,0,0,.05);
+        }
+        .prod-card-img {
+            width: 100%; aspect-ratio: 4/3;
+            background: #f1f5f9;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; position: relative;
+        }
+        .prod-card-img img {
+            width: 100%; height: 100%;
+            object-fit: contain; padding: 16px;
+            transition: transform .4s ease;
+        }
+        .prod-card:hover .prod-card-img img { transform: scale(1.04); }
+        .prod-card-brand {
+            position: absolute; top: 10px; left: 10px;
+            background: #1e6bff; color: #fff;
+            font-size: .65rem; font-weight: 700; letter-spacing: .1em;
+            text-transform: uppercase; padding: 3px 8px; border-radius: 4px;
+        }
+        .prod-card-body { padding: 1.3rem 1.4rem; display: flex; flex-direction: column; gap: .6rem; flex: 1; }
+        .prod-card-body h3 { font-size: 1rem; font-weight: 700; color: #111827; margin: 0; line-height: 1.3; }
+        .prod-card-body h3 span { display: block; font-size: .78rem; font-weight: 500; color: #6b7280; margin-top: 2px; }
+        .prod-card-highlights {
+            list-style: none; padding: 0; margin: 0;
+            display: flex; flex-wrap: wrap; gap: 5px;
+        }
+        .prod-card-highlights li {
+            background: #f0f4ff; color: #1e6bff;
+            font-size: .72rem; font-weight: 600; padding: 3px 9px;
+            border-radius: 20px; border: 1px solid rgba(30,107,255,.2);
+        }
+
+        /* ── Expandable specs ── */
+        .prod-card-toggle {
+            display: flex; align-items: center; justify-content: space-between;
+            width: 100%; margin-top: .2rem;
+            background: none; border: 1px solid #e5e7eb; border-radius: 8px;
+            padding: 8px 12px; cursor: pointer; color: #374151;
+            font-size: .8rem; font-weight: 600;
+            transition: border-color .2s, color .2s;
+        }
+        .prod-card-toggle:hover { border-color: #1e6bff; color: #1e6bff; }
+        .prod-card-toggle svg { transition: transform .25s ease; }
+        .prod-card-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+        .prod-card-specs {
+            font-size: .82rem; color: #374151;
+            border-top: 1px solid #f1f5f9; padding-top: .8rem; margin-top: .2rem;
+        }
+        .prod-card-specs h4 {
+            font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+            text-transform: uppercase; color: #9ca3af; margin: 0 0 6px;
+        }
+        .prod-card-specs ul { list-style: none; padding: 0; margin: 0 0 .9rem; }
+        .prod-card-specs ul li { padding: 3px 0 3px 14px; position: relative; line-height: 1.5; }
+        .prod-card-specs ul li::before {
+            content: ''; position: absolute; left: 0; top: .6em;
+            width: 5px; height: 5px; border-radius: 50%; background: #1e6bff;
+        }
+        .prod-card-specs ul li:last-child { margin-bottom: 0; }
+        .prod-card-specs strong { color: #111827; }
+
+        /* ── CTA quote button ── */
+        .prod-card-cta {
+            display: flex; align-items: center; justify-content: center; gap: 7px;
+            margin-top: auto; padding: .65rem 1rem;
+            background: #1e6bff; color: #fff;
+            border: none; border-radius: 10px; cursor: pointer;
+            font-size: .85rem; font-weight: 600;
+            transition: background .2s ease, transform .15s ease;
+            text-decoration: none;
+        }
+        .prod-card-cta:hover { background: #0a4fcc; transform: translateY(-1px); }
+
+        /* ── Placeholder cards (sin imagen aún) ── */
+        .prod-placeholder {
+            background: #f8f9fb;
+            border: 2px dashed #d1d5db;
+            border-radius: 16px; padding: 2.5rem 2rem;
+            display: flex; flex-direction: column; align-items: center; gap: 1rem;
+            text-align: center; color: #9ca3af;
+        }
+        .prod-placeholder svg { opacity: .4; }
+        .prod-placeholder h3 { font-size: 1rem; font-weight: 600; color: #6b7280; margin: 0; }
+        .prod-placeholder p { font-size: .85rem; margin: 0; }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .prod-section { padding: 3.5rem 1.25rem; }
+            .prod-grid { grid-template-columns: 1fr; }
+            .prod-cat-btn { padding: 14px 14px; font-size: .82rem; }
+        }
+
+        /* ── Nav active states ── */
+        .nav-link--active { color: #1e6bff !important; }
+        .nav-link--active::after { width: 100% !important; }
+    </style>
+</head>
+<body class="prod-page">
+
+    <!-- ══════════════════════════════════════════
+         NAVBAR
+    ══════════════════════════════════════════ -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+                    <svg class="logo-globe-icon" viewBox="0 0 48 48" width="46" height="46" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="lgi-sf" cx="36%" cy="30%"><stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.50"/><stop offset="100%" stop-color="#0f172a" stop-opacity="0.80"/></radialGradient>
+                            <radialGradient id="lgi-na" cx="32%" cy="28%"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#1d4ed8"/></radialGradient>
+                            <radialGradient id="lgi-nb" cx="32%" cy="28%"><stop offset="0%" stop-color="#93c5fd"/><stop offset="100%" stop-color="#2563eb"/></radialGradient>
+                            <filter id="lgi-glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="1.1" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                            <clipPath id="lgi-clip"><circle cx="24" cy="24" r="22"/></clipPath>
+                        </defs>
+                        <circle cx="24" cy="24" r="22" fill="url(#lgi-sf)"/>
+                        <circle cx="24" cy="24" r="22.5" fill="none" stroke="#3b82f6" stroke-width="1" opacity="0.6"/>
+                        <g clip-path="url(#lgi-clip)" fill="none" stroke="#60a5fa" stroke-width="0.9" opacity="0.50">
+                            <polygon points="24,2 40,8 46,24 40,40 24,46 8,40 2,24 8,8"/>
+                            <line x1="24" y1="2" x2="24" y2="24"/><line x1="40" y1="8" x2="24" y2="24"/><line x1="46" y1="24" x2="24" y2="24"/>
+                            <line x1="40" y1="40" x2="24" y2="24"/><line x1="24" y1="46" x2="24" y2="24"/><line x1="8" y1="40" x2="24" y2="24"/>
+                            <line x1="2" y1="24" x2="24" y2="24"/><line x1="8" y1="8" x2="24" y2="24"/>
+                            <line x1="40" y1="8" x2="8" y2="40"/><line x1="8" y1="8" x2="40" y2="40"/>
+                        </g>
+                        <g clip-path="url(#lgi-clip)" filter="url(#lgi-glow)">
+                            <circle cx="24" cy="2" r="4.2" fill="url(#lgi-na)"/><circle cx="40" cy="8" r="4.0" fill="url(#lgi-nb)"/>
+                            <circle cx="46" cy="24" r="3.8" fill="url(#lgi-na)"/><circle cx="40" cy="40" r="4.0" fill="url(#lgi-nb)"/>
+                            <circle cx="24" cy="46" r="4.2" fill="url(#lgi-na)"/><circle cx="8" cy="40" r="3.8" fill="url(#lgi-nb)"/>
+                            <circle cx="2" cy="24" r="3.8" fill="url(#lgi-na)"/><circle cx="8" cy="8" r="4.0" fill="url(#lgi-nb)"/>
+                            <circle cx="24" cy="24" r="5.2" fill="url(#lgi-na)"/>
+                        </g>
+                    </svg>
+                    <span class="logo-wordmark"><span class="logo-main">Tecnology</span><span class="logo-sub">Solution's</span></span>
+                </a>
+            </div>
+            <div class="navbar-menu" id="navbarMenu">
+                <div class="menu-header">
+                    <div class="menu-header-logo">
+                        <svg width="22" height="22" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="20" r="16" fill="none" stroke="#1E6BFF" stroke-width="1.5"/>
+                            <ellipse cx="20" cy="20" rx="16" ry="4" fill="none" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5"/>
+                            <line x1="20" y1="4" x2="20" y2="36" stroke="#1E6BFF" stroke-width="0.8" opacity="0.5"/>
+                            <circle cx="24" cy="18" r="1.5" fill="#D4AF37"/><circle cx="16" cy="22" r="1.5" fill="#D4AF37"/><circle cx="20" cy="14" r="1.5" fill="#D4AF37"/>
+                        </svg>
+                        <span>Menú</span>
+                    </div>
+                    <button class="menu-close-btn" id="menuCloseBtn" aria-label="Cerrar menú">&times;</button>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="productos.html" class="nav-link nav-link--active">Productos</a></li>
+                    <li><a href="soluciones.html" class="nav-link" target="_blank" rel="noopener noreferrer">Soluciones</a></li>
+                    <li><a href="nosotros.html" class="nav-link" target="_blank" rel="noopener noreferrer">Nosotros</a></li>
+                    <li><a href="clientes.html" class="nav-link" target="_blank" rel="noopener noreferrer">Clientes</a></li>
+                    <li><a href="contacto.html" class="nav-link" target="_blank" rel="noopener noreferrer">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="navbar-actions">
+                <a href="contacto.html" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Contáctanos</a>
+            </div>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════ -->
+    <section class="prod-hero">
+        <div class="prod-hero-inner">
+            <span class="prod-hero-pill">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 21v-4a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v4"/></svg>
+                Catálogo de Equipos
+            </span>
+            <h1>Equipos de <em>Seguridad</em></h1>
+            <p>Tecnología de las marcas líderes a nivel mundial. Cámaras, controles de acceso, alarmas, DVR/NVR y más — con garantía y soporte técnico incluido.</p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         STICKY CATEGORY NAV
+    ══════════════════════════════════════════ -->
+    <nav class="prod-cat-nav" aria-label="Categorías de productos">
+        <div class="prod-cat-nav-inner">
+            <a class="prod-cat-btn active" href="#control-acceso">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                Control de Acceso
+            </a>
+            <a class="prod-cat-btn" href="#camaras">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.845v6.311a1 1 0 0 1-1.447.894L15 14M3 8h12a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z"/></svg>
+                Cámaras CCTV / IP
+            </a>
+            <a class="prod-cat-btn" href="#alarmas">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 17H2a3 3 0 0 0 3-3V11a7 7 0 0 1 14 0v3a3 3 0 0 0 3 3"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+                Alarmas
+            </a>
+            <a class="prod-cat-btn" href="#dvr-nvr">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                DVR / NVR
+            </a>
+            <a class="prod-cat-btn" href="#accesorios">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 0 0 4.93 19.07"/><path d="M4.93 4.93a10 10 0 0 0 14.14 14.14"/></svg>
+                Accesorios
+            </a>
+        </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════════
+         SECCIÓN 1 — CONTROL DE ACCESO
+    ══════════════════════════════════════════ -->
+    <section class="prod-section" id="control-acceso">
+        <div class="prod-section-inner">
+            <div class="prod-section-header">
+                <p class="prod-section-overline">Categoría 01</p>
+                <h2>Control de Acceso</h2>
+                <p>Terminales biométricas y faciales Hikvision para gestión de acceso inteligente en empresas, edificios y condominios.</p>
+            </div>
+
+            <div class="prod-grid">
+
+                <!-- ── Producto 1 ── -->
+                <div class="prod-card">
+                    <div class="prod-card-img">
+                        <div class="prod-card-brand">HIKVISION</div>
+                        <img src="Img/Control%20de%20acceso.png.png.png" alt="Terminal Facial Hikvision DS-K1T344MBFWX-E1" loading="lazy"/>
+                    </div>
+                    <div class="prod-card-body">
+                        <h3>Terminal Facial Min Moe <span>DS-K1T344MBFWX-E1</span></h3>
+                        <ul class="prod-card-highlights">
+                            <li>Pantalla 4.5"</li>
+                            <li>Cámara 2 MP</li>
+                            <li>3,000 rostros</li>
+                            <li>WiFi + LAN</li>
+                        </ul>
+                        <button class="prod-card-toggle" onclick="toggleProdSpecs(this)" aria-expanded="false">
+                            Ver especificaciones
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                        </button>
+                        <div class="prod-card-specs" hidden>
+                            <h4>Físicas y eléctricas</h4>
+                            <ul>
+                                <li>Alimentación <strong>12 Vcd</strong> o <strong>PoE 802.3at</strong></li>
+                                <li>TCP/IP cableado o WiFi</li>
+                                <li>RS-485 · Wiegand · Relay · Sensor puerta · USB</li>
+                                <li>Temperatura <strong>-10 °C a 55 °C</strong></li>
+                            </ul>
+                            <h4>Destacadas</h4>
+                            <ul>
+                                <li>Administración <strong>remota o local</strong> vía software, web o pantalla</li>
+                                <li><strong>SDK / API</strong> para integración con terceros</li>
+                                <li><strong>150,000</strong> eventos · <strong>3,000</strong> tarjetas MiFare</li>
+                            </ul>
+                        </div>
+                        <a class="prod-card-cta" href="contacto.html" target="_blank" rel="noopener noreferrer">
+                            Solicitar cotización
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ── Producto 2 ── -->
+                <div class="prod-card">
+                    <div class="prod-card-img">
+                        <div class="prod-card-brand">HIKVISION</div>
+                        <img src="Img/Control%20de%20acceso%202.png.png.png" alt="Terminal Min Moe WiFi Reconocimiento Facial" loading="lazy"/>
+                    </div>
+                    <div class="prod-card-body">
+                        <h3>Terminal Min Moe WiFi <span>Reconocimiento Facial Ultra Rápido</span></h3>
+                        <ul class="prod-card-highlights">
+                            <li>Pantalla 4.3"</li>
+                            <li>1,500 rostros</li>
+                            <li>3,000 tarjetas</li>
+                            <li>Deep Learning</li>
+                        </ul>
+                        <button class="prod-card-toggle" onclick="toggleProdSpecs(this)" aria-expanded="false">
+                            Ver especificaciones
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                        </button>
+                        <div class="prod-card-specs" hidden>
+                            <h4>Físicas y eléctricas</h4>
+                            <ul>
+                                <li>Alimentación <strong>12 Vcc / 1 A</strong> (incluido)</li>
+                                <li>Temperatura <strong>-10 °C a 40 °C</strong> · Uso interior</li>
+                                <li>Dimensiones <strong>118.4 × 118.4 × 21.8 mm</strong></li>
+                                <li>RS-485 · Wiegand · USB · WiFi + cableado</li>
+                            </ul>
+                            <h4>Destacadas</h4>
+                            <ul>
+                                <li>Algoritmo <strong>Deep Learning</strong> para reconocimiento rápido</li>
+                                <li>Exportación de eventos a <strong>Excel via USB</strong></li>
+                                <li>Pases temporales para visitantes (<strong>QR o PIN</strong>)</li>
+                            </ul>
+                        </div>
+                        <a class="prod-card-cta" href="contacto.html" target="_blank" rel="noopener noreferrer">
+                            Solicitar cotización
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ── Producto 3 ── -->
+                <div class="prod-card">
+                    <div class="prod-card-img">
+                        <div class="prod-card-brand">HIKVISION</div>
+                        <img src="Img/Control%20de%20acceso3.png.png.png" alt="Terminal de Reconocimiento Facial con lector MIFARE" loading="lazy"/>
+                    </div>
+                    <div class="prod-card-body">
+                        <h3>Terminal Reconocimiento Facial <span>Lector MIFARE Multimétodo</span></h3>
+                        <ul class="prod-card-highlights">
+                            <li>Pantalla 3.97"</li>
+                            <li>500 rostros</li>
+                            <li>1,000 huellas</li>
+                            <li>Anti-spoofing</li>
+                        </ul>
+                        <button class="prod-card-toggle" onclick="toggleProdSpecs(this)" aria-expanded="false">
+                            Ver especificaciones
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                        </button>
+                        <div class="prod-card-specs" hidden>
+                            <h4>Físicas y eléctricas</h4>
+                            <ul>
+                                <li>Alimentación <strong>12 Vcc</strong></li>
+                                <li>Temperatura <strong>-10 °C a 50 °C</strong> · Interior/Exterior</li>
+                                <li>RJ45 · RS-485 · Wiegand · USB</li>
+                                <li>Lector MIFARE integrado <strong>13.56 MHz</strong></li>
+                            </ul>
+                            <h4>Destacadas</h4>
+                            <ul>
+                                <li>Triple método: <strong>cara, huella y tarjeta</strong> en un solo equipo</li>
+                                <li>Anti-spoofing con detección de <strong>rostros 3D</strong></li>
+                                <li>Gestión centralizada vía <strong>iVMS-4200</strong></li>
+                            </ul>
+                        </div>
+                        <a class="prod-card-cta" href="contacto.html" target="_blank" rel="noopener noreferrer">
+                            Solicitar cotización
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ── Producto 4 ── -->
+                <div class="prod-card">
+                    <div class="prod-card-img">
+                        <div class="prod-card-brand">HIKVISION</div>
+                        <img src="Img/Control%20de%20acceso4.png.png.png" alt="Hikvision DS-K1T804AMF Biométrico WiFi" loading="lazy"/>
+                    </div>
+                    <div class="prod-card-body">
+                        <h3>DS-K1T804AMF Biométrico WiFi <span>Control de Acceso y Asistencia · Hik-Connect P2P</span></h3>
+                        <ul class="prod-card-highlights">
+                            <li>3,000 huellas</li>
+                            <li>3,000 tarjetas</li>
+                            <li>150,000 eventos</li>
+                            <li>Watchdog</li>
+                        </ul>
+                        <button class="prod-card-toggle" onclick="toggleProdSpecs(this)" aria-expanded="false">
+                            Ver especificaciones
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                        </button>
+                        <div class="prod-card-specs" hidden>
+                            <h4>Físicas y eléctricas</h4>
+                            <ul>
+                                <li>Alimentación <strong>12 Vcc / 2 A</strong> (no incluida) · Interior</li>
+                                <li>Temperatura <strong>-10 °C a 45 °C</strong></li>
+                                <li>Dimensiones <strong>205 × 76.5 × 37 mm</strong></li>
+                                <li>TCP/IP · Wiegand 26/34 bits · RS-485</li>
+                            </ul>
+                            <h4>Destacadas</h4>
+                            <ul>
+                                <li>Sistema <strong>watchdog</strong> para autoreparación en caso de fallos</li>
+                                <li>Teclado con <strong>iluminación</strong> · Comandos de voz</li>
+                                <li>Reportes de asistencia vía <strong>iVMS-4200</strong></li>
+                            </ul>
+                        </div>
+                        <a class="prod-card-cta" href="contacto.html" target="_blank" rel="noopener noreferrer">
+                            Solicitar cotización
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ── Producto 5 ── -->
+                <div class="prod-card">
+                    <div class="prod-card-img">
+                        <div class="prod-card-brand">HIKVISION</div>
+                        <img src="Img/Control%20de%20acceso5.png.png.png" alt="Hikvision DS-K1T8003EF Control de Acceso Biométrico" loading="lazy"/>
+                    </div>
+                    <div class="prod-card-body">
+                        <h3>DS-K1T8003EF <span>Control de Acceso Biométrico · Pantalla LCD</span></h3>
+                        <ul class="prod-card-highlights">
+                            <li>LCD 2.4"</li>
+                            <li>1,000 huellas</li>
+                            <li>1,000 tarjetas EM</li>
+                            <li>Hik-Connect</li>
+                        </ul>
+                        <button class="prod-card-toggle" onclick="toggleProdSpecs(this)" aria-expanded="false">
+                            Ver especificaciones
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                        </button>
+                        <div class="prod-card-specs" hidden>
+                            <h4>Físicas y eléctricas</h4>
+                            <ul>
+                                <li>Alimentación <strong>12 Vcd / 1 A</strong> (no incluida) · Interior</li>
+                                <li>Temperatura <strong>-10 °C a 55 °C</strong></li>
+                                <li>Dimensiones <strong>140 × 155 × 30 mm</strong></li>
+                                <li>TCP/IP · Relay · Botón salida · USB 2.0</li>
+                            </ul>
+                            <h4>Destacadas</h4>
+                            <ul>
+                                <li>Reportes de asistencia vía <strong>iVMS-4200</strong> o <strong>Excel por USB</strong></li>
+                                <li>Con <strong>Hik-Connect</strong>: control remoto y monitoreo de puerta</li>
+                                <li>Versión recomendada iVMS-4200: <strong>3.1.1.13</strong></li>
+                            </ul>
+                        </div>
+                        <a class="prod-card-cta" href="contacto.html" target="_blank" rel="noopener noreferrer">
+                            Solicitar cotización
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div><!-- /.prod-grid -->
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECCIÓN 2 — CÁMARAS CCTV / IP
+    ══════════════════════════════════════════ -->
+    <section class="prod-section" id="camaras">
+        <div class="prod-section-inner">
+            <div class="prod-section-header">
+                <p class="prod-section-overline">Categoría 02</p>
+                <h2>Cámaras CCTV / IP</h2>
+                <p>Vigilancia continua con cámaras analógicas e IP de alta resolución para interiores, exteriores y zonas críticas.</p>
+            </div>
+            <div class="prod-grid">
+                <div class="prod-placeholder">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.845v6.311a1 1 0 0 1-1.447.894L15 14M3 8h12a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z"/></svg>
+                    <h3>Cámaras Domo HD</h3>
+                    <p>Próximamente — contáctanos para disponibilidad</p>
+                    <a class="prod-card-cta" href="contacto.html" target="_blank" rel="noopener noreferrer" style="margin-top:.5rem;">Consultar →</a>
+                </div>
+                <div class="prod-placeholder">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.845v6.311a1 1 0 0 1-1.447.894L15 14M3 8h12a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z"/></svg>
+                    <h3>Cámaras Bullet Exterior</h3>
+                    <p>Próximamente — contáctanos para disponibilidad</p>
+                    <a class="prod-card-cta" href="contacto.html" target="_blank" rel="noopener noreferrer" style="margin-top:.5rem;">Consultar →</a>
+                </div>
+                <div class="prod-placeholder">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.845v6.311a1 1 0 0 1-1.447.894L15 14M3 8h12a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z"/></svg>
+                    <h3>Cámaras PTZ</h3>
+                    <p>Próximamente — contáctanos para disponibilidad</p>
+                    <a class="prod-card-cta" href="contacto.html" target="_blank" rel="noopener noreferrer" style="margin-top:.5rem;">Consultar →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECCIÓN 3 — ALARMAS
+    ══════════════════════════════════════════ -->
+    <section class="prod-section" id="alarmas">
+        <div class="prod-section-inner">
+            <div class="prod-section-header">
+                <p class="prod-section-overline">Categoría 03</p>
+                <h2>Alarmas y Detección</h2>
+                <p>Paneles de control, sirenas, sensores de movimiento y detectores para protección perimetral e interior.</p>
+            </div>
+            <div class="prod-grid">
+                <div class="prod-placeholder">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M22 17H2a3 3 0 0 0 3-3V11a7 7 0 0 1 14 0v3a3 3 0 0 0 3 3"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+                    <h3>Panel de Alarma</h3>
+                    <p>Próximamente — contáctanos para disponibilidad</p>
+                    <a class="prod-card-cta" href="contacto.html" target="_blank" rel="noopener noreferrer" style="margin-top:.5rem;">Consultar →</a>
+                </div>
+                <div class="prod-placeholder">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M22 17H2a3 3 0 0 0 3-3V11a7 7 0 0 1 14 0v3a3 3 0 0 0 3 3"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+                    <h3>Sensores de Movimiento</h3>
+                    <p>Próximamente — contáctanos para disponibilidad</p>
+                    <a class="prod-card-cta" href="contacto.html" target="_blank" rel="noopener noreferrer" style="margin-top:.5rem;">Consultar →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECCIÓN 4 — DVR / NVR
+    ══════════════════════════════════════════ -->
+    <section class="prod-section" id="dvr-nvr">
+        <div class="prod-section-inner">
+            <div class="prod-section-header">
+                <p class="prod-section-overline">Categoría 04</p>
+                <h2>DVR / NVR</h2>
+                <p>Grabadores digitales y de red para almacenamiento local, visualización remota y gestión centralizada de cámaras.</p>
+            </div>
+            <div class="prod-grid">
+                <div class="prod-placeholder">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    <h3>DVR 4/8/16 canales</h3>
+                    <p>Próximamente — contáctanos para disponibilidad</p>
+                    <a class="prod-card-cta" href="contacto.html" target="_blank" rel="noopener noreferrer" style="margin-top:.5rem;">Consultar →</a>
+                </div>
+                <div class="prod-placeholder">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    <h3>NVR IP 4/8/16 canales</h3>
+                    <p>Próximamente — contáctanos para disponibilidad</p>
+                    <a class="prod-card-cta" href="contacto.html" target="_blank" rel="noopener noreferrer" style="margin-top:.5rem;">Consultar →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECCIÓN 5 — ACCESORIOS
+    ══════════════════════════════════════════ -->
+    <section class="prod-section" id="accesorios">
+        <div class="prod-section-inner">
+            <div class="prod-section-header">
+                <p class="prod-section-overline">Categoría 05</p>
+                <h2>Accesorios y Cableado</h2>
+                <p>Cables, fuentes de poder, carcasas, soportes y todo lo necesario para instalaciones profesionales y duraderas.</p>
+            </div>
+            <div class="prod-grid">
+                <div class="prod-placeholder">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 0 0 4.93 19.07"/><path d="M4.93 4.93a10 10 0 0 0 14.14 14.14"/></svg>
+                    <h3>Cable UTP / Coaxial</h3>
+                    <p>Próximamente — contáctanos para disponibilidad</p>
+                    <a class="prod-card-cta" href="contacto.html" target="_blank" rel="noopener noreferrer" style="margin-top:.5rem;">Consultar →</a>
+                </div>
+                <div class="prod-placeholder">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 0 0 4.93 19.07"/><path d="M4.93 4.93a10 10 0 0 0 14.14 14.14"/></svg>
+                    <h3>Fuentes de Poder</h3>
+                    <p>Próximamente — contáctanos para disponibilidad</p>
+                    <a class="prod-card-cta" href="contacto.html" target="_blank" rel="noopener noreferrer" style="margin-top:.5rem;">Consultar →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         FOOTER CTA
+    ══════════════════════════════════════════ -->
+    <section style="background: linear-gradient(135deg,#0a1628 0%,#0f2044 100%); padding:4rem 2rem; text-align:center;">
+        <div style="max-width:600px; margin:0 auto;">
+            <h2 style="color:#f0f4ff; font-size:clamp(1.5rem,3.5vw,2rem); font-weight:800; margin:0 0 .8rem;">¿No encontraste lo que buscas?</h2>
+            <p style="color:#8b9bb4; font-size:1rem; line-height:1.7; margin:0 0 1.8rem;">Contáctanos directamente. Tenemos acceso a un catálogo amplio de marcas y modelos. Te asessoramos sin costo.</p>
+            <a href="contacto.html" target="_blank" rel="noopener noreferrer"
+               style="display:inline-flex;align-items:center;gap:8px;padding:.85rem 2rem;background:#1e6bff;color:#fff;border-radius:10px;font-weight:700;font-size:.95rem;text-decoration:none;transition:background .2s;"
+               onmouseover="this.style.background='#0a4fcc'" onmouseout="this.style.background='#1e6bff'">
+                Contáctanos ahora
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Hamburger menu
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navbarMenu   = document.getElementById('navbarMenu');
+        const menuCloseBtn = document.getElementById('menuCloseBtn');
+        if (hamburgerBtn) hamburgerBtn.addEventListener('click', () => { navbarMenu.classList.toggle('active'); hamburgerBtn.classList.toggle('active'); });
+        if (menuCloseBtn) menuCloseBtn.addEventListener('click', () => { navbarMenu.classList.remove('active'); hamburgerBtn.classList.remove('active'); });
+
+        // Toggle specs
+        function toggleProdSpecs(btn) {
+            const specs   = btn.nextElementSibling;
+            const isOpen  = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', !isOpen);
+            if (isOpen) { specs.hidden = true; btn.firstChild.textContent = 'Ver especificaciones'; }
+            else         { specs.hidden = false; btn.firstChild.textContent = 'Ocultar especificaciones'; }
+        }
+
+        // Active category highlight on scroll
+        const sections = document.querySelectorAll('.prod-section[id]');
+        const catBtns  = document.querySelectorAll('.prod-cat-btn');
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    catBtns.forEach(b => b.classList.remove('active'));
+                    const active = document.querySelector(`.prod-cat-btn[href="#${e.target.id}"]`);
+                    if (active) active.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-30% 0px -60% 0px' });
+        sections.forEach(s => io.observe(s));
+    </script>
+</body>
+</html>
