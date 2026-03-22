@@ -1,206 +1,179 @@
-# 🔐 Tecnology Solution's - Sitio Web Profesional
+# Technology Solution's
 
-> **Soluciones Inteligentes de Seguridad para Hogares y Empresas**
-
-Sitio web profesional con diseño premium tipo Apple/Tesla para empresa de seguridad tecnológica en Bogotá, Colombia.
+> Soluciones inteligentes de seguridad empresarial con tecnología de punta.
 
 ---
 
-## ✨ Características Principales
+## 1. Descripción del Proyecto
 
-### 🎨 Diseño Premium
-- **Sin emojis** - Solo iconos SVG profesionales
-- **Tipografía moderna** - Inter & Poppins (Google Fonts)
-- **Colores tecnológicos** - Negro profundo (#0A0A0A) + Azul tech (#1E6BFF)
-- **Inspiración** - Apple, Tesla, SaaS moderno
+Sitio web corporativo de **Technology Solution's**, una empresa dedicada al suministro, instalación y mantenimiento de sistemas de seguridad inteligente para hogares y empresas en Colombia.
 
-### 🌍 Hero Section con Planeta Tierra
-- Ilustración digital de la Tierra con **continentes visibles**
-- Animaciones suaves de rotación (30 segundos)
-- Nodos de conexión pulsantes en ciudades
-- 8 partículas flotantes con efecto tech
-- Grid tecnológico de fondo
-- Glow radial azul
+El sitio presenta los servicios de la empresa, su portafolio de productos, casos de éxito, métricas de impacto y formularios de contacto integrados con WhatsApp para atención directa al cliente.
 
-### 📱 Navegación Profesional
-- **Menú dropdown** para servicios (9 opciones)
-- Responsive hamburger menu para móvil
-- Animaciones suaves con hover effects
+**Público objetivo:**
+
+- Empresas que necesitan sistemas de seguridad (CCTV, control de acceso, alarmas)
+- Hogares que buscan protección inteligente
+- Edificios y oficinas que requieren soluciones de monitoreo
+
+---
+
+## 2. Tecnologías Utilizadas
+
+| Tecnología | Uso |
+|------------|-----|
+| **HTML5** | Estructura semántica del sitio |
+| **CSS3** | Estilos, animaciones, responsive design |
+| **JavaScript (ES6+)** | Interactividad, animaciones scroll, formularios |
+| **Three.js r128** | Globo 3D interactivo en la sección "Nosotros" |
+| **Google Fonts** | Tipografías: Inter, Poppins, Playfair Display, Fjalla One |
+| **WhatsApp API** | Envío de formularios directamente a WhatsApp |
+| **CSS @import** | Sistema modular de estilos |
+| **IntersectionObserver** | Animaciones activadas por scroll |
+
+---
+
+## 3. Estructura del Proyecto
+
+```
+Tecnology-solutions/
+│
+├── index.html                  ← Página principal
+├── productos.html              ← Catálogo de productos
+├── soluciones.html             ← Soluciones por sector
+├── nosotros.html               ← Página "Sobre nosotros"
+├── clientes.html               ← Clientes y casos de éxito
+├── contacto.html               ← Formulario de contacto
+├── README.md                   ← Este archivo
+│
+└── assets/
+    ├── css/
+    │   ├── styles.css           ← Entry point (importa todos los módulos)
+    │   ├── responsive.css       ← Media queries para responsive design
+    │   ├── base/
+    │   │   ├── reset.css        ← Reset, variables CSS, tipografía global
+    │   │   └── buttons.css      ← Estilos de botones reutilizables
+    │   ├── components/
+    │   │   ├── navbar.css       ← Navegación, dropdown, logo animado
+    │   │   ├── footer.css       ← Pie de página
+    │   │   ├── whatsapp.css     ← Botón flotante de WhatsApp
+    │   │   ├── installation-modal.css ← Modal de instalación
+    │   │   └── modals.css       ← Modales de mantenimiento y agendar
+    │   └── sections/
+    │       ├── hero.css         ← Hero principal con animaciones
+    │       ├── services.css     ← Tarjetas de servicios
+    │       ├── why-choose.css   ← Sección "Por qué elegirnos"
+    │       ├── solutions.css    ← Soluciones por vertical
+    │       ├── solutions-inline.css ← Estilos adicionales de soluciones
+    │       ├── process.css      ← Proceso de trabajo (timeline)
+    │       ├── nosotros.css     ← Sección "Sobre nosotros"
+    │       ├── metrics.css      ← Métricas e infraestructura
+    │       ├── clients.css      ← Carousel de clientes
+    │       ├── testimonials.css ← Testimonios
+    │       └── contact.css      ← Formulario de contacto
+    │
+    ├── img/                     ← Imágenes del sitio
+    │
+    └── js/
+        ├── script.js            ← Lógica principal de la aplicación
+        ├── globe.js             ← Globo 3D con Three.js
+        └── modules/
+            └── modals.js        ← Funciones de modales y WhatsApp
+```
+
+---
+
+## 4. Cómo Ejecutar el Proyecto
+
+### Opción 1: Servidor local con Python (recomendado)
+
+```bash
+cd Tecnology-solutions
+python -m http.server 3001 --bind 127.0.0.1
+```
+
+Abrir en el navegador: **http://127.0.0.1:3001**
+
+### Opción 2: Servidor con Node.js
+
+```bash
+cd Tecnology-solutions
+npx serve
+```
+
+### Opción 3: Extensión Live Server (VS Code)
+
+1. Instalar la extensión **Live Server** en VS Code
+2. Click derecho sobre `index.html` → **Open with Live Server**
+
+> **Nota:** Es necesario usar un servidor HTTP local. Abrir el archivo directamente con `file://` no cargará los estilos CSS correctamente debido al uso de `@import`.
+
+---
+
+## 5. Funcionalidades Principales
+
+### Navegación
+- Menú responsive con hamburger para móviles
+- Dropdown de servicios con animaciones
 - Scroll suave entre secciones
 
-### 🛠️ Servicios Completos (9 servicios)
-1. Cámaras de Seguridad
-2. Sistemas de Alarmas
-3. DVRs y Grabación
-4. Instalación de Redes
-5. Monitores
-6. Suministro de Equipos
-7. Instalación Profesional
-8. Asesoría Técnica Especializada
-9. Soporte 24/7 + Configuración Remota
+### Secciones de la Página Principal
+| Sección | Descripción |
+|---------|-------------|
+| **Hero** | Presentación principal con imagen de la Tierra y CTAs |
+| **Servicios** | 4 tarjetas interactivas (Instalación, Monitoreo, Mantenimiento, Asesoría) |
+| **Por qué elegirnos** | Estadísticas y beneficios en layout asimétrico |
+| **Soluciones** | 4 verticales: Hogares, Empresas, Oficinas, Edificios |
+| **Ticker** | Banda animada con servicios en scroll continuo |
+| **Proceso** | Timeline de 4 pasos: Análisis → Diseño → Instalación → Monitoreo |
+| **Clientes** | Marquee animado con logos de clientes |
+| **Métricas** | 4 contadores animados con datos de impacto |
+| **Testimonios** | Reseñas de clientes con calificación por estrellas |
+| **Contacto** | Formulario de contacto con validación |
+| **Footer** | 4 columnas con links, contacto y redes sociales |
 
-### ⭐ Sistema de Testimonios Interactivo
-- **12 testimonios** de clientes reales
-- **Formulario interactivo** para nuevas opiniones
-- **Sistema de calificación** con 5 estrellas
-- Click para seleccionar rating
-- Los nuevos testimonios aparecen dinámicamente
+### Interactividad
+- **Modales:** Detalle de instalación, mantenimiento y agendar visita
+- **WhatsApp:** Botón flotante + envío de formularios vía WhatsApp
+- **Animaciones scroll:** Elementos aparecen al hacer scroll (IntersectionObserver)
+- **Contadores:** Métricas que cuentan desde 0 al entrar en viewport
+- **Globo 3D:** Visualización interactiva con Three.js
 
-### 🏢 Sección de Clientes
-- Grid de logos de empresas
-- Efectos hover elegantes
-- 6 espacios listos para logos reales
-
-### 💡 Por Qué Elegirnos
-- **20+ años de experiencia**
-- Tecnología de última generación
-- Soporte técnico especializado
-- Atención rápida y confiable
-- Soluciones personalizadas
-- Garantía completa (2 años)
+### Páginas Secundarias
+- **Productos:** Catálogo de equipos de control de acceso
+- **Soluciones:** Detalle de soluciones por sector
+- **Nosotros:** Historia y equipo de la empresa
+- **Clientes:** Casos de éxito
+- **Contacto:** Formulario dedicado
 
 ---
 
-## 📂 Estructura del Proyecto
+## 6. Buenas Prácticas Aplicadas
 
-```
-Tecnology Solutions/
-├── index.html                          # Página principal
-├── css/
-│   └── styles.css                      # Estilos profesionales
-├── js/
-│   └── script.js                       # Interacciones y animaciones
-├── img/                                # Imágenes (agregar aquí)
-├── README.md                           # Este archivo
-├── WEBSITE-REDESIGN-PROFESSIONAL.txt   # Documentación completa
-└── CONFIGURACION-EMAIL.html            # Guía configuración email
-```
+### Organización del Código
+- **CSS modular:** Estilos separados por sección y componente (19 archivos)
+- **JavaScript modular:** Lógica de modales separada del script principal
+- **Estructura assets/:** Recursos organizados en `css/`, `js/`, `img/`
+- **Comentarios profesionales:** Cada sección del HTML tiene encabezados descriptivos
 
----
+### Rendimiento
+- **Carga diferida:** Imágenes con `loading="lazy"`
+- **Fuentes optimizadas:** `preconnect` para Google Fonts
+- **Sin dependencias innecesarias:** Solo Three.js como librería externa
 
-## 🚀 Cómo Usar
+### Accesibilidad
+- Atributos `aria-label`, `aria-modal`, `role` en modales
+- Navegación por teclado en tarjetas de servicios
+- Cierre de modales con tecla Escape
+- Etiquetas semánticas HTML5
 
-### 1️⃣ Abrir Localmente
-```bash
-# Opción A: Doble click en index.html
-# Opción B: Servidor local
-python -m http.server 8000
-# Abrir: http://localhost:8000
-```
-
-### 2️⃣ Configurar Email del Formulario
-Editar `index.html` línea del formulario contacto:
-```html
-<form class="contacto-form" 
-      action="https://formsubmit.co/tecnologysolution7@gmail.com" 
-      method="POST">
-```
-
-### 3️⃣ Deploy a Internet
-
-#### **Opción A: Netlify (Recomendado - Gratis)**
-1. Ir a [netlify.com](https://www.netlify.com/)
-2. Arrastrar carpeta completa
-3. ¡Listo! URL generada automáticamente
-
-#### **Opción B: Vercel (Gratis)**
-1. Ir a [vercel.com](https://vercel.com/)
-2. Import project
-3. Conectar carpeta
-
-#### **Opción C: Hosting Tradicional**
-1. Subir archivos por FTP
-2. Configurar dominio propio
+### SEO
+- Meta description y theme-color configurados
+- Estructura semántica con `<section>`, `<nav>`, `<footer>`
+- Atributos `alt` en todas las imágenes
 
 ---
 
-## 🎨 Paleta de Colores
+## Licencia
 
-| Color | Hex Code | Uso |
-|-------|----------|-----|
-| Negro Profundo | `#0A0A0A` | Fondo principal, hero |
-| Azul Tech | `#1E6BFF` | CTA, iconos, efectos |
-| Blanco | `#FFFFFF` | Texto principal |
-| Gris Suave | `#B0B0B0` | Texto secundario |
-
----
-
-## 🔧 Tecnologías Utilizadas
-
-- **HTML5** - Estructura semántica
-- **CSS3** - Animaciones, Grid, Flexbox
-- **JavaScript Vanilla** - Sin librerías
-- **SVG Inline** - Iconos y planeta Tierra
-- **Google Fonts** - Inter & Poppins
-- **Responsive Design** - Mobile-first
-
----
-
-## 📱 Responsive
-
-✅ **Desktop** (> 768px) - Hero de 2 columnas  
-✅ **Tablet** (768px) - Menú adaptado  
-✅ **Mobile** (< 480px) - 1 columna, hamburger menu  
-
----
-
-## 🌟 Características Técnicas
-
-### Animaciones CSS
-- `rotateEarth` - Rotación del planeta (30s)
-- `nodePulse` - Pulsación de nodos (2s)
-- `floatParticle` - Partículas flotantes (8s)
-- `continentGlow` - Brillo de continentes (3s)
-- Todas optimizadas para 60fps
-
-### Interactividad JavaScript
-- Sistema de estrellas (1-5 rating)
-- Dropdown responsive
-- Formulario de testimonios dinámico
-- Validación de formularios
-- Smooth scroll
-- Notificaciones animadas
-
----
-
-## 📞 Información de Contacto
-
-**Tecnology Solution's**  
-📍 Bogotá D.C., Colombia  
-📱 WhatsApp: [315 228 4097](https://wa.me/573152284097)  
-📧 Email: tecnologysolution7@gmail.com
-
----
-
-## 📝 Próximos Pasos
-
-1. ✅ **Agregar logos de clientes** en sección Clientes
-2. ✅ **Reemplazar testimonios** con opiniones reales
-3. ✅ **Configurar FormSubmit** para emails
-4. ✅ **Deploy a Netlify/Vercel**
-5. ✅ **Agregar fotos** de instalaciones reales
-6. ✅ **Google Analytics** para estadísticas
-
----
-
-## 📄 Licencia
-
-© 2026 Tecnology Solution's - Todos los derechos reservados
-
----
-
-## 🎯 Resultado Final
-
-✅ Diseño premium tipo Apple/Tesla  
-✅ 100% responsive  
-✅ Sin emojis (iconos SVG)  
-✅ Planeta Tierra con continentes visibles  
-✅ Sistema interactivo de testimonios  
-✅ Performance optimizado  
-✅ Código limpio y documentado  
-
-**¡Listo para producción!** 🚀
-
----
-
-*Desarrollado con estándares profesionales de diseño UX/UI moderno*
+Proyecto privado de **Technology Solution's**. Todos los derechos reservados.
