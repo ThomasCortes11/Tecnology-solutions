@@ -1,0 +1,42 @@
+﻿/* ═══════════════════════════════════════════════════════════════
+   TECNOLOGY SOLUTIONS — Main Stylesheet (Entry Point)
+   ═══════════════════════════════════════════════════════════════
+   This file imports all modular CSS files in the correct order.
+   Edit individual module files instead of this one.
+
+   Structure:
+     css/base/           → Reset, variables, typography, buttons
+     css/components/     → Navbar, footer, whatsapp, modals
+     css/sections/       → Hero, services, solutions, etc.
+     css/responsive.css  → All media queries
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 1. Base ── */
+@import url('base/reset.css');
+@import url('base/buttons.css');
+
+/* ── 2. Layout Components ── */
+@import url('components/navbar.css');
+@import url('components/footer.css');
+
+/* ── 3. Page Sections (in document order) ── */
+@import url('sections/hero.css');
+@import url('sections/services.css');
+@import url('sections/why-choose.css');
+@import url('sections/solutions.css');
+@import url('sections/solutions-inline.css');
+@import url('sections/process.css');
+@import url('sections/nosotros.css');
+@import url('sections/metrics.css');
+@import url('sections/clients.css');
+@import url('sections/testimonials.css');
+@import url('sections/contact.css');
+
+/* ── 4. Reusable Components ── */
+@import url('components/whatsapp.css');
+@import url('components/phone-cta.css');
+@import url('components/installation-modal.css');
+@import url('components/modals.css');
+
+/* ── 5. Responsive Overrides (must be last) ── */
+@import url('responsive.css');

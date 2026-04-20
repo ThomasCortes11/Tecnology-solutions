@@ -1,0 +1,901 @@
+﻿/* =======================================================
+   RESPONSIVE DESIGN — MOBILE FIRST
+   Breakpoints: 1024px (tablet), 768px (mobile), 480px (small phones)
+   ======================================================= */
+
+/* ── TABLET (≤ 1024px) ── */
+@media (max-width: 1024px) {
+    .hero-container {
+        gap: 2.5rem;
+    }
+
+
+    .nosotros-content {
+        gap: 2.5rem;
+    }
+
+    .servicios-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .caracteristicas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .soluciones-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .proceso-timeline {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .proceso-timeline::before {
+        display: none;
+    }
+
+    .clients-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ── MOBILE (≤ 768px) ── */
+@media (max-width: 768px) {
+
+    /* --- TIPOGRAFÍA --- */
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.15rem;
+    }
+
+    p {
+        font-size: 0.95rem;
+    }
+
+    /* --- NAVBAR --- */
+    .navbar {
+        padding: 0.9rem 1.2rem;
+    }
+
+    .navbar-container {
+        position: relative;
+    }
+
+    .navbar-logo {
+        font-size: 1rem;
+        gap: 0.5rem;
+    }
+
+    .logo-icon {
+        width: 26px;
+        height: 26px;
+    }
+
+    /* Ocultar botón CTA en móvil para no saturar la barra */
+    .cta-button {
+        display: none;
+    }
+
+    /* Ocultar menu-header en desktop (solo visible en móvil) */
+    .menu-header {
+        display: flex;
+    }
+
+    /* Hamburger visible */
+    .hamburger {
+        display: flex;
+        z-index: 1200;
+        position: relative;
+    }
+
+    /* Animación hamburger → X */
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .hamburger span {
+        transition: all 0.3s ease;
+        display: block;
+    }
+
+    /* Menú lateral móvil — slide desde la derecha */
+    .navbar-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: min(80vw, 300px);
+        height: 100dvh;
+        background: #080810;
+        border-left: 1px solid rgba(30, 107, 255, 0.25);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 0;
+        transform: translateX(100%);
+        opacity: 1;
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+        z-index: 1100;
+        overflow-y: auto;
+        box-shadow: -8px 0 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .navbar-menu.active {
+        transform: translateX(0);
+        pointer-events: auto;
+    }
+
+    /* Overlay oscuro detrás del menú */
+    .navbar-menu.active::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        right: min(80vw, 300px);
+        background: rgba(0, 0, 0, 0.55);
+        z-index: -1;
+    }
+
+    /* Cabecera del panel con logo y X */
+    .navbar-menu .menu-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.1rem 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(30, 107, 255, 0.06);
+        flex-shrink: 0;
+    }
+
+    .navbar-menu .menu-header-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #fff;
+        font-size: 0.9rem;
+        font-weight: 700;
+    }
+
+    .navbar-menu .menu-close-btn {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #fff;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.1rem;
+        line-height: 1;
+        transition: background 0.2s ease, transform 0.2s ease;
+        flex-shrink: 0;
+    }
+
+    .navbar-menu .menu-close-btn:hover {
+        background: rgba(30, 107, 255, 0.3);
+        transform: rotate(90deg);
+    }
+
+    /* Lista de navegación */
+    .nav-list {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        padding: 0.75rem 0;
+        flex: 1;
+    }
+
+    .nav-list>li {
+        width: 100%;
+    }
+
+    .nav-link {
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.88);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        transition: background 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    .nav-link:hover {
+        transform: none;
+        color: #fff;
+        background: rgba(30, 107, 255, 0.12);
+        padding-left: 2rem;
+    }
+
+    /* Rotar flecha cuando dropdown abierto */
+    .nav-item-dropdown.open>.nav-link .dropdown-arrow {
+        transform: rotate(180deg);
+    }
+
+    /* Dropdown dentro del menú móvil */
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        border-top: 1px solid rgba(30, 107, 255, 0.1);
+        border-radius: 0;
+        background: rgba(30, 107, 255, 0.05);
+        padding: 0.25rem 0;
+        margin: 0;
+        min-width: 0;
+        display: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .nav-item-dropdown.open .dropdown-menu {
+        display: block;
+        max-height: 500px;
+    }
+
+    .dropdown-item {
+        padding: 0.7rem 1.5rem 0.7rem 2.2rem;
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.65);
+        border-bottom: none;
+        transition: background 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+        display: block;
+    }
+
+    .dropdown-item::before {
+        content: '›';
+        margin-right: 0.5rem;
+        color: var(--color-primary);
+        font-size: 1rem;
+    }
+
+    .dropdown-item:hover {
+        padding-left: 2.8rem;
+        color: #fff;
+        background: rgba(30, 107, 255, 0.12);
+    }
+
+    /* Botón CTA al fondo del panel */
+    .navbar-menu .menu-cta {
+        display: block;
+        margin: 0;
+        padding: 1.1rem 1.5rem;
+        background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.95rem;
+        text-align: center;
+        border: none;
+        cursor: pointer;
+        border-top: 1px solid rgba(30, 107, 255, 0.3);
+        transition: opacity 0.2s ease;
+        flex-shrink: 0;
+        letter-spacing: 0.3px;
+    }
+
+    .navbar-menu .menu-cta:hover {
+        opacity: 0.9;
+    }
+
+    /* --- HERO --- */
+    .hero {
+        margin-top: 58px;
+        min-height: auto;
+        padding: 3rem 1.5rem 2.5rem;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .hero-content {
+        order: 1;
+        text-align: center;
+    }
+
+    .hero-visual {
+        order: 2;
+        justify-content: center;
+    }
+
+    .hero-title {
+        font-size: 1.85rem;
+        letter-spacing: 0.5px;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+        max-width: 100%;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 0.85rem;
+        align-items: center;
+        width: 100%;
+    }
+
+    .btn-hero-primary,
+    .btn-hero-secondary {
+        width: 100%;
+        max-width: 320px;
+        padding: 0.95rem 1.5rem;
+        font-size: 0.88rem;
+    }
+
+
+    .hero-radial-glow {
+        width: 350px;
+        height: 350px;
+        right: -100px;
+        top: 50%;
+    }
+
+    /* --- SECCIONES GENERALES --- */
+    section {
+        padding: 3.5rem 1.2rem;
+    }
+
+    .section-header {
+        margin-bottom: 2.5rem;
+        padding: 0 0.5rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .section-header p {
+        font-size: 0.95rem;
+    }
+
+    /* --- SERVICIOS --- */
+    .servicios-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .service-card {
+        padding: 2rem 1.5rem;
+        animation: none;
+        /* desactivar float en móvil */
+    }
+
+    .service-card .card-media {
+        height: 130px;
+        margin: -0.5rem -0.2rem 1rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 0.5rem;
+    }
+
+    /* --- POR QUÉ ELEGIRNOS --- */
+    .caracteristicas-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .caracteristicas-item {
+        padding: 2rem 1.5rem;
+        animation: none;
+    }
+
+    /* --- SOLUCIONES --- */
+    .soluciones-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .solucion-item {
+        padding: 1.5rem 1rem;
+        animation: none;
+    }
+
+    .solucion-item .card-media {
+        height: 110px;
+    }
+
+    /* --- PROCESO --- */
+    .proceso-timeline {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .proceso-timeline::before {
+        display: none;
+    }
+
+    .proceso-step {
+        padding: 2rem 1.5rem;
+    }
+
+    .proceso-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    /* --- NOSOTROS --- */
+    .nosotros-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .nosotros-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .intro-text {
+        font-size: 0.95rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .nosotros-features {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .feature-item {
+        padding: 1rem;
+    }
+
+    .feature-number {
+        font-size: 1.5rem;
+    }
+
+    .nosotros-image {
+        height: 280px;
+    }
+
+    .tech-network {
+        width: 220px;
+        height: 220px;
+    }
+
+    .valores-grid {
+        gap: 1rem;
+    }
+
+    .valor-card {
+        padding: 1.2rem;
+    }
+
+    /* --- CLIENTES --- */
+    .clientes-stats {
+        max-width: calc(100% - 3rem);
+        padding: 1.5rem 1.25rem;
+    }
+
+    .clientes-stat {
+        min-width: 110px;
+        padding: 0 1rem;
+    }
+
+    .stat-num {
+        font-size: 1.55rem;
+    }
+
+    .cl-card {
+        width: 178px;
+        padding: 1.25rem 1rem 0.85rem;
+    }
+
+    .cl-card .client-logo-svg {
+        width: 118px;
+        height: 60px;
+    }
+
+    .clientes-trust-badge {
+        font-size: 0.8rem;
+        padding: 0.6rem 1.4rem;
+    }
+
+    /* --- TECNOLOGÍA AVANZADA --- */
+    .technology-section .section-header h2,
+    .technology-section .section-header p {
+        text-align: center;
+    }
+
+    .network-visualization {
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+    .network-svg {
+        height: 220px;
+    }
+
+    .tech-features {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .tech-feature {
+        padding: 1.5rem 1.2rem;
+    }
+
+    /* --- TESTIMONIOS --- */
+    .testimonios-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .testimonios-card {
+        padding: 1.75rem 1.5rem;
+    }
+
+    .testimonios-form-section {
+        padding: 2rem 1.25rem;
+        border-radius: 12px;
+        margin-top: 2.5rem;
+    }
+
+    .testimonios-form-section h3 {
+        font-size: 1.4rem;
+    }
+
+    .star-rating {
+        font-size: 1.8rem;
+        justify-content: flex-start;
+        gap: 0.4rem;
+    }
+
+    /* --- CONTACTO --- */
+    .contacto-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contacto-form {
+        padding: 1.75rem 1.25rem;
+        border-radius: 12px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+        font-size: 0.88rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .contacto-info {
+        gap: 1.25rem;
+    }
+
+    .contacto-item {
+        padding: 1.2rem;
+        gap: 1rem;
+    }
+
+    .contacto-item h4 {
+        font-size: 0.95rem;
+    }
+
+    .contacto-item p {
+        font-size: 0.88rem;
+    }
+
+    .btn.btn-primary.btn-block {
+        padding: 0.95rem;
+        font-size: 0.95rem;
+    }
+
+    /* --- FOOTER --- */
+    .footer-inner {
+        padding: 3.5rem 1.5rem 1.75rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem 2rem;
+    }
+
+    .footer-col--brand {
+        grid-column: 1 / -1;
+        padding-right: 0;
+    }
+
+    .footer-bottom {
+        font-size: 0.82rem;
+    }
+
+    .tech-circle {
+        width: 300px;
+        height: 300px;
+        top: -50px;
+        right: -150px;
+    }
+
+    /* --- WHATSAPP --- */
+    .whatsapp-button {
+        width: 50px;
+        height: 50px;
+        border-radius: 18px;
+        bottom: 18px;
+        right: 18px;
+    }
+
+    /* --- DESACTIVAR ANIMACIONES PESADAS EN MÓVIL --- */
+    .hero-tech-grid {
+        opacity: 0.2;
+    }
+
+    .floating-particles .particle {
+        display: none;
+    }
+
+    @keyframes cardFloatSoft {
+
+        0%,
+        100% {
+            transform: none;
+        }
+    }
+}
+
+/* ── SMALL PHONES (≤ 480px) ── */
+@media (max-width: 480px) {
+
+    /* --- NAVBAR --- */
+    .navbar {
+        padding: 0.75rem 1rem;
+    }
+
+    .navbar-logo {
+        font-size: 0.9rem;
+    }
+
+    /* --- HERO --- */
+    .hero {
+        padding: 2.5rem 1rem 2rem;
+    }
+
+    .hero-title {
+        font-size: 1.6rem;
+        letter-spacing: 0.3px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .btn-hero-primary,
+    .btn-hero-secondary {
+        max-width: 100%;
+        padding: 0.85rem 1.2rem;
+        font-size: 0.82rem;
+    }
+
+
+    /* --- SECCIONES --- */
+    section {
+        padding: 3rem 1rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .section-header p {
+        font-size: 0.88rem;
+    }
+
+    /* --- SOLUCIONES 1 columna en pantallas muy pequeñas --- */
+    .soluciones-container {
+        grid-template-columns: 1fr;
+    }
+
+    .solucion-item {
+        padding: 1.5rem 1.2rem;
+    }
+
+    /* --- NOSOTROS --- */
+    .nosotros-features {
+        grid-template-columns: 1fr;
+    }
+
+    .nosotros-image {
+        height: 220px;
+    }
+
+    .valores-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* --- CLIENTES --- */
+    .clientes-stats {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+        max-width: calc(100% - 2.5rem);
+    }
+
+    .stat-sep {
+        width: 60px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.3), transparent);
+    }
+
+    .clientes-stat {
+        padding: 0;
+    }
+
+    .cl-card {
+        width: 158px;
+        padding: 1rem 0.85rem 0.75rem;
+    }
+
+    .cl-card .client-logo-svg {
+        width: 110px;
+        height: 55px;
+    }
+
+    .clientes-trust-line {
+        display: none;
+    }
+
+    .clientes-trust-badge {
+        font-size: 0.76rem;
+    }
+
+    /* --- CONTACTO --- */
+    .contacto-form {
+        padding: 1.5rem 1rem;
+    }
+
+    .testimonios-form-section {
+        padding: 1.75rem 1rem;
+    }
+
+    /* --- FOOTER --- */
+    .footer-inner {
+        padding: 2.5rem 1.25rem 1.5rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.35rem;
+    }
+}
+
+/* ===== SOBRE NOSOTROS - PLANET ANIMATIONS ===== */
+/* Smooth rotation for the main planet sphere */
+.tech-network .earth {
+    animation: earth-slow-rotate 45s linear infinite;
+    transform-origin: center;
+}
+
+@keyframes earth-slow-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Extra pulse effect for orbital rings in Sobre Nosotros section */
+.tech-network .earth-orbit {
+    animation: pulse-orbit-glow 3.5s ease-in-out infinite;
+}
+
+.tech-network .outer-orbit {
+    animation: rotate-outer-orbit 22s linear infinite, pulse-orbit-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-orbit-glow {
+
+    0%,
+    100% {
+        opacity: 0.35;
+        stroke-width: 1.5;
+    }
+
+    50% {
+        opacity: 0.65;
+        stroke-width: 2;
+    }
+}
+
+@keyframes rotate-outer-orbit {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ========================================
+   GLOBE 3D — canvas integrado al hero
+   ======================================== */
+
+/* Animaciones para la integración de la Tierra */
+@keyframes earth-glow-pulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+        filter: blur(20px) brightness(1);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: translate(-50%, -50%) scale(1.05);
+        filter: blur(25px) brightness(1.2);
+    }
+}
+
+@keyframes earth-float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(2deg);
+    }
+}

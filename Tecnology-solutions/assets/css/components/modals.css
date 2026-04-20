@@ -1,0 +1,187 @@
+﻿/* ═════════════════════════════════════════
+   MODALES v2 — Mantenimiento & Agendar
+   ═════════════════════════════════════════ */
+    /* ─────────────────────── MODALES v2 ─────────────────────── */
+    .mdl-overlay {
+        position: fixed; inset: 0; z-index: 9999;
+        background: rgba(5,7,20,0.78);
+        backdrop-filter: blur(8px);
+        display: flex; align-items: center; justify-content: center;
+        padding: 1rem;
+        animation: mdlOverlayIn .2s ease;
+    }
+    .mdl-overlay[hidden] { display: none !important; }
+    @keyframes mdlOverlayIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* Card */
+    .mdl-card {
+        background: #fff;
+        border-radius: 24px;
+        width: 100%; max-width: 540px;
+        max-height: 92vh; overflow-y: auto;
+        box-shadow: 0 40px 100px rgba(0,0,0,.38);
+        animation: mdlCardIn .3s cubic-bezier(.22,1,.36,1);
+        scrollbar-width: thin;
+    }
+    @keyframes mdlCardIn {
+        from { opacity: 0; transform: translateY(24px) scale(.96); }
+        to   { opacity: 1; transform: none; }
+    }
+
+    /* Banner con color por modal */
+    .mdl-banner {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 2rem 2rem 1.5rem;
+        border-bottom: 1px solid #f1f5f9;
+    }
+    .mdl-card--navy  .mdl-banner { background: linear-gradient(135deg, #eff6ff 0%, #f8faff 100%); }
+    .mdl-card--purple .mdl-banner { background: linear-gradient(135deg, #faf5ff 0%, #f8faff 100%); }
+
+    .mdl-banner-icon {
+        width: 54px; height: 54px; flex-shrink: 0;
+        border-radius: 16px;
+        display: flex; align-items: center; justify-content: center;
+        color: #fff;
+    }
+    .mdl-card--navy   .mdl-banner-icon { background: linear-gradient(135deg,#1e3a8a,#3b82f6); }
+    .mdl-card--purple .mdl-banner-icon { background: linear-gradient(135deg,#6d28d9,#a78bfa); }
+
+    .mdl-banner-text { flex: 1; }
+    .mdl-banner-tag {
+        font-size: .65rem; font-weight: 800;
+        letter-spacing: .18em; text-transform: uppercase;
+        margin: 0 0 4px;
+    }
+    .mdl-card--navy   .mdl-banner-tag { color: #2563eb; }
+    .mdl-card--purple .mdl-banner-tag { color: #7c3aed; }
+
+    .mdl-banner-title {
+        font-size: 1.22rem; font-weight: 900;
+        color: #0b1120; margin: 0 0 4px;
+        line-height: 1.25; letter-spacing: -.02em;
+    }
+    .mdl-banner-sub {
+        font-size: .83rem; color: #64748b;
+        margin: 0; line-height: 1.5;
+    }
+
+    .mdl-close {
+        position: absolute; top: 16px; right: 16px;
+        width: 32px; height: 32px;
+        background: rgba(0,0,0,.06); border: none;
+        border-radius: 50%; cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        color: #6b7280;
+        transition: background .15s, color .15s;
+    }
+    .mdl-close:hover { background: #fee2e2; color: #dc2626; }
+
+    /* Chips */
+    .mdl-chips {
+        display: flex; gap: 8px; flex-wrap: wrap;
+        padding: 1rem 2rem .5rem;
+    }
+    .mdl-chip {
+        font-size: .7rem; font-weight: 700;
+        padding: 5px 12px; border-radius: 20px;
+        letter-spacing: .04em;
+    }
+    .mdl-chip--blue   { background:#eff6ff; color:#1e6bff; border:1px solid #bfdbfe; }
+    .mdl-chip--green  { background:#f0fdf4; color:#16a34a; border:1px solid #bbf7d0; }
+    .mdl-chip--orange { background:#fff7ed; color:#ea580c; border:1px solid #fed7aa; }
+    .mdl-chip--purple { background:#faf5ff; color:#7c3aed; border:1px solid #e9d5ff; }
+
+    /* Form */
+    .mdl-form {
+        padding: 1.5rem 2rem 2rem;
+        display: flex; flex-direction: column; gap: 1.1rem;
+    }
+    .mdl-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .mdl-field { display: flex; flex-direction: column; gap: 6px; }
+    .mdl-field label {
+        font-size: .78rem; font-weight: 700;
+        color: #374151; letter-spacing: .01em;
+    }
+    .mdl-req { color: #1e6bff; }
+
+    .mdl-field input,
+    .mdl-field select,
+    .mdl-field textarea {
+        width: 100%; padding: .7rem 1rem;
+        border: 1.5px solid #e5e7eb; border-radius: 12px;
+        font-size: .9rem; color: #111827; background: #fafafa;
+        transition: border-color .2s, box-shadow .2s, background .2s;
+        font-family: inherit; box-sizing: border-box;
+    }
+    .mdl-field input:focus,
+    .mdl-field select:focus,
+    .mdl-field textarea:focus {
+        outline: none; background: #fff;
+        border-color: #1e6bff;
+        box-shadow: 0 0 0 3px rgba(30,107,255,.1);
+    }
+    .mdl-card--purple .mdl-field input:focus,
+    .mdl-card--purple .mdl-field select:focus,
+    .mdl-card--purple .mdl-field textarea:focus {
+        border-color: #7c3aed;
+        box-shadow: 0 0 0 3px rgba(124,58,237,.1);
+    }
+    .mdl-field input::placeholder,
+    .mdl-field textarea::placeholder { color: #9ca3af; }
+    .mdl-field textarea { resize: vertical; min-height: 82px; }
+
+    /* Teléfono con icono */
+    .mdl-tel { position: relative; }
+    .mdl-tel-ico {
+        position: absolute; left: 12px; top: 50%;
+        transform: translateY(-50%);
+        color: #9ca3af; display: flex; align-items: center;
+    }
+    .mdl-tel input { padding-left: 36px; }
+
+    /* Urgencia */
+    .mdl-urgency { display: flex; gap: 8px; flex-wrap: wrap; }
+    .mdl-urgency-opt {
+        display: flex; align-items: center; gap: 7px;
+        padding: 7px 14px; border: 1.5px solid #e5e7eb;
+        border-radius: 10px; cursor: pointer;
+        font-size: .83rem; font-weight: 600; color: #374151;
+        transition: border-color .18s, background .18s;
+        user-select: none;
+    }
+    .mdl-urgency-opt input { display: none; }
+    .mdl-urgency-dot {
+        width: 9px; height: 9px;
+        border-radius: 50%; flex-shrink: 0;
+    }
+    .mdl-urgency-opt:has(input:checked) {
+        border-color: #1e6bff; background: #eff6ff; color: #1e6bff;
+    }
+
+    /* Botón submit */
+    .mdl-submit {
+        display: flex; align-items: center; justify-content: center; gap: 9px;
+        width: 100%; padding: .95rem 1rem;
+        border: none; border-radius: 14px; cursor: pointer;
+        font-size: 1rem; font-weight: 800; font-family: inherit;
+        transition: filter .2s, transform .15s;
+        margin-top: .4rem; letter-spacing: .01em;
+    }
+    .mdl-submit:hover  { filter: brightness(1.08); transform: translateY(-1px); }
+    .mdl-submit:active { transform: translateY(0); }
+    .mdl-submit--whatsapp { background: #25d366; color: #fff; }
+
+    .mdl-note {
+        font-size: .73rem; color: #9ca3af;
+        text-align: center; margin: 0;
+    }
+
+    @media (max-width: 520px) {
+        .mdl-row { grid-template-columns: 1fr; }
+        .mdl-card { border-radius: 18px; }
+        .mdl-banner, .mdl-form { padding-left: 1.3rem; padding-right: 1.3rem; }
+        .mdl-chips { padding-left: 1.3rem; }
+    }

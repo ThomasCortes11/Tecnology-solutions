@@ -1,0 +1,1239 @@
+﻿/* ===== HERO SECTION - FUTURISTIC REDESIGN ===== */
+/* ========================================
+   HERO SECTION - PREMIUM FUTURISTIC DESIGN
+   Two-column layout with realistic Earth illustration
+   ======================================== */
+.hero {
+    margin-top: 68px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(140deg, #0E1420 0%, #0A0A0A 52%, #101B2F 100%);
+    color: var(--color-white);
+    padding: 4rem 2rem;
+}
+
+/* Separador visual para que no se mezcle con la navbar negra */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.7), transparent);
+    z-index: 3;
+}
+
+/* Separador visual inferior */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.45), transparent);
+    z-index: 3;
+}
+
+/* Tech Grid Background */
+.hero-tech-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(30, 107, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 107, 255, 0.08) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 1;
+    opacity: 0.18;
+}
+
+/* Radial Glow Effect */
+.hero-radial-glow {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(30, 107, 255, 0.15) 0%, transparent 70%);
+    top: 50%;
+    right: -200px;
+    transform: translateY(-50%);
+    z-index: 1;
+    animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: translateY(-50%) scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: translateY(-50%) scale(1.1);
+    }
+}
+
+/* Floating Particles */
+.floating-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #1E6BFF;
+    border-radius: 50%;
+    opacity: 0;
+    box-shadow: 0 0 10px #1E6BFF;
+    animation: floatParticle 8s ease-in-out infinite;
+}
+
+.particle:nth-child(1) {
+    left: 10%;
+    top: 20%;
+    animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+    left: 20%;
+    top: 60%;
+    animation-delay: 1s;
+}
+
+.particle:nth-child(3) {
+    left: 30%;
+    top: 40%;
+    animation-delay: 2s;
+}
+
+.particle:nth-child(4) {
+    left: 70%;
+    top: 30%;
+    animation-delay: 0.5s;
+}
+
+.particle:nth-child(5) {
+    left: 80%;
+    top: 70%;
+    animation-delay: 1.5s;
+}
+
+.particle:nth-child(6) {
+    left: 90%;
+    top: 50%;
+    animation-delay: 2.5s;
+}
+
+.particle:nth-child(7) {
+    left: 50%;
+    top: 10%;
+    animation-delay: 3s;
+}
+
+.particle:nth-child(8) {
+    left: 60%;
+    top: 80%;
+    animation-delay: 3.5s;
+}
+
+@keyframes floatParticle {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(1);
+    }
+}
+
+/* Hero Container - Two Column Layout */
+.hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1400px;
+    width: 100%;
+    position: relative;
+    z-index: 3;
+}
+
+/* ========================================
+   LEFT SIDE - HERO CONTENT
+   Title, subtitle and CTA buttons
+   ======================================== */
+.hero-content {
+    text-align: left;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    color: #ffffff;
+    animation: heroFadeUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    letter-spacing: -0.5px;
+}
+
+.hero-highlight {
+    color: #3B82F6;
+    font-weight: 700;
+}
+
+@keyframes titleGradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes titleScaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.92);
+    margin-bottom: 2.5rem;
+    line-height: 1.75;
+    font-weight: 400;
+    max-width: 520px;
+    animation: heroFadeUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+    letter-spacing: 0;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: heroFadeUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+}
+
+/* Hero Buttons - Advanced Design */
+.btn-hero-call,
+.btn-hero-primary,
+.btn-hero-secondary {
+    position: relative;
+    padding: 0.9rem 2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: none;
+    letter-spacing: 0;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.btn-hero-call span,
+.btn-hero-primary span,
+.btn-hero-secondary span {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    transition: gap 0.28s ease;
+}
+
+/* Arrow that slides in when hovering secondary */
+.btn-hero-secondary span::after {
+    content: '→';
+    display: inline-block;
+    font-style: normal;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.btn-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+/* ── CALL BUTTON ── */
+.btn-hero-call {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: #FFFFFF;
+    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
+    transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.32s ease,
+                background 0.25s ease;
+    animation: btn-call-pulse 2s ease-in-out infinite;
+}
+
+@keyframes btn-call-pulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4); }
+    50%      { box-shadow: 0 6px 35px rgba(34, 197, 94, 0.7), 0 0 0 6px rgba(34, 197, 94, 0.15); }
+}
+
+.btn-hero-call svg {
+    flex-shrink: 0;
+    animation: phone-ring 1.5s ease-in-out infinite;
+}
+
+@keyframes phone-ring {
+    0%, 100% { transform: rotate(0deg); }
+    10%      { transform: rotate(15deg); }
+    20%      { transform: rotate(-10deg); }
+    30%      { transform: rotate(10deg); }
+    40%      { transform: rotate(-5deg); }
+    50%      { transform: rotate(0deg); }
+}
+
+.btn-hero-call:hover {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+    transform: translateY(-5px) scale(1.06);
+    box-shadow: 0 16px 42px rgba(34, 197, 94, 0.6), 0 0 0 6px rgba(34, 197, 94, 0.12);
+    animation-play-state: paused;
+}
+
+.btn-hero-call:active {
+    transform: translateY(-2px) scale(0.97);
+    transition-duration: 0.1s;
+}
+
+/* ── PRIMARY BUTTON ── */
+.btn-hero-primary {
+    background: #3B82F6;
+    color: #FFFFFF;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.35);
+    transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.32s ease,
+                background 0.25s ease;
+    animation: btn-primary-glow 3s ease-in-out 1.8s infinite;
+}
+
+/* Continuous glow pulse on primary */
+@keyframes btn-primary-glow {
+    0%, 100% { box-shadow: 0 4px 16px rgba(59, 130, 246, 0.35); }
+    50%       { box-shadow: 0 6px 30px rgba(59, 130, 246, 0.65), 0 0 0 5px rgba(59, 130, 246, 0.10); }
+}
+
+/* Shimmer sweep — light races across every 3.5s */
+.btn-hero-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 65%;
+    height: 100%;
+    background: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.28) 50%, transparent 100%);
+    transform: skewX(-18deg);
+    animation: btn-shine 3.5s ease 2.2s infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes btn-shine {
+    0%   { left: -120%; opacity: 0; }
+    6%   { opacity: 1; }
+    36%  { left: 150%;  opacity: 1; }
+    38%  { opacity: 0; }
+    100% { left: 150%;  opacity: 0; }
+}
+
+.btn-hero-primary:hover {
+    background: #2563eb;
+    transform: translateY(-5px) scale(1.06);
+    box-shadow: 0 16px 42px rgba(59, 130, 246, 0.65), 0 0 0 6px rgba(59, 130, 246, 0.12);
+    animation-play-state: paused;
+}
+
+.btn-hero-primary:hover .btn-glow {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, transparent 70%);
+}
+
+.btn-hero-primary:active {
+    transform: translateY(-2px) scale(0.97);
+    transition-duration: 0.1s;
+}
+
+/* ── SECONDARY BUTTON ── */
+.btn-hero-secondary {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(59, 130, 246, 0.5);
+    box-shadow: none;
+    transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.32s ease,
+                border-color 0.3s ease,
+                color 0.25s ease;
+    animation: sec-border-breathe 3.2s ease-in-out 2.4s infinite;
+}
+
+/* Continuous border-color breath on secondary */
+@keyframes sec-border-breathe {
+    0%, 100% { border-color: rgba(59, 130, 246, 0.45); }
+    50%       { border-color: rgba(59, 130, 246, 0.9); box-shadow: 0 0 14px rgba(59, 130, 246, 0.20); }
+}
+
+/* Background fill slides from left on hover */
+.btn-hero-secondary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(59, 130, 246, 0.15);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.btn-hero-secondary:hover {
+    border-color: rgba(59, 130, 246, 0.95);
+    color: #FFFFFF;
+    transform: translateY(-5px) scale(1.06);
+    box-shadow: 0 12px 34px rgba(59, 130, 246, 0.32), 0 0 0 4px rgba(59, 130, 246, 0.08);
+    animation-play-state: paused;
+}
+
+.btn-hero-secondary:hover::before {
+    transform: scaleX(1);
+}
+
+.btn-hero-secondary:hover span {
+    gap: 8px;
+}
+
+.btn-hero-secondary:hover span::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.btn-hero-secondary:hover .btn-glow {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(30, 107, 255, 0.12) 0%, transparent 70%);
+}
+
+.btn-hero-secondary:active {
+    transform: translateY(-2px) scale(0.97);
+    transition-duration: 0.1s;
+}
+
+
+@keyframes halo-pulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+}
+
+/* Ambient Floating Particles */
+.ambient-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 12;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(96, 165, 250, 0.6);
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(96, 165, 250, 0.8);
+}
+
+.particle-1 {
+    top: 10%;
+    left: 15%;
+    animation: float-particle 6s ease-in-out infinite;
+}
+
+.particle-2 {
+    top: 20%;
+    right: 20%;
+    animation: float-particle 8s ease-in-out infinite 1s;
+}
+
+.particle-3 {
+    bottom: 15%;
+    right: 10%;
+    animation: float-particle 7s ease-in-out infinite 2s;
+}
+
+.particle-4 {
+    bottom: 20%;
+    left: 15%;
+    animation: float-particle 9s ease-in-out infinite 1.5s;
+}
+
+.particle-5 {
+    top: 50%;
+    right: 5%;
+    animation: float-particle 8s ease-in-out infinite 0.5s;
+}
+
+@keyframes float-particle {
+
+    0%,
+    100% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0.4;
+    }
+
+    25% {
+        transform: translateY(-15px) translateX(8px);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translateY(-25px) translateX(-5px);
+        opacity: 0.9;
+    }
+
+    75% {
+        transform: translateY(-10px) translateX(-10px);
+        opacity: 0.6;
+    }
+}
+
+/* Sparkles Container */
+.sparkles-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 15;
+}
+
+/* Individual Sparkles */
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, #ffffff 0%, transparent 70%);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.9),
+        0 0 15px rgba(96, 165, 250, 0.6);
+    animation: sparkle-twinkle 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 3px rgba(96, 165, 250, 0.5));
+}
+
+/* Sparkle Positions */
+.sparkle-1 {
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 0s;
+}
+
+.sparkle-2 {
+    top: -15px;
+    right: -15px;
+    animation-delay: 0.3s;
+}
+
+.sparkle-3 {
+    top: 20px;
+    right: -25px;
+    animation-delay: 0.6s;
+}
+
+.sparkle-4 {
+    bottom: -20px;
+    right: -20px;
+    animation-delay: 0.9s;
+}
+
+.sparkle-5 {
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 1.2s;
+}
+
+.sparkle-6 {
+    bottom: -20px;
+    left: -20px;
+    animation-delay: 1.5s;
+}
+
+.sparkle-7 {
+    top: 20px;
+    left: -25px;
+    animation-delay: 1.8s;
+}
+
+.sparkle-8 {
+    top: -15px;
+    left: -15px;
+    animation-delay: 2.1s;
+}
+
+@keyframes sparkle-twinkle {
+
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Digital Earth Image - V5 Ultra-Seamless Integration */
+.earth-image {
+    width: 780px;
+    /* Reduced slightly to prevent edge clipping */
+    height: 780px;
+    object-fit: cover;
+    mix-blend-mode: screen;
+    opacity: 0.85;
+    /* Soften brightness to keep blacks deep for better blending */
+    filter: brightness(1.2) contrast(1.1) saturate(1.4) drop-shadow(0 0 30px rgba(30, 107, 255, 0.3));
+    /* Extremely soft mask: starts fading from center (0%) to fully transparent at 75% */
+    -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 75%);
+    mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 75%);
+    animation: earth-float-subtle 15s ease-in-out infinite;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 2;
+    display: block;
+}
+
+@keyframes earth-float-subtle {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-30px) rotate(1deg);
+    }
+}
+
+.earth-image:hover {
+    filter: brightness(1.2) contrast(1.2) saturate(1.3);
+}
+
+/* 3D Globe Three.js - Nosotros Section */
+#nosotros-globe-container {
+    width: 460px;
+    height: 460px;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 75%);
+    mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 75%);
+    pointer-events: auto;
+    cursor: grab;
+}
+
+/* Earth Container - Correct Absolute Positioning */
+.earth-container {
+    position: absolute;
+    top: 50%;
+    right: -80px;
+    transform: translateY(-50%);
+    /* Centering must be preserved */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    pointer-events: none;
+    width: auto;
+    height: auto;
+}
+
+.earth-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 850px;
+    height: 850px;
+    background: radial-gradient(circle, rgba(30, 107, 255, 0.4) 0%, rgba(30, 107, 255, 0.1) 45%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+    animation: earth-glow-pulse 6s ease-in-out infinite;
+}
+
+/* Earth Planet Elements */
+.earth-atmosphere {
+    animation: earth-glow-pulse 3s ease-in-out infinite;
+}
+
+.earth-planet {
+    animation: earth-glow-pulse 3.5s ease-in-out infinite;
+}
+
+.earth-light {
+    animation: earth-glow-pulse 4s ease-in-out infinite;
+}
+
+.earth-continents {
+    opacity: 0.5;
+}
+
+.earth-clouds {
+    opacity: 0.35;
+}
+
+.earth-sparkles {
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
+}
+
+@keyframes rotateEarth {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes earthContainerFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes earthShadeBreath {
+
+    0%,
+    100% {
+        opacity: 0.58;
+    }
+
+    50% {
+        opacity: 0.74;
+    }
+}
+
+@keyframes cloudOrbit {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Earth Orbit Ring */
+.earth-orbit {
+    animation: pulseOrbit 3s ease-in-out infinite;
+}
+
+@keyframes pulseOrbit {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Connection Lines Animation */
+.connection-line {
+    animation: lineFlow 2s ease-in-out infinite;
+}
+
+@keyframes lineFlow {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Node Pulse Animations */
+.node {
+    animation: nodePulse 2s ease-in-out infinite;
+}
+
+.node-pulse-delay-1 {
+    animation-delay: 0.3s;
+}
+
+.node-pulse-delay-2 {
+    animation-delay: 0.6s;
+}
+
+.node-center {
+    animation: nodePulseCenter 1.5s ease-in-out infinite;
+}
+
+@keyframes nodePulse {
+
+    0%,
+    100% {
+        r: 3;
+        opacity: 1;
+    }
+
+    50% {
+        r: 5;
+        opacity: 0.6;
+    }
+}
+
+@keyframes nodePulseCenter {
+
+    0%,
+    100% {
+        r: 4;
+        opacity: 1;
+    }
+
+    50% {
+        r: 6;
+        opacity: 0.7;
+    }
+}
+
+/* ========================================
+   EARTH PLANET ANIMATIONS - Hero Section
+   ======================================== */
+
+/* Soft floating animation for Earth */
+@keyframes earth-float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* Gentle pulsing glow effect */
+@keyframes earth-glow-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.9;
+    }
+}
+
+/* Sparkle twinkling effect */
+@keyframes sparkle-twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        r: 2.5;
+    }
+
+    50% {
+        opacity: 0.9;
+        r: 3.5;
+    }
+}
+
+/* Apply animations to Earth elements */
+.earth-planet {
+    animation: earth-float 4s ease-in-out infinite, earth-glow-pulse 3s ease-in-out infinite;
+}
+
+
+.sparkle-twinkle {
+    animation: sparkle-twinkle 2s ease-in-out infinite;
+}
+
+/* ========================================
+   EARTH CONTINENTS
+   Visible landmasses on digital planet
+   ======================================== */
+.earth-continents path {
+    animation: continentGlow 3s ease-in-out infinite;
+}
+
+@keyframes continentGlow {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        fill: #1E6BFF;
+    }
+
+    50% {
+        opacity: 0.9;
+        fill: #4A8CFF;
+    }
+}
+
+/* Outer orbit rings animation */
+.outer-orbit,
+.outer-orbit-2 {
+    animation: rotateOrbit 20s linear infinite reverse;
+    transform-origin: center;
+}
+
+.outer-orbit-2 {
+    animation-duration: 25s;
+}
+
+@keyframes rotateOrbit {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Outer Orbit Rings */
+.outer-orbit,
+.outer-orbit-2 {
+    animation: orbitExpand 4s ease-in-out infinite;
+}
+
+.outer-orbit-2 {
+    animation-delay: 2s;
+}
+
+@keyframes orbitExpand {
+
+    0%,
+    100% {
+        opacity: 0.1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.3;
+        transform: scale(1.05);
+    }
+}
+
+/* Planet Specific Animations */
+.digital-earth .planet-aura {
+    animation: aura-pulse 4s ease-in-out infinite;
+}
+
+@keyframes aura-pulse {
+
+    0%,
+    100% {
+        r: 110;
+        opacity: 0.6;
+    }
+
+    50% {
+        r: 115;
+        opacity: 0.8;
+    }
+}
+
+.digital-earth .planet-sphere {
+    animation: planet-rotate 60s linear infinite;
+}
+
+@keyframes planet-rotate {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+.digital-earth .planet-light {
+    animation: light-shift 6s ease-in-out infinite;
+}
+
+@keyframes light-shift {
+
+    0%,
+    100% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.digital-earth .continent {
+    animation: continent-glow 4s ease-in-out infinite;
+}
+
+@keyframes continent-glow {
+
+    0%,
+    100% {
+        opacity: 0.88;
+        filter: drop-shadow(0 0 0px rgba(0, 212, 255, 0.3));
+    }
+
+    50% {
+        opacity: 0.95;
+        filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.5));
+    }
+}
+
+/* Network Connections */
+.digital-earth .connection-line-animated {
+    animation: line-glow 3s ease-in-out infinite;
+}
+
+@keyframes line-glow {
+
+    0%,
+    100% {
+        stroke-width: 1.2;
+        opacity: 0.6;
+        stroke: #00D4FF;
+    }
+
+    50% {
+        stroke-width: 1.5;
+        opacity: 0.9;
+        stroke: #00E5FF;
+    }
+}
+
+/* Glowing Nodes */
+.digital-earth .node-glow {
+    animation: node-pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes node-pulse-glow {
+
+    0%,
+    100% {
+        r: 4;
+        opacity: 0.8;
+        fill: #00E5FF;
+    }
+
+    50% {
+        r: 5.5;
+        opacity: 1;
+        fill: #00D4FF;
+    }
+}
+
+.digital-earth .node-center {
+    animation: center-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes center-glow {
+
+    0%,
+    100% {
+        r: 5;
+        opacity: 0.95;
+        fill: #00D4FF;
+    }
+
+    50% {
+        r: 6.5;
+        opacity: 1;
+        fill: #00E5FF;
+    }
+}
+
+/* Rotating outer nodes */
+.digital-earth .rotate-node {
+    animation: rotate-around-planet 15s linear infinite;
+}
+
+.digital-earth .rotate-node:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.digital-earth .rotate-node:nth-child(2) {
+    animation-delay: -3.75s;
+}
+
+.digital-earth .rotate-node:nth-child(3) {
+    animation-delay: -7.5s;
+}
+
+.digital-earth .rotate-node:nth-child(4) {
+    animation-delay: -11.25s;
+}
+
+@keyframes rotate-around-planet {
+    from {
+        transform: rotate(0deg) translateX(75px) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg) translateX(75px) rotate(360deg);
+    }
+}
+
+/* Floating Particles */
+.digital-earth .floating-particles {
+    animation: particles-float 20s ease-in-out infinite;
+}
+
+.digital-earth .particle {
+    animation: float-particle 8s ease-in-out infinite;
+}
+
+@keyframes float-particle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: translateY(0) translateX(0);
+    }
+
+    25% {
+        opacity: 0.6;
+        transform: translateY(-15px) translateX(8px);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: translateY(-30px) translateX(-8px);
+    }
+
+    75% {
+        opacity: 0.5;
+        transform: translateY(-15px) translateX(-12px);
+    }
+}
+
