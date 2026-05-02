@@ -49,14 +49,20 @@ dropdownItems.forEach((item) => {
 
     if (!dropdownLink || !dropdownMenu) return;
 
-    // Mobile: toggle on click
+    // Mobile: close menu and open installation modal directly
     dropdownLink.addEventListener('click', (e) => {
         if (window.innerWidth > 768) return;
         e.preventDefault();
-        dropdownItems.forEach((otherItem) => {
-            if (otherItem !== item) otherItem.classList.remove('open');
-        });
-        item.classList.toggle('open');
+        // Close mobile menu
+        if (navbarMenu && hamburger) {
+            navbarMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        // Open the installation modal
+        setTimeout(() => {
+            if (typeof openInstalacionModal === 'function') openInstalacionModal();
+        }, 200);
     });
 
     // Desktop: hover with delay on close so mouse can travel to menu
@@ -210,8 +216,20 @@ if (contactForm) {
             return;
         }
 
-        showNotification('Formulario enviado correctamente. Te contactaremos pronto.', 'success');
-        setTimeout(() => contactForm.reset(), 800);
+        const servicioTextos = {
+            camaras: 'Cámaras de Seguridad',
+            acceso: 'Control de Acceso',
+            alarmas: 'Alarmas Inteligentes',
+            monitoreo: 'Monitoreo Remoto',
+            mantenimiento: 'Mantenimiento',
+            otro: 'Otra solución'
+        };
+        const servicioNombre = servicioTextos[servicio] || servicio;
+
+        const texto = `🔐 *Nueva Solicitud — Tecnology Solutions*\n\n👤 *Nombre:* ${nombre}\n📱 *Teléfono:* ${telefono}\n📧 *Email:* ${email}\n🔧 *Servicio:* ${servicioNombre}\n💬 *Mensaje:* ${mensaje}`;
+
+        window.open(`https://wa.me/573152284097?text=${encodeURIComponent(texto)}`, '_blank', 'noopener,noreferrer');
+        contactForm.reset();
     });
 }
 

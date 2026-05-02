@@ -79,7 +79,8 @@
     }
 
     /* Ocultar botón CTA en móvil para no saturar la barra */
-    .cta-button {
+    .cta-button,
+    .navbar-actions {
         display: none;
     }
 
@@ -235,6 +236,11 @@
         padding-left: 2rem;
     }
 
+    /* Hide dropdown arrow on mobile — Servicios now navigates directly */
+    .nav-item-dropdown .dropdown-arrow {
+        display: none;
+    }
+
     /* Rotar flecha cuando dropdown abierto */
     .nav-item-dropdown.open>.nav-link .dropdown-arrow {
         transform: rotate(180deg);
@@ -263,6 +269,23 @@
     .nav-item-dropdown.open .dropdown-menu {
         display: block;
         max-height: 500px;
+    }
+
+    /* Fix dropdown grid to single column on mobile */
+    .dropdown-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Hide icons, header and visit CTA inside mobile dropdown for cleaner look */
+    .dropdown-item-icon,
+    .dropdown-header,
+    .dropdown-visit-cta {
+        display: none;
+    }
+
+    /* Reset wide item on mobile */
+    .dropdown-item--wide {
+        grid-column: 1;
     }
 
     .dropdown-item {
