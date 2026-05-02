@@ -1,0 +1,122 @@
+﻿/* ═════════════════════════════════════════
+   SOLUCIONES v2 — Inline overrides
+   ═════════════════════════════════════════ */
+    /* ══ SOLUCIONES v2 — Accordion cards ══ */
+
+    /* Override legacy styles.css rules on .solucion-item */
+    .solucion-item.sol-card { padding:0 !important; animation:solCardIn .6s cubic-bezier(.22,1,.36,1) both !important; transform:none; }
+    .solucion-item.sol-card:hover { transform:translateY(-4px) !important; }
+    .solucion-item.sol-card::before, .solucion-item.sol-card::after { display:none !important; }
+    .solucion-item.sol-card .solucion-icon { margin-bottom:0 !important; }
+    .solucion-item.sol-card .solucion-icon::before { display:none !important; }
+
+    .sol-bg-orb { position:absolute; border-radius:50%; pointer-events:none; z-index:0; }
+    .sol-bg-orb--1 { width:520px; height:520px; top:-120px; left:-140px; background:radial-gradient(circle, rgba(30,107,255,0.13) 0%, transparent 70%); animation:solOrbDrift 14s ease-in-out infinite alternate; }
+    .sol-bg-orb--2 { width:400px; height:400px; bottom:-100px; right:-80px; background:radial-gradient(circle, rgba(0,212,255,0.09) 0%, transparent 70%); animation:solOrbDrift 18s ease-in-out infinite alternate-reverse; }
+    @keyframes solOrbDrift { 0%{transform:translate(0,0);} 100%{transform:translate(40px,30px);} }
+
+    .sol-eyebrow {
+        display:inline-flex; align-items:center; gap:7px;
+        background:rgba(30,107,255,0.1); border:1px solid rgba(30,107,255,0.3);
+        color:#60a5fa; font-size:.68rem; font-weight:700; letter-spacing:.14em;
+        padding:5px 14px; border-radius:20px; text-transform:uppercase;
+        margin-bottom:18px;
+    }
+    .sol-header-animated { animation:solHeaderIn .7s cubic-bezier(.22,1,.36,1) both; }
+    @keyframes solHeaderIn { from{opacity:0;transform:translateY(22px);} to{opacity:1;transform:none;} }
+
+    /* Grid — 4 columns on desktop */
+    .soluciones-container {
+        position:relative; z-index:1;
+        display:grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap:20px;
+        max-width:1200px;
+        margin:3rem auto 0;
+        align-items:start;
+    }
+
+    /* Card base */
+    .sol-card {
+        background:linear-gradient(160deg,rgba(14,21,42,0.92) 0%,rgba(8,10,22,0.95) 100%);
+        border:1px solid rgba(30,107,255,0.25);
+        border-radius:20px;
+        padding:0;
+        text-align:left;
+        cursor:pointer;
+        position:relative;
+        overflow:hidden;
+        transition:border-color .28s,box-shadow .28s,transform .28s;
+        animation:solCardIn .6s cubic-bezier(.22,1,.36,1) both;
+        animation-delay: var(--sol-d, 0s);
+    }
+    .sol-card[data-sol-delay="0s"]   { --sol-d:0s; }
+    .sol-card[data-sol-delay="0.1s"] { --sol-d:0.1s; }
+    .sol-card[data-sol-delay="0.2s"] { --sol-d:0.2s; }
+    .sol-card[data-sol-delay="0.3s"] { --sol-d:0.3s; }
+    @keyframes solCardIn { from{opacity:0;transform:translateY(28px) scale(.97);} to{opacity:1;transform:none;} }
+
+    .sol-card:hover {
+        border-color:rgba(30,107,255,0.65);
+        box-shadow:0 0 0 1px rgba(30,107,255,0.18), 0 20px 50px rgba(30,107,255,0.18);
+        transform:translateY(-4px);
+    }
+
+    /* Glow layer */
+    .sol-card-glow {
+        position:absolute; inset:0; border-radius:20px; pointer-events:none;
+        background:radial-gradient(ellipse at 50% 0%,rgba(30,107,255,0.14) 0%,transparent 65%);
+        opacity:0; transition:opacity .3s;
+    }
+    .sol-card:hover .sol-card-glow,
+    .sol-card:hover .sol-card-glow { opacity:1; }
+
+    /* Top section (always visible) */
+    .sol-card-top {
+        display:flex; flex-direction:column; align-items:center;
+        gap:14px; padding:28px 22px 22px; text-align:center;
+        position:relative; z-index:1;
+    }
+
+    /* Icon */
+    .solucion-icon {
+        display:inline-flex; align-items:center; justify-content:center;
+        width:88px; height:88px; border-radius:50%;
+        background:radial-gradient(ellipse at 35% 30%,rgba(30,107,255,.22) 0%,rgba(6,10,28,.85) 70%);
+        border:1px solid rgba(30,107,255,.42);
+        box-shadow:0 0 24px rgba(30,107,255,.14);
+        position:relative; flex-shrink:0;
+        transition:box-shadow .3s, border-color .3s, transform .3s;
+    }
+    .sol-icon-ring {
+        position:absolute; inset:-8px; border-radius:50%;
+        border:1px solid rgba(30,107,255,.22);
+        opacity:0; transform:scale(.88);
+        transition:opacity .3s, transform .3s;
+    }
+    .sol-card:hover .sol-icon-ring { opacity:1; transform:scale(1.05); }
+    .sol-card:hover .solucion-icon {
+        box-shadow:0 0 38px rgba(30,107,255,.38);
+        border-color:rgba(30,107,255,.75);
+        transform:scale(1.06);
+    }
+    .sol-card:hover .solucion-icon svg { transform:translateY(-2px) rotate(5deg); }
+    .solucion-icon svg { transition:transform .4s; }
+
+    .sol-card-title-row { display:flex; flex-direction:column; gap:4px; }
+    .sol-card-title-row h3 { font-size:1.1rem; font-weight:800; color:#fff; margin:0; line-height:1.2; }
+    .sol-card-tagline { font-size:.75rem; color:#60a5fa; font-weight:500; margin:0; opacity:.85; }
+
+    /* External link arrow */
+    .sol-card-arrow {
+        color:#475569; transition:transform .28s cubic-bezier(.34,1.56,.64,1), color .2s;
+    }
+    .sol-card:hover .sol-card-arrow { transform:translate(2px,-2px); color:#60a5fa; }
+
+    /* Responsive */
+    @media (max-width:1000px) {
+        .soluciones-container { grid-template-columns:repeat(2,1fr); }
+    }
+    @media (max-width:600px) {
+        .soluciones-container { grid-template-columns:1fr; }
+    }

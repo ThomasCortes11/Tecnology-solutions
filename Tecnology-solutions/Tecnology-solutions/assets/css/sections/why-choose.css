@@ -1,0 +1,384 @@
+﻿/* ===== SECCIÃ“N POR QUÃ‰ ELEGIRNOS ===== */
+/* ===== SECCIÓN POR QUÉ ELEGIRNOS — REDISEÑO CORPORATIVO ===== */
+.por-que-elegir {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(160deg, #050712 0%, #07091a 50%, #090e20 100%);
+    padding: 8rem 2rem;
+    color: var(--color-white);
+}
+
+/* Dot grid — muy sutil, sólo textura leve */
+.pqe-bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(30, 107, 255, 0.07) 1px, transparent 1px);
+    background-size: 52px 52px;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Glow ambient — luz azul ténue en esquina superior izquierda */
+.pqe-bg-grid::after {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -5%;
+    width: 55%;
+    height: 70%;
+    background: radial-gradient(ellipse, rgba(30, 107, 255, 0.09) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.pqe-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+/* ---- COLUMNA IZQUIERDA ---- */
+.pqe-left {
+    opacity: 0;
+    animation: pqeLeftIn 0.65s ease 0.1s forwards;
+}
+
+.pqe-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.6rem;
+    background: rgba(30, 107, 255, 0.12);
+    border: 1px solid rgba(30, 107, 255, 0.35);
+    padding: 0.42rem 1rem 0.42rem 0.75rem;
+    border-radius: 100px;
+}
+
+.pqe-eyebrow-line {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #60a5fa 0%, var(--color-primary) 100%);
+    box-shadow: 0 0 8px rgba(96, 165, 250, 0.7);
+    flex-shrink: 0;
+    animation: pqeDotPulse 2.4s ease-in-out infinite;
+}
+
+.pqe-eyebrow span:last-child {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: #93c5fd;
+}
+
+.pqe-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2rem, 2.8vw, 2.85rem);
+    font-weight: 700;
+    line-height: 1.18;
+    color: var(--color-white);
+    margin-bottom: 1.8rem;
+    letter-spacing: -0.5px;
+}
+
+.pqe-accent {
+    background: linear-gradient(90deg, #60a5fa, #3b82f6, #93c5fd, #3b82f6);
+    background-size: 250% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-style: normal;
+    animation: pqeAccentShift 4s linear infinite;
+}
+
+.pqe-subtitle {
+    font-size: 0.975rem;
+    line-height: 1.82;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 3.4rem;
+    max-width: 440px;
+}
+
+/* Stats bar */
+.pqe-stats {
+    display: flex;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    background: rgba(255, 255, 255, 0.03);
+    position: relative;
+}
+
+/* Shimmer sweep sobre la barra de stats */
+.pqe-stats::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 55%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+    animation: pqeStatsSweep 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.pqe-stat {
+    flex: 1;
+    padding: 1.7rem 1rem;
+    text-align: center;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.pqe-stat:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 22%;
+    bottom: 22%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.pqe-stat:hover {
+    background: rgba(30, 107, 255, 0.06);
+}
+
+.pqe-stat-number {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.1rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #ffffff 30%, #93c5fd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+.pqe-stat-label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    line-height: 1.35;
+}
+
+/* CTA */
+.pqe-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 1rem 2.2rem;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 9px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    text-decoration: none;
+    transition: all 0.28s ease;
+    box-shadow: 0 4px 20px rgba(30, 107, 255, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pqe-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 36px rgba(30, 107, 255, 0.42);
+    background: #2f79ff;
+}
+
+.pqe-cta svg { transition: transform 0.25s ease; }
+.pqe-cta:hover svg { transform: translateX(4px); }
+
+/* Pulso sutil en CTA — llama la atención sin gritar */
+.pqe-cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 9px;
+    box-shadow: 0 0 0 0 rgba(30, 107, 255, 0.5);
+    animation: pqeCtaPulse 2.8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.pqe-cta {
+    position: relative;
+}
+
+/* Call Button */
+.pqe-call-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 2rem;
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: #ffffff;
+    border-radius: 9px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 0.75rem;
+}
+
+.pqe-call-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgba(34, 197, 94, 0.45);
+}
+
+.pqe-call-btn svg {
+    animation: nav-phone-ring 2.5s ease-in-out infinite;
+}
+
+/* ---- COLUMNA DERECHA: Benefits ---- */
+.pqe-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 18px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.pqe-benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.3rem;
+    padding: 1.65rem 1.6rem;
+    border-left: 2px solid transparent;
+    transition: all 0.26s ease;
+    cursor: default;
+    opacity: 0;
+    transform: translateX(18px);
+    animation: pqeBenefitIn 0.5s ease forwards;
+}
+
+.pqe-benefit:nth-child(1) { animation-delay: 0.12s; }
+.pqe-benefit:nth-child(2) { animation-delay: 0.21s; }
+.pqe-benefit:nth-child(3) { animation-delay: 0.30s; }
+.pqe-benefit:nth-child(4) { animation-delay: 0.39s; }
+.pqe-benefit:nth-child(5) { animation-delay: 0.48s; }
+.pqe-benefit:nth-child(6) { animation-delay: 0.57s; }
+
+.pqe-benefit:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pqe-benefit:hover {
+    background: rgba(30, 107, 255, 0.04);
+    border-left-color: #3b82f6;
+    transform: translateX(4px);
+}
+
+.pqe-benefit-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(147, 197, 253, 0.6);
+    transition: all 0.26s ease;
+    margin-top: 2px;
+}
+
+.pqe-benefit:hover .pqe-benefit-icon {
+    border-color: rgba(59, 130, 246, 0.55);
+    color: #60a5fa;
+    background: rgba(30, 107, 255, 0.1);
+    box-shadow: 0 0 14px rgba(30, 107, 255, 0.15);
+    animation: pqeIconFloat 1.8s ease-in-out infinite;
+}
+
+.pqe-benefit-content h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #f0f4ff;
+    margin-bottom: 0.22rem;
+    letter-spacing: 0.05px;
+}
+
+.pqe-benefit-content p {
+    font-size: 0.81rem;
+    line-height: 1.58;
+    color: rgba(255, 255, 255, 0.38);
+    margin: 0;
+}
+
+/* Animaciones de entrada */
+@keyframes pqeBenefitIn {
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pqeLeftIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pqeDotPulse {
+    0%, 100% { box-shadow: 0 0 6px rgba(96, 165, 250, 0.6); opacity: 1; }
+    50%       { box-shadow: 0 0 14px rgba(96, 165, 250, 0.95); opacity: 0.75; }
+}
+
+@keyframes pqeAccentShift {
+    0%   { background-position: 0% center; }
+    100% { background-position: 250% center; }
+}
+
+@keyframes pqeStatsSweep {
+    0%   { left: -80%; }
+    60%  { left: 120%; }
+    100% { left: 120%; }
+}
+
+@keyframes pqeCtaPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(30, 107, 255, 0.4); }
+    50%       { box-shadow: 0 0 0 7px rgba(30, 107, 255, 0); }
+}
+
+@keyframes pqeIconFloat {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-3px); }
+}
+
+/* Responsive */
+@media (max-width: 920px) {
+    .pqe-wrapper {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .pqe-subtitle { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+    .pqe-stats { flex-direction: column; }
+    .pqe-stat:not(:last-child)::after {
+        top: auto; bottom: 0;
+        left: 20%; right: 20%;
+        width: auto; height: 1px;
+    }
+}
+

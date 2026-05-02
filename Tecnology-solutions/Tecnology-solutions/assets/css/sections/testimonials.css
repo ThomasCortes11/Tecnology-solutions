@@ -1,0 +1,74 @@
+﻿/* ===== SECCIÃ“N TESTIMONIOS ===== */
+.testimonios {
+    background: #FFFFFF;
+    padding: 6rem 2rem;
+}
+
+.testimonios h2 {
+    color: var(--color-dark);
+}
+
+.testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 3rem auto 0;
+}
+
+.testimonios-card {
+    background: linear-gradient(135deg, rgba(30, 107, 255, 0.05) 0%, rgba(30, 107, 255, 0.02) 100%);
+    border: 1px solid rgba(30, 107, 255, 0.2);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: var(--transition-slow);
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonios-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.testimonios-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-primary);
+    background: linear-gradient(135deg, rgba(30, 107, 255, 0.1) 0%, rgba(30, 107, 255, 0.05) 100%);
+    box-shadow: 0 15px 40px rgba(30, 107, 255, 0.2);
+}
+
+.testimonios-card:hover::before {
+    opacity: 1;
+}
+
+.testimonios-stars {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--color-gold);
+    letter-spacing: 0.3rem;
+}
+
+.testimonios-card p {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    font-style: italic;
+    color: #1e293b;
+    font-weight: 500;
+}
+
+.testimonios-autor {
+    font-weight: 600;
+    color: var(--color-primary);
+    font-style: normal;
+    font-size: 0.95rem !important;
+}
+

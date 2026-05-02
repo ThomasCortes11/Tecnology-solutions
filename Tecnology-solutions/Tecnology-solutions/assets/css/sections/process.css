@@ -1,0 +1,183 @@
+﻿/* ===== SECCIÃ“N PROCESO ===== */
+.proceso {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(145deg, #050505 0%, #0A0A0A 55%, #101827 100%);
+    color: var(--color-white);
+}
+
+.proceso::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 18% 25%, rgba(30, 107, 255, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 82% 78%, rgba(212, 175, 55, 0.08) 0%, transparent 35%);
+    pointer-events: none;
+}
+
+.proceso::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(30, 107, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 107, 255, 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+    opacity: 0.25;
+    animation: procesoGridFloat 18s linear infinite;
+    pointer-events: none;
+}
+
+.proceso .section-header {
+    position: relative;
+    z-index: 1;
+}
+
+.proceso .section-header h2 {
+    color: var(--color-white);
+}
+
+.proceso .section-header p {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.proceso-timeline {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.proceso-timeline::before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(30, 107, 255, 0.2), rgba(30, 107, 255, 0.85), rgba(30, 107, 255, 0.2), transparent);
+    background-size: 220% 100%;
+    animation: procesoLineFlow 4.5s linear infinite;
+    z-index: 0;
+}
+
+.proceso-step {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(160deg, rgba(16, 24, 39, 0.88) 0%, rgba(10, 10, 10, 0.9) 100%);
+    padding: 2.5rem 2rem;
+    border-radius: 18px;
+    border: 1px solid rgba(30, 107, 255, 0.28);
+    backdrop-filter: blur(14px);
+    text-align: center;
+    transition: var(--transition-slow);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    animation: procesoCardIn 0.7s ease both;
+}
+
+.proceso-step:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.proceso-step:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.proceso-step:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.proceso-step:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.proceso-step::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(30, 107, 255, 0.6), transparent);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.proceso-step:hover {
+    background: linear-gradient(160deg, rgba(23, 37, 63, 0.92) 0%, rgba(10, 10, 10, 0.95) 100%);
+    border-color: var(--color-primary);
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 18px 45px rgba(30, 107, 255, 0.22);
+}
+
+.proceso-step:hover::before {
+    opacity: 1;
+}
+
+.proceso-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 8px 22px rgba(30, 107, 255, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: var(--transition);
+}
+
+.proceso-step:hover .proceso-number {
+    transform: scale(1.08);
+    box-shadow: 0 12px 28px rgba(30, 107, 255, 0.55);
+}
+
+.proceso-step h3 {
+    margin-bottom: 0.75rem;
+    color: var(--color-white);
+}
+
+.proceso-step p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+}
+
+@keyframes procesoGridFloat {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(56px, 56px, 0);
+    }
+}
+
+@keyframes procesoLineFlow {
+    from {
+        background-position: 0% 50%;
+    }
+
+    to {
+        background-position: 220% 50%;
+    }
+}
+
+@keyframes procesoCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
